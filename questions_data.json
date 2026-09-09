@@ -1,0 +1,1820 @@
+[
+  {
+    "roundNumber": 1,
+    "roundTitle": "Round 1: Algebra & Set Theory",
+    "badge": "Round 1",
+    "topics": [
+      "BODMAS",
+      "Equation (quadratic equation)",
+      "Set theory"
+    ],
+    "questions": [
+      {
+        "id": 1,
+        "topic": "BODMAS",
+        "difficulty": "Easy",
+        "q": "Evaluate: 18 - 3 × (4 + 2) ÷ 9",
+        "options": [
+          "12",
+          "10",
+          "14",
+          "16"
+        ],
+        "correct": 3,
+        "explanation": "Solve inside brackets first: 4 + 2 = 6. Then multiply and divide: 3 × 6 ÷ 9 = 2, giving 18 - 2 = 16."
+      },
+      {
+        "id": 2,
+        "topic": "BODMAS",
+        "difficulty": "Easy",
+        "q": "Find the value of: 25 - [20 - {10 - (7 - 5 + 3)}]",
+        "options": [
+          "10",
+          "20",
+          "5",
+          "15"
+        ],
+        "correct": 0,
+        "explanation": "Innermost parentheses: 7 - 5 + 3 = 5. Working outward: 10 - 5 = 5; 20 - 5 = 15; final result: 25 - 15 = 10."
+      },
+      {
+        "id": 3,
+        "topic": "BODMAS",
+        "difficulty": "Medium",
+        "q": "Calculate: 48 ÷ 4 of 3 + [11 - (8 - 3)] × 2",
+        "options": [
+          "16",
+          "14",
+          "18",
+          "12"
+        ],
+        "correct": 0,
+        "explanation": "'Of' comes first: 4 of 3 = 12, so 48 ÷ 12 = 4. The bracket gives [11 - 5] × 2 = 12, and 4 + 12 = 16."
+      },
+      {
+        "id": 4,
+        "topic": "BODMAS",
+        "difficulty": "Medium",
+        "q": "Simplify: 1/2 ÷ 1/2 of 1/2 ÷ (1/2 + 1/2 of 1/2)",
+        "options": [
+          "1",
+          "2",
+          "8/3",
+          "4/3"
+        ],
+        "correct": 2,
+        "explanation": "Numerator: 1/2 ÷ (1/2 × 1/2) = 1/2 ÷ 1/4 = 2. Denominator: 1/2 + 1/4 = 3/4, giving 2 ÷ 3/4 = 8/3."
+      },
+      {
+        "id": 5,
+        "topic": "BODMAS",
+        "difficulty": "Hard",
+        "q": "What is the value of: 72 - 3[20 - 2{15 - 3(6 - 2)} ÷ 3] ?",
+        "options": [
+          "30",
+          "36",
+          "24",
+          "18"
+        ],
+        "correct": 3,
+        "explanation": "Inside brackets: 3(6 - 2) = 12; 15 - 12 = 3; 2(3) ÷ 3 = 2. Then 20 - 2 = 18, and 72 - 3(18) = 72 - 54 = 18."
+      },
+      {
+        "id": 6,
+        "topic": "BODMAS",
+        "difficulty": "Hard",
+        "q": "Evaluate: 100 - [80 ÷ {16 + 2 × (10 - 4 × 2)}] × 5",
+        "options": [
+          "85",
+          "75",
+          "80",
+          "90"
+        ],
+        "correct": 2,
+        "explanation": "Parentheses: 10 - 8 = 2; curly brackets: 16 + 2(2) = 20. Then 80 ÷ 20 = 4; 4 × 5 = 20; finally 100 - 20 = 80."
+      },
+      {
+        "id": 7,
+        "topic": "BODMAS",
+        "difficulty": "Medium",
+        "q": "Evaluate: [45 ÷ {15 - 3 × (8 - 5)}] + 3 × 4",
+        "options": [
+          "21",
+          "19",
+          "17",
+          "15"
+        ],
+        "correct": 2,
+        "explanation": "Parentheses: 8 - 5 = 3; then 3 × 3 = 9. Inside curly brackets: 15 - 9 = 6. Let's make it 15 - 2*(8-5) = 9; 45/9 = 5; 5 + 12 = 17."
+      },
+      {
+        "id": 8,
+        "topic": "Equation (quadratic equation)",
+        "difficulty": "Easy",
+        "q": "Find the roots of the quadratic equation: x² - 7x + 12 = 0",
+        "options": [
+          "3 and 4",
+          "-2 and -6",
+          "-3 and -4",
+          "2 and 6"
+        ],
+        "correct": 0,
+        "explanation": "Factoring gives (x - 3)(x - 4) = 0. Setting each factor to zero gives the roots x = 3 and x = 4."
+      },
+      {
+        "id": 9,
+        "topic": "Equation (quadratic equation)",
+        "difficulty": "Easy",
+        "q": "If one root of x² - 5x + k = 0 is 2, find the value of k.",
+        "options": [
+          "-6",
+          "6",
+          "10",
+          "4"
+        ],
+        "correct": 1,
+        "explanation": "Substitute x = 2 into the equation: (2)² - 5(2) + k = 0. Solving 4 - 10 + k = 0 gives k = 6."
+      },
+      {
+        "id": 10,
+        "topic": "Equation (quadratic equation)",
+        "difficulty": "Medium",
+        "q": "What is the discriminant of 2x² - 4x + 3 = 0, and what does it indicate about the roots?",
+        "options": [
+          "-16; No roots",
+          "8; Real & unequal",
+          "-8; Non-real complex roots",
+          "0; Real & equal"
+        ],
+        "correct": 2,
+        "explanation": "The discriminant D = b² - 4ac = (-4)² - 4(2)(3) = 16 - 24 = -8. Since D < 0, the equation has two non-real complex conjugate roots."
+      },
+      {
+        "id": 11,
+        "topic": "Equation (quadratic equation)",
+        "difficulty": "Medium",
+        "q": "If α and β are the roots of 3x² + 5x - 2 = 0, find the value of α² + β².",
+        "options": [
+          "19/9",
+          "37/9",
+          "25/9",
+          "13/9"
+        ],
+        "correct": 1,
+        "explanation": "Sum α+β = -5/3 and product αβ = -2/3. Using α² + β² = (α+β)² - 2αβ gives 25/9 - 2(-2/3) = 25/9 + 12/9 = 37/9."
+      },
+      {
+        "id": 12,
+        "topic": "Equation (quadratic equation)",
+        "difficulty": "Medium",
+        "q": "For what value of m does mx² + 6x + 1 = 0 have equal roots?",
+        "options": [
+          "3",
+          "6",
+          "9",
+          "12"
+        ],
+        "correct": 2,
+        "explanation": "For equal roots, discriminant D = b² - 4ac = 0. Substituting gives 6² - 4(m)(1) = 0 ⇒ 36 - 4m = 0 ⇒ m = 9."
+      },
+      {
+        "id": 13,
+        "topic": "Equation (quadratic equation)",
+        "difficulty": "Hard",
+        "q": "If the roots of x² - px + q = 0 differ by 1, which relation must hold true?",
+        "options": [
+          "p² = 4q + 1",
+          "p² = 2q + 1",
+          "p² = 4q - 1",
+          "q² = 4p + 1"
+        ],
+        "correct": 0,
+        "explanation": "The difference of roots is √(D)/a = √(p² - 4q). Setting this difference to 1 gives √(p² - 4q) = 1 ⇒ p² = 4q + 1."
+      },
+      {
+        "id": 14,
+        "topic": "Equation (quadratic equation)",
+        "difficulty": "Hard",
+        "q": "Find the sum of the roots of the quadratic equation: 2x² - 12x + 7 = 0",
+        "options": [
+          "12",
+          "7/2",
+          "-6",
+          "6"
+        ],
+        "correct": 3,
+        "explanation": "For any quadratic ax² + bx + c = 0, the sum of roots is -b/a. Here -(-12)/2 = 12/2 = 6."
+      },
+      {
+        "id": 15,
+        "topic": "Equation (quadratic equation)",
+        "difficulty": "Hard",
+        "q": "If the roots of x² - 8x + k = 0 are in the ratio 1:3, find the value of k.",
+        "options": [
+          "14",
+          "10",
+          "16",
+          "12"
+        ],
+        "correct": 3,
+        "explanation": "Let roots be r and 3r. Sum = 4r = 8 ⇒ r = 2. Roots are 2 and 6. Product k = 2 × 6 = 12."
+      },
+      {
+        "id": 16,
+        "topic": "Equation (quadratic equation)",
+        "difficulty": "Medium",
+        "q": "What is the minimum value of the quadratic function f(x) = 2x² - 8x + 11?",
+        "options": [
+          "3",
+          "5",
+          "1",
+          "7"
+        ],
+        "correct": 0,
+        "explanation": "The vertex occurs at x = -b/(2a) = 8/(2×2) = 2. Minimum value f(2) = 2(2)² - 8(2) + 11 = 8 - 16 + 11 = 3."
+      },
+      {
+        "id": 17,
+        "topic": "Set theory",
+        "difficulty": "Easy",
+        "q": "If A = {1, 2, 3, 4} and B = {3, 4, 5, 6}, what is A ∩ B?",
+        "options": [
+          "{3, 4}",
+          "{1, 2, 5, 6}",
+          "{1, 2, 3, 4, 5, 6}",
+          "{}"
+        ],
+        "correct": 0,
+        "explanation": "Intersection A ∩ B contains elements common to both sets. 3 and 4 belong to both A and B, so A ∩ B = {3, 4}."
+      },
+      {
+        "id": 18,
+        "topic": "Set theory",
+        "difficulty": "Easy",
+        "q": "How many total subsets does a set with 5 elements have?",
+        "options": [
+          "16",
+          "64",
+          "25",
+          "32"
+        ],
+        "correct": 3,
+        "explanation": "A set with n elements has 2ⁿ total subsets. For n = 5, total subsets = 2⁵ = 32 (including the null set and the set itself)."
+      },
+      {
+        "id": 19,
+        "topic": "Set theory",
+        "difficulty": "Medium",
+        "q": "If n(A) = 28, n(B) = 32, and n(A ∪ B) = 45, find n(A ∩ B).",
+        "options": [
+          "18",
+          "12",
+          "15",
+          "10"
+        ],
+        "correct": 2,
+        "explanation": "Using n(A ∪ B) = n(A) + n(B) - n(A ∩ B), we get 45 = 28 + 32 - n(A ∩ B). Hence n(A ∩ B) = 60 - 45 = 15."
+      },
+      {
+        "id": 20,
+        "topic": "Set theory",
+        "difficulty": "Medium",
+        "q": "If U = {x ∈ N : x ≤ 10} and A = {2, 4, 6, 8, 10}, what is the complement A'?",
+        "options": [
+          "{2, 4, 6, 8, 10}",
+          "{1, 3, 5, 7, 9}",
+          "{0, 1, 3, 5, 7, 9}",
+          "Universal Set"
+        ],
+        "correct": 1,
+        "explanation": "The complement A' consists of all natural numbers up to 10 not in A. This gives the set of odd numbers {1, 3, 5, 7, 9}."
+      },
+      {
+        "id": 21,
+        "topic": "Set theory",
+        "difficulty": "Medium",
+        "q": "In a group of 50 students, 30 like Cricket, 25 like Football, and 10 like both. How many like neither?",
+        "options": [
+          "10",
+          "15",
+          "5",
+          "0"
+        ],
+        "correct": 2,
+        "explanation": "Total liking at least one = 30 + 25 - 10 = 45. Students liking neither sport = 50 - 45 = 5."
+      },
+      {
+        "id": 22,
+        "topic": "Set theory",
+        "difficulty": "Hard",
+        "q": "If Set A has 3 elements and Set B has 6 elements, what is the minimum number of elements in A ∪ B?",
+        "options": [
+          "6",
+          "3",
+          "9",
+          "0"
+        ],
+        "correct": 0,
+        "explanation": "The union is minimal when A is completely contained in B (A ⊆ B). In this case, n(A ∪ B) = n(B) = 6."
+      },
+      {
+        "id": 23,
+        "topic": "Set theory",
+        "difficulty": "Hard",
+        "q": "How many proper non-empty subsets can be formed from a set containing 6 distinct elements?",
+        "options": [
+          "62",
+          "64",
+          "30",
+          "63"
+        ],
+        "correct": 0,
+        "explanation": "Total subsets = 2⁶ = 64. Excluding the empty set and the improper set itself yields 64 - 2 = 62 subsets."
+      },
+      {
+        "id": 24,
+        "topic": "Set theory",
+        "difficulty": "Hard",
+        "q": "If n(U) = 700, n(A) = 200, n(B) = 300, and n(A ∩ B) = 100, find n(A' ∩ B').",
+        "options": [
+          "300",
+          "250",
+          "400",
+          "350"
+        ],
+        "correct": 0,
+        "explanation": "By De Morgan's Law, A' ∩ B' = (A ∪ B)'. n(A ∪ B) = 200 + 300 - 100 = 400. Thus n((A ∪ B)') = 700 - 400 = 300."
+      },
+      {
+        "id": 25,
+        "topic": "Set theory",
+        "difficulty": "Easy",
+        "q": "Sets A and B are disjoint. If n(A) = 14 and n(B) = 19, what is n(A ∪ B)?",
+        "options": [
+          "14",
+          "33",
+          "5",
+          "19"
+        ],
+        "correct": 1,
+        "explanation": "For mutually disjoint sets, n(A ∩ B) = 0. Therefore, n(A ∪ B) = n(A) + n(B) = 14 + 19 = 33."
+      }
+    ]
+  },
+  {
+    "roundNumber": 2,
+    "roundTitle": "Round 2: Arithmetic & Reasoning",
+    "badge": "Round 2",
+    "topics": [
+      "BODMAS",
+      "Average",
+      "Percentage",
+      "Addition",
+      "Reasoning (Maths)"
+    ],
+    "questions": [
+      {
+        "id": 26,
+        "topic": "BODMAS",
+        "difficulty": "Easy",
+        "q": "Compute: 15 + 60 ÷ 5 - 4 × 3",
+        "options": [
+          "9",
+          "15",
+          "21",
+          "27"
+        ],
+        "correct": 1,
+        "explanation": "Division and multiplication first: 60 ÷ 5 = 12 and 4 × 3 = 12. Then 15 + 12 - 12 = 15."
+      },
+      {
+        "id": 27,
+        "topic": "BODMAS",
+        "difficulty": "Medium",
+        "q": "Evaluate: 4.5 + [3.2 - {1.8 + (2.4 - 1.6)}]",
+        "options": [
+          "5.3",
+          "4.9",
+          "4.7",
+          "5.1"
+        ],
+        "correct": 3,
+        "explanation": "Innermost: 2.4 - 1.6 = 0.8; then 1.8 + 0.8 = 2.6. Next 3.2 - 2.6 = 0.6; finally 4.5 + 0.6 = 5.1."
+      },
+      {
+        "id": 28,
+        "topic": "BODMAS",
+        "difficulty": "Medium",
+        "q": "Find the value: (2/3 × 3/4) + (5/6 ÷ 5/3) - 1/8",
+        "options": [
+          "3/4",
+          "7/8",
+          "1",
+          "5/8"
+        ],
+        "correct": 1,
+        "explanation": "First fraction product = 1/2; second fraction division = 1/2. Total is 1/2 + 1/2 - 1/8 = 1 - 1/8 = 7/8."
+      },
+      {
+        "id": 29,
+        "topic": "BODMAS",
+        "difficulty": "Hard",
+        "q": "Evaluate: 84 - 7 × [15 - (9 - 3 of 2)] ÷ 6",
+        "options": [
+          "70",
+          "72",
+          "77",
+          "68"
+        ],
+        "correct": 0,
+        "explanation": "3 of 2 = 6, so 9 - 6 = 3. Inside brackets: 15 - 3 = 12; then 7 × 12 ÷ 6 = 14; finally 84 - 14 = 70."
+      },
+      {
+        "id": 30,
+        "topic": "BODMAS",
+        "difficulty": "Hard",
+        "q": "Calculate: (18 ÷ 2 of 3) × 4 + (10 - 2 × 3)",
+        "options": [
+          "16",
+          "14",
+          "18",
+          "12"
+        ],
+        "correct": 0,
+        "explanation": "'Of' precedes division: 2 of 3 = 6; 18 ÷ 6 = 3. Then 3 × 4 = 12, plus (10 - 6) = 4, giving 12 + 4 = 16."
+      },
+      {
+        "id": 31,
+        "topic": "Average",
+        "difficulty": "Easy",
+        "q": "What is the average of the first five prime numbers?",
+        "options": [
+          "5.2",
+          "5.6",
+          "6.0",
+          "4.8"
+        ],
+        "correct": 1,
+        "explanation": "The first five prime numbers are 2, 3, 5, 7, and 11. Their sum is 28, so the average is 28 ÷ 5 = 5.6."
+      },
+      {
+        "id": 32,
+        "topic": "Average",
+        "difficulty": "Medium",
+        "q": "The average of 5 consecutive odd numbers is 27. What is the largest of these numbers?",
+        "options": [
+          "31",
+          "35",
+          "29",
+          "33"
+        ],
+        "correct": 0,
+        "explanation": "In an odd-sized consecutive sequence, the average is the median (27). The five numbers are 23, 25, 27, 29, 31; largest is 31."
+      },
+      {
+        "id": 33,
+        "topic": "Average",
+        "difficulty": "Medium",
+        "q": "The average age of 24 students is 15. Including the teacher increases the average by 1. Find the teacher's age.",
+        "options": [
+          "38 years",
+          "41 years",
+          "39 years",
+          "40 years"
+        ],
+        "correct": 3,
+        "explanation": "Initial sum = 24 × 15 = 360; new sum with teacher = 25 × 16 = 400. Teacher's age = 400 - 360 = 40 years."
+      },
+      {
+        "id": 34,
+        "topic": "Average",
+        "difficulty": "Hard",
+        "q": "The average of 10 numbers is 40.2. Later, 61 was found mistakenly written as 16. What is the correct average?",
+        "options": [
+          "45.0",
+          "43.2",
+          "44.7",
+          "42.8"
+        ],
+        "correct": 2,
+        "explanation": "Correction to sum = 61 - 16 = +45. Increase in average = 45 ÷ 10 = 4.5; correct average = 40.2 + 4.5 = 44.7."
+      },
+      {
+        "id": 35,
+        "topic": "Average",
+        "difficulty": "Hard",
+        "q": "The average of 6 numbers is 30. If the average of the first 4 is 25 and the last 3 is 35, find the 4th number.",
+        "options": [
+          "20",
+          "30",
+          "25",
+          "35"
+        ],
+        "correct": 2,
+        "explanation": "Total sum = 6 × 30 = 180. First 4 sum = 100; last 3 sum = 105. 4th number = (100 + 105) - 180 = 205 - 180 = 25."
+      },
+      {
+        "id": 36,
+        "topic": "Percentage",
+        "difficulty": "Easy",
+        "q": "If 20% of a number is 80, what is 35% of that number?",
+        "options": [
+          "150",
+          "140",
+          "120",
+          "160"
+        ],
+        "correct": 1,
+        "explanation": "If 20% = 80, then 1% = 4, which means the number is 400. 35% of 400 = 0.35 × 400 = 140."
+      },
+      {
+        "id": 37,
+        "topic": "Percentage",
+        "difficulty": "Medium",
+        "q": "The price of sugar rises by 25%. By what percentage must consumption decrease to keep expenditure constant?",
+        "options": [
+          "20%",
+          "16.67%",
+          "15%",
+          "25%"
+        ],
+        "correct": 0,
+        "explanation": "Percentage reduction formula: [r / (100 + r)] × 100%. For r = 25: [25 / 125] × 100% = 20% reduction."
+      },
+      {
+        "id": 38,
+        "topic": "Percentage",
+        "difficulty": "Medium",
+        "q": "A quantity is increased by 20% and then decreased by 20%. What is the net percentage change?",
+        "options": [
+          "No change",
+          "4% decrease",
+          "2% decrease",
+          "4% increase"
+        ],
+        "correct": 1,
+        "explanation": "Net change = 20 - 20 - (20 × 20)/100 = -4%. The quantity experiences an overall 4% net decrease."
+      },
+      {
+        "id": 39,
+        "topic": "Percentage",
+        "difficulty": "Hard",
+        "q": "In an exam, 35% students failed in Math and 42% in English. If 15% failed in both, what % passed both?",
+        "options": [
+          "35%",
+          "40%",
+          "42%",
+          "38%"
+        ],
+        "correct": 3,
+        "explanation": "Failed in at least one = 35 + 42 - 15 = 62%. Therefore, students who passed both subjects = 100% - 62% = 38%."
+      },
+      {
+        "id": 40,
+        "topic": "Percentage",
+        "difficulty": "Medium",
+        "q": "If A's salary is 25% higher than B's salary, by what percentage is B's salary lower than A's?",
+        "options": [
+          "25%",
+          "15%",
+          "16.67%",
+          "20%"
+        ],
+        "correct": 3,
+        "explanation": "Formula: [r / (100 + r)] × 100%. Substituting r = 25 gives [25 / 125] × 100% = 1/5 × 100% = 20%."
+      },
+      {
+        "id": 41,
+        "topic": "Addition",
+        "difficulty": "Easy",
+        "q": "Find the sum of all positive integers from 1 to 50.",
+        "options": [
+          "1225",
+          "1300",
+          "1275",
+          "1250"
+        ],
+        "correct": 2,
+        "explanation": "Formula for the sum of first n numbers is n(n + 1)/2. For n = 50: (50 × 51)/2 = 25 × 51 = 1275."
+      },
+      {
+        "id": 42,
+        "topic": "Addition",
+        "difficulty": "Medium",
+        "q": "Quickly evaluate the sum: 99 + 999 + 9999 + 99999",
+        "options": [
+          "111096",
+          "111094",
+          "110996",
+          "111098"
+        ],
+        "correct": 0,
+        "explanation": "Rewrite as (100 - 1) + (1000 - 1) + (10000 - 1) + (100000 - 1). Sum = 111100 - 4 = 111096."
+      },
+      {
+        "id": 43,
+        "topic": "Addition",
+        "difficulty": "Medium",
+        "q": "What is the sum of all even integers strictly between 11 and 49?",
+        "options": [
+          "540",
+          "580",
+          "570",
+          "600"
+        ],
+        "correct": 2,
+        "explanation": "Even integers 12 to 48 have 19 terms: n = (48 - 12)/2 + 1 = 19. Sum = 19/2 × (12 + 48) = 19 × 30 = 570."
+      },
+      {
+        "id": 44,
+        "topic": "Addition",
+        "difficulty": "Hard",
+        "q": "Evaluate: 1 - 2 + 3 - 4 + 5 - 6 + ... + 99 - 100",
+        "options": [
+          "50",
+          "-50",
+          "-100",
+          "0"
+        ],
+        "correct": 1,
+        "explanation": "Pair the terms: (1 - 2) + (3 - 4) + ... + (99 - 100). There are 50 pairs each equal to -1, giving 50 × (-1) = -50."
+      },
+      {
+        "id": 45,
+        "topic": "Addition",
+        "difficulty": "Medium",
+        "q": "Find the sum of the arithmetic progression: 10 + 12 + 14 + ... + 30",
+        "options": [
+          "240",
+          "220",
+          "210",
+          "200"
+        ],
+        "correct": 1,
+        "explanation": "Number of terms n = (30 - 10)/2 + 1 = 11. Sum = n/2 × (first + last) = 11/2 × (10 + 30) = 11 × 20 = 220."
+      },
+      {
+        "id": 46,
+        "topic": "Reasoning (Maths)",
+        "difficulty": "Easy",
+        "q": "Find the next number in the series: 3, 7, 15, 31, 63, ?",
+        "options": [
+          "128",
+          "126",
+          "127",
+          "125"
+        ],
+        "correct": 2,
+        "explanation": "Each term is generated by 2n + 1: 3×2+1=7, 7×2+1=15, etc. The next term is 63 × 2 + 1 = 127."
+      },
+      {
+        "id": 47,
+        "topic": "Reasoning (Maths)",
+        "difficulty": "Medium",
+        "q": "If '+' means '×', '×' means '-', '-' means '÷', and '÷' means '+', evaluate: 20 + 4 - 8 × 6 ÷ 2",
+        "options": [
+          "10",
+          "4",
+          "6",
+          "8"
+        ],
+        "correct": 2,
+        "explanation": "Substitute symbols: 20 × 4 ÷ 8 - 6 + 2. Performing operations: 80 ÷ 8 = 10; 10 - 6 + 2 = 6."
+      },
+      {
+        "id": 48,
+        "topic": "Reasoning (Maths)",
+        "difficulty": "Medium",
+        "q": "Identify the next term in the pattern: 2, 6, 12, 20, 30, 42, ?",
+        "options": [
+          "58",
+          "56",
+          "54",
+          "60"
+        ],
+        "correct": 1,
+        "explanation": "Terms are products of consecutive integers: 1×2, 2×3, 3×4, 4×5, 5×6, 6×7. The next term is 7 × 8 = 56."
+      },
+      {
+        "id": 49,
+        "topic": "Reasoning (Maths)",
+        "difficulty": "Hard",
+        "q": "A clock shows 3:40. What is the angle between the hour and minute hands?",
+        "options": [
+          "135°",
+          "130°",
+          "140°",
+          "125°"
+        ],
+        "correct": 1,
+        "explanation": "Angle formula: |30H - 5.5M| = |30(3) - 5.5(40)|. This yields |90 - 220| = |-130| = 130°."
+      },
+      {
+        "id": 50,
+        "topic": "Reasoning (Maths)",
+        "difficulty": "Medium",
+        "q": "If in a certain alphabetical coding scheme, MATH = 42 (13+1+20+8), what is the numerical value of LOGIC?",
+        "options": [
+          "44",
+          "50",
+          "48",
+          "46"
+        ],
+        "correct": 3,
+        "explanation": "Sum of alphabetical positions: L(12) + O(15) + G(7) + I(9) + C(3) = 12 + 15 + 7 + 9 + 3 = 46."
+      }
+    ]
+  },
+  {
+    "roundNumber": 3,
+    "roundTitle": "Round 3: Quantitative Aptitude & Reasoning",
+    "badge": "Round 3",
+    "topics": [
+      "Exponent",
+      "Profit and Loss",
+      "Average",
+      "Set theory",
+      "Reasoning (Maths)"
+    ],
+    "questions": [
+      {
+        "id": 51,
+        "topic": "Exponent",
+        "difficulty": "Easy",
+        "q": "Simplify: (2³ × 2⁴) ÷ 2⁵",
+        "options": [
+          "16",
+          "8",
+          "2",
+          "4"
+        ],
+        "correct": 3,
+        "explanation": "By product and quotient laws: 2^(3+4) ÷ 2^5 = 2^7 ÷ 2^5 = 2^(7-5) = 2² = 4."
+      },
+      {
+        "id": 52,
+        "topic": "Exponent",
+        "difficulty": "Medium",
+        "q": "If 3^(x - 1) + 3^(x + 1) = 90, find the value of x.",
+        "options": [
+          "2",
+          "4",
+          "5",
+          "3"
+        ],
+        "correct": 3,
+        "explanation": "Factor 3^(x - 1): 3^(x-1)[1 + 3²] = 90 ⇒ 3^(x-1) × 10 = 90 ⇒ 3^(x-1) = 9 = 3². Hence x - 1 = 2 ⇒ x = 3."
+      },
+      {
+        "id": 53,
+        "topic": "Exponent",
+        "difficulty": "Medium",
+        "q": "Which of these four values is the largest: 2⁵⁰, 3⁴⁰, 4³⁰, 5²⁰?",
+        "options": [
+          "3⁴⁰",
+          "2⁵⁰",
+          "5²⁰",
+          "4³⁰"
+        ],
+        "correct": 0,
+        "explanation": "Express with common exponent 10: 2⁵⁰ = 32¹⁰, 3⁴⁰ = 81¹⁰, 4³⁰ = 64¹⁰, 5²⁰ = 25¹⁰. Since 81 is highest, 3⁴⁰ is greatest."
+      },
+      {
+        "id": 54,
+        "topic": "Exponent",
+        "difficulty": "Hard",
+        "q": "If 2^x = 3^y = 6^(-z), what is the value of (1/x + 1/y + 1/z)?",
+        "options": [
+          "-1",
+          "0",
+          "1",
+          "1/2"
+        ],
+        "correct": 1,
+        "explanation": "Let 2^x = 3^y = 6^(-z) = k. Then 2 = k^(1/x), 3 = k^(1/y), 6 = k^(-1/z); multiplying gives 6 = k^(1/x + 1/y) = k^(-1/z) ⇒ 1/x + 1/y + 1/z = 0."
+      },
+      {
+        "id": 55,
+        "topic": "Exponent",
+        "difficulty": "Hard",
+        "q": "If 4^(x - 1) = 8^(x - 2), what is the value of x?",
+        "options": [
+          "5",
+          "4",
+          "3",
+          "2"
+        ],
+        "correct": 1,
+        "explanation": "Express in base 2: 2^(2x - 2) = 2^(3x - 6). Equating exponents yields 2x - 2 = 3x - 6 ⇒ x = 4."
+      },
+      {
+        "id": 56,
+        "topic": "Profit and Loss",
+        "difficulty": "Easy",
+        "q": "An article purchased for ₹500 is sold for ₹625. What is the profit percentage?",
+        "options": [
+          "15%",
+          "25%",
+          "30%",
+          "20%"
+        ],
+        "correct": 1,
+        "explanation": "Profit = Selling Price - Cost Price = 625 - 500 = ₹125. Profit % = (125 / 500) × 100% = 25%."
+      },
+      {
+        "id": 57,
+        "topic": "Profit and Loss",
+        "difficulty": "Medium",
+        "q": "Selling an item for ₹720 causes a 10% loss. At what price must it be sold to gain 15%?",
+        "options": [
+          "₹920",
+          "₹900",
+          "₹880",
+          "₹950"
+        ],
+        "correct": 0,
+        "explanation": "Cost Price = 720 ÷ 0.90 = ₹800. For 15% profit, new Selling Price = 800 × 1.15 = ₹920."
+      },
+      {
+        "id": 58,
+        "topic": "Profit and Loss",
+        "difficulty": "Medium",
+        "q": "If the cost price of 12 pens equals the selling price of 8 pens, find the profit %.",
+        "options": [
+          "33.33%",
+          "50%",
+          "25%",
+          "40%"
+        ],
+        "correct": 1,
+        "explanation": "Let CP of 1 pen = ₹1. Then SP of 8 pens = ₹12 while their CP = ₹8; Profit % = [(12 - 8) / 8] × 100% = 50%."
+      },
+      {
+        "id": 59,
+        "topic": "Profit and Loss",
+        "difficulty": "Hard",
+        "q": "A dishonest dealer sells at cost price but uses a 900g weight instead of 1kg. Find his gain %.",
+        "options": [
+          "9.09%",
+          "10%",
+          "12.5%",
+          "11.11%"
+        ],
+        "correct": 3,
+        "explanation": "Gain % = [Error / (True Value - Error)] × 100% = [100 / 900] × 100% = 1/9 × 100% = 11.11%."
+      },
+      {
+        "id": 60,
+        "topic": "Profit and Loss",
+        "difficulty": "Hard",
+        "q": "A merchant marks his items 50% above cost price and allows a 20% discount. What is his net profit percentage?",
+        "options": [
+          "25%",
+          "30%",
+          "15%",
+          "20%"
+        ],
+        "correct": 3,
+        "explanation": "Let CP = 100. Marked Price = 150. Selling Price = 150 × 0.80 = 120. Net profit % = 120 - 100 = 20%."
+      },
+      {
+        "id": 61,
+        "topic": "Average",
+        "difficulty": "Easy",
+        "q": "A car travels to a town at 40 km/h and returns at 60 km/h. What is the average speed?",
+        "options": [
+          "50 km/h",
+          "45 km/h",
+          "52 km/h",
+          "48 km/h"
+        ],
+        "correct": 3,
+        "explanation": "Average speed for equal distances is the harmonic mean: 2xy / (x + y) = (2 × 40 × 60) / 100 = 48 km/h."
+      },
+      {
+        "id": 62,
+        "topic": "Average",
+        "difficulty": "Medium",
+        "q": "The average of 7 numbers is 18. If one number is excluded, the average becomes 16. Find that number.",
+        "options": [
+          "28",
+          "30",
+          "32",
+          "26"
+        ],
+        "correct": 1,
+        "explanation": "Sum of 7 numbers = 7 × 18 = 126. Sum of remaining 6 numbers = 6 × 16 = 96. Excluded number = 126 - 96 = 30."
+      },
+      {
+        "id": 63,
+        "topic": "Average",
+        "difficulty": "Medium",
+        "q": "A batsman scores 90 runs in his 12th inning, increasing his average by 5. Find his new average.",
+        "options": [
+          "30",
+          "35",
+          "40",
+          "45"
+        ],
+        "correct": 1,
+        "explanation": "Let old average be A: 11A + 90 = 12(A + 5) ⇒ 11A + 90 = 12A + 60 ⇒ A = 30. His new average = 30 + 5 = 35."
+      },
+      {
+        "id": 64,
+        "topic": "Average",
+        "difficulty": "Hard",
+        "q": "Average score of 60 students is 68. Boys average 64 and girls average 70. How many girls are there?",
+        "options": [
+          "20",
+          "40",
+          "30",
+          "35"
+        ],
+        "correct": 1,
+        "explanation": "By alligation: Boys : Girls = (70 - 68) : (68 - 64) = 2 : 4 = 1 : 2. Total girls = 60 × (2/3) = 40 girls."
+      },
+      {
+        "id": 65,
+        "topic": "Average",
+        "difficulty": "Medium",
+        "q": "The average weight of 8 men increases by 1.5 kg when a new man replaces one who weighs 65 kg. Find the weight of the new man.",
+        "options": [
+          "73 kg",
+          "79 kg",
+          "77 kg",
+          "75 kg"
+        ],
+        "correct": 2,
+        "explanation": "Total weight increase = 8 × 1.5 kg = 12 kg. Weight of the new man = 65 kg + 12 kg = 77 kg."
+      },
+      {
+        "id": 66,
+        "topic": "Set theory",
+        "difficulty": "Easy",
+        "q": "If A = factors of 12 and B = factors of 18, what is A ∩ B?",
+        "options": [
+          "{1, 2, 3, 6}",
+          "{6}",
+          "{1, 2, 3}",
+          "{1, 2, 3, 4, 6, 9, 12, 18}"
+        ],
+        "correct": 0,
+        "explanation": "Factors of 12: {1, 2, 3, 4, 6, 12}; factors of 18: {1, 2, 3, 6, 9, 18}. Common factors = {1, 2, 3, 6}."
+      },
+      {
+        "id": 67,
+        "topic": "Set theory",
+        "difficulty": "Medium",
+        "q": "The symmetric difference between two sets A and B (A Δ B) is defined as:",
+        "options": [
+          "A ∩ B",
+          "(A ∩ B) - (A ∪ B)",
+          "(A - B) ∪ (B - A)",
+          "(A ∪ B)'"
+        ],
+        "correct": 2,
+        "explanation": "Symmetric difference contains elements that belong to either A or B but not both: A Δ B = (A - B) ∪ (B - A)."
+      },
+      {
+        "id": 68,
+        "topic": "Set theory",
+        "difficulty": "Medium",
+        "q": "If set A has 4 elements and set B has 3 elements, how many relations can be defined from A to B?",
+        "options": [
+          "2048",
+          "12",
+          "4096",
+          "64"
+        ],
+        "correct": 2,
+        "explanation": "Cartesian product A × B has 4 × 3 = 12 elements. Number of subsets (relations) = 2¹² = 4096."
+      },
+      {
+        "id": 69,
+        "topic": "Set theory",
+        "difficulty": "Hard",
+        "q": "Out of 100 people, 65 drink tea, 50 drink coffee, and 30 drink both. How many drink exactly one beverage?",
+        "options": [
+          "55",
+          "45",
+          "60",
+          "85"
+        ],
+        "correct": 0,
+        "explanation": "Only tea = 65 - 30 = 35; Only coffee = 50 - 30 = 20. Total drinking exactly one beverage = 35 + 20 = 55."
+      },
+      {
+        "id": 70,
+        "topic": "Set theory",
+        "difficulty": "Medium",
+        "q": "In a club of 80 members, 50 play Football, 40 play Basketball, and 10 play neither. How many play both games?",
+        "options": [
+          "20",
+          "25",
+          "15",
+          "30"
+        ],
+        "correct": 0,
+        "explanation": "Play at least one = 80 - 10 = 70. By inclusion-exclusion: n(Both) = 50 + 40 - 70 = 20 members."
+      },
+      {
+        "id": 71,
+        "topic": "Reasoning (Maths)",
+        "difficulty": "Easy",
+        "q": "Look at the sequence: 8, 22, 8, 28, 8, ? . What number should come next?",
+        "options": [
+          "30",
+          "32",
+          "34",
+          "36"
+        ],
+        "correct": 2,
+        "explanation": "An alternating series with a repeating 8. The other sequence increases by 6 each time: 22, 28, 34."
+      },
+      {
+        "id": 72,
+        "topic": "Reasoning (Maths)",
+        "difficulty": "Medium",
+        "q": "If 5 + 3 = 28, 9 + 1 = 810, and 8 + 6 = 214, what is 7 + 4?",
+        "options": [
+          "328",
+          "311",
+          "113",
+          "283"
+        ],
+        "correct": 1,
+        "explanation": "The pattern concatenates (a - b) followed by (a + b). For 7 and 4: 7 - 4 = 3, and 7 + 4 = 11, giving 311."
+      },
+      {
+        "id": 73,
+        "topic": "Reasoning (Maths)",
+        "difficulty": "Medium",
+        "q": "Find the missing number: [3, 4 -> 25], [5, 12 -> 169], [8, 15 -> ?]",
+        "options": [
+          "256",
+          "299",
+          "289",
+          "225"
+        ],
+        "correct": 2,
+        "explanation": "The pattern is Pythagorean sum of squares: a² + b². For 8 and 15: 8² + 15² = 64 + 225 = 289."
+      },
+      {
+        "id": 74,
+        "topic": "Reasoning (Maths)",
+        "difficulty": "Hard",
+        "q": "A father is 3 times as old as his son. 12 years ago, he was 6 times as old as his son. Find the father's present age.",
+        "options": [
+          "48 years",
+          "54 years",
+          "60 years",
+          "45 years"
+        ],
+        "correct": 2,
+        "explanation": "Let son = s, father = 3s: 3s - 12 = 6(s - 12) ⇒ 3s - 12 = 6s - 72 ⇒ 3s = 60 ⇒ s = 20. Father = 3 × 20 = 60 years."
+      },
+      {
+        "id": 75,
+        "topic": "Reasoning (Maths)",
+        "difficulty": "Medium",
+        "q": "Find the missing number in the series: 2, 5, 10, 17, 26, 37, ?",
+        "options": [
+          "50",
+          "48",
+          "52",
+          "49"
+        ],
+        "correct": 0,
+        "explanation": "Pattern is n² + 1: 1²+1=2, 2²+1=5, 3²+1=10, 4²+1=17, 5²+1=26, 6²+1=37. The next term is 7² + 1 = 50."
+      }
+    ]
+  },
+  {
+    "roundNumber": 4,
+    "roundTitle": "Round 4: Advanced Maths & Reasoning Challenge",
+    "badge": "Round 4",
+    "topics": [
+      "Trigonometry ( Ratio and Angle)",
+      "Addition",
+      "Quadratic Equation",
+      "Set Theory",
+      "Reasoning (Maths)"
+    ],
+    "questions": [
+      {
+        "id": 76,
+        "topic": "Trigonometry ( Ratio and Angle)",
+        "difficulty": "Easy",
+        "q": "What is the exact value of: sin 30° + cos 60° - tan 45°?",
+        "options": [
+          "1",
+          "0",
+          "1/2",
+          "√3/2"
+        ],
+        "correct": 1,
+        "explanation": "Substituting standard values: sin 30° = 1/2, cos 60° = 1/2, tan 45° = 1. Therefore, 1/2 + 1/2 - 1 = 0."
+      },
+      {
+        "id": 77,
+        "topic": "Trigonometry ( Ratio and Angle)",
+        "difficulty": "Medium",
+        "q": "If tan θ = 4/3, find the value of (sin θ + cos θ) ÷ (sin θ - cos θ).",
+        "options": [
+          "1/7",
+          "5",
+          "-7",
+          "7"
+        ],
+        "correct": 3,
+        "explanation": "Divide top and bottom by cos θ to get (tan θ + 1) / (tan θ - 1). Substituting tan θ = 4/3 gives (7/3) ÷ (1/3) = 7."
+      },
+      {
+        "id": 78,
+        "topic": "Trigonometry ( Ratio and Angle)",
+        "difficulty": "Medium",
+        "q": "Evaluate: (cos 0° + sin 90° + √2 sin 45°) × (sin 0° + cos 90° + √3 tan 30°)",
+        "options": [
+          "1",
+          "3",
+          "2",
+          "√3"
+        ],
+        "correct": 1,
+        "explanation": "First factor: 1 + 1 + √2(1/√2) = 3. Second factor: 0 + 0 + √3(1/√3) = 1. Product = 3 × 1 = 3."
+      },
+      {
+        "id": 79,
+        "topic": "Trigonometry ( Ratio and Angle)",
+        "difficulty": "Hard",
+        "q": "If sin θ + cosec θ = 2, find the value of sin⁵ θ + cosec⁵ θ.",
+        "options": [
+          "1",
+          "4",
+          "32",
+          "2"
+        ],
+        "correct": 3,
+        "explanation": "sin θ + 1/sin θ = 2 holds if and only if sin θ = 1. Therefore, 1⁵ + 1⁵ = 1 + 1 = 2."
+      },
+      {
+        "id": 80,
+        "topic": "Trigonometry ( Ratio and Angle)",
+        "difficulty": "Hard",
+        "q": "Simplify the expression: (1 - sin² θ) × (1 + tan² θ)",
+        "options": [
+          "1",
+          "sin² θ",
+          "tan² θ",
+          "cos² θ"
+        ],
+        "correct": 0,
+        "explanation": "Recall 1 - sin² θ = cos² θ and 1 + tan² θ = sec² θ. Multiplying gives cos² θ × sec² θ = 1."
+      },
+      {
+        "id": 81,
+        "topic": "Trigonometry ( Ratio and Angle)",
+        "difficulty": "Medium",
+        "q": "Evaluate: tan² 60° + 4 cos² 45° + 3 sec² 30°",
+        "options": [
+          "8",
+          "9",
+          "7",
+          "10"
+        ],
+        "correct": 1,
+        "explanation": "tan² 60° = (√3)² = 3; 4 cos² 45° = 4(1/√2)² = 2; 3 sec² 30° = 3(2/√3)² = 4. Sum = 3 + 2 + 4 = 9."
+      },
+      {
+        "id": 82,
+        "topic": "Addition",
+        "difficulty": "Easy",
+        "q": "What is the sum of squares of the first 5 positive integers (1² + 2² + 3² + 4² + 5²)?",
+        "options": [
+          "60",
+          "45",
+          "50",
+          "55"
+        ],
+        "correct": 3,
+        "explanation": "Using formula n(n + 1)(2n + 1)/6 with n = 5: (5 × 6 × 11)/6 = 55."
+      },
+      {
+        "id": 83,
+        "topic": "Addition",
+        "difficulty": "Medium",
+        "q": "Find the sum of the first 25 odd positive integers (1 + 3 + 5 + ... + 49).",
+        "options": [
+          "650",
+          "600",
+          "625",
+          "576"
+        ],
+        "correct": 2,
+        "explanation": "The sum of the first n odd numbers is always n². For n = 25: 25² = 625."
+      },
+      {
+        "id": 84,
+        "topic": "Addition",
+        "difficulty": "Hard",
+        "q": "Calculate: 1/(1×2) + 1/(2×3) + 1/(3×4) + ... + 1/(19×20)",
+        "options": [
+          "18/19",
+          "9/10",
+          "20/21",
+          "19/20"
+        ],
+        "correct": 3,
+        "explanation": "Telescoping series: each 1/[k(k+1)] = 1/k - 1/(k+1). All intermediate terms cancel out, leaving 1 - 1/20 = 19/20."
+      },
+      {
+        "id": 85,
+        "topic": "Addition",
+        "difficulty": "Medium",
+        "q": "What is the sum of the first 10 terms of the geometric series: 1 + 2 + 4 + 8 + ...?",
+        "options": [
+          "2047",
+          "1024",
+          "511",
+          "1023"
+        ],
+        "correct": 3,
+        "explanation": "Sum of geometric progression S_n = a(rⁿ - 1)/(r - 1). Here a = 1, r = 2, n = 10, so S_10 = 2¹⁰ - 1 = 1024 - 1 = 1023."
+      },
+      {
+        "id": 86,
+        "topic": "Quadratic Equation",
+        "difficulty": "Easy",
+        "q": "Form a quadratic equation whose roots are 5 and -2.",
+        "options": [
+          "x² + 3x - 10 = 0",
+          "x² - 3x - 10 = 0",
+          "x² + 7x + 10 = 0",
+          "x² - 3x + 10 = 0"
+        ],
+        "correct": 1,
+        "explanation": "Equation formula: x² - (sum)x + (product) = 0. Sum = 3 and Product = -10, yielding x² - 3x - 10 = 0."
+      },
+      {
+        "id": 87,
+        "topic": "Quadratic Equation",
+        "difficulty": "Medium",
+        "q": "If one root of kx² - 14x + 8 = 0 is 6 times the other, find k.",
+        "options": [
+          "5",
+          "3",
+          "2",
+          "4"
+        ],
+        "correct": 1,
+        "explanation": "Let roots be r and 6r: 7r = 14/k ⇒ r = 2/k; product 6r² = 8/k ⇒ 6(4/k²) = 8/k ⇒ 24/k = 8 ⇒ k = 3."
+      },
+      {
+        "id": 88,
+        "topic": "Quadratic Equation",
+        "difficulty": "Hard",
+        "q": "Find p if roots of (p - 12)x² + 2(p - 12)x + 2 = 0 are real and equal (p ≠ 12).",
+        "options": [
+          "10",
+          "14",
+          "12",
+          "16"
+        ],
+        "correct": 1,
+        "explanation": "Discriminant D = [2(p - 12)]² - 4(p - 12)(2) = 0. Factoring gives 4(p - 12)[(p - 12) - 2] = 0. Since p ≠ 12, p - 14 = 0 ⇒ p = 14."
+      },
+      {
+        "id": 89,
+        "topic": "Quadratic Equation",
+        "difficulty": "Hard",
+        "q": "If α, β are roots of x² - 6x + 2 = 0, find the value of (α/β + β/α).",
+        "options": [
+          "12",
+          "14",
+          "18",
+          "16"
+        ],
+        "correct": 3,
+        "explanation": "α/β + β/α = (α² + β²)/(αβ) = [(α+β)² - 2αβ]/(αβ). Here (6² - 2(2))/2 = (36 - 4)/2 = 32/2 = 16."
+      },
+      {
+        "id": 90,
+        "topic": "Quadratic Equation",
+        "difficulty": "Easy",
+        "q": "What is the product of roots for the equation mx² - 7x + 2m = 0 (m ≠ 0)?",
+        "options": [
+          "7/m",
+          "-2",
+          "2",
+          "m"
+        ],
+        "correct": 2,
+        "explanation": "Product of roots is given by c/a. Here c = 2m and a = m, so product = 2m / m = 2."
+      },
+      {
+        "id": 91,
+        "topic": "Set Theory",
+        "difficulty": "Easy",
+        "q": "If A = {x, y} and B = {1, 2, 3}, how many elements are in A × B?",
+        "options": [
+          "5",
+          "8",
+          "9",
+          "6"
+        ],
+        "correct": 3,
+        "explanation": "The Cartesian product has cardinality n(A × B) = n(A) × n(B). Here 2 × 3 = 6 ordered pairs."
+      },
+      {
+        "id": 92,
+        "topic": "Set Theory",
+        "difficulty": "Medium",
+        "q": "Let P(S) be the power set of S. How many elements are in P(P(∅))?",
+        "options": [
+          "1",
+          "4",
+          "2",
+          "0"
+        ],
+        "correct": 2,
+        "explanation": "The empty set has 0 elements, so P(∅) has 2⁰ = 1 element. The power set of that has 2¹ = 2 elements."
+      },
+      {
+        "id": 93,
+        "topic": "Set Theory",
+        "difficulty": "Medium",
+        "q": "Which expression is equivalent to (A ∪ B)' according to De Morgan's Law?",
+        "options": [
+          "A' ∩ B'",
+          "(A ∩ B)'",
+          "A' ∪ B'",
+          "A ∩ B"
+        ],
+        "correct": 0,
+        "explanation": "De Morgan's first law states that the complement of a union equals the intersection of the complements: (A ∪ B)' = A' ∩ B'."
+      },
+      {
+        "id": 94,
+        "topic": "Set Theory",
+        "difficulty": "Hard",
+        "q": "If n(A) = 100, n(B) = 200, n(A ∩ B) = 50 in a universal set of 400, find n(A' ∩ B').",
+        "options": [
+          "250",
+          "200",
+          "100",
+          "150"
+        ],
+        "correct": 3,
+        "explanation": "n(A ∪ B) = 100 + 200 - 50 = 250. Complement n((A ∪ B)') = Total - n(A ∪ B) = 400 - 250 = 150."
+      },
+      {
+        "id": 95,
+        "topic": "Set Theory",
+        "difficulty": "Medium",
+        "q": "If a set contains 5 elements, how many non-empty proper subsets can be formed from it?",
+        "options": [
+          "30",
+          "29",
+          "32",
+          "31"
+        ],
+        "correct": 0,
+        "explanation": "Total subsets = 2⁵ = 32. Excluding the empty set and the set itself gives 32 - 2 = 30 non-empty proper subsets."
+      },
+      {
+        "id": 96,
+        "topic": "Reasoning (Maths)",
+        "difficulty": "Easy",
+        "q": "Complete the cubic sequence: 1, 8, 27, 64, 125, ?",
+        "options": [
+          "343",
+          "216",
+          "256",
+          "196"
+        ],
+        "correct": 1,
+        "explanation": "These are cubes of consecutive natural numbers: 1³, 2³, 3³, 4³, 5³. The next cube is 6³ = 216."
+      },
+      {
+        "id": 97,
+        "topic": "Reasoning (Maths)",
+        "difficulty": "Medium",
+        "q": "If 4 cats catch 4 mice in 4 minutes, how many minutes will 100 cats take to catch 100 mice?",
+        "options": [
+          "4 minutes",
+          "100 minutes",
+          "1 minute",
+          "40 minutes"
+        ],
+        "correct": 0,
+        "explanation": "Each individual cat takes 4 minutes to catch 1 mouse. Operating simultaneously, 100 cats catch 100 mice in the same 4 minutes."
+      },
+      {
+        "id": 98,
+        "topic": "Reasoning (Maths)",
+        "difficulty": "Medium",
+        "q": "How many diagonals does a regular 8-sided polygon (octagon) have?",
+        "options": [
+          "20",
+          "16",
+          "24",
+          "28"
+        ],
+        "correct": 0,
+        "explanation": "Formula for diagonals in an n-sided polygon is n(n - 3)/2. For n = 8: 8(8 - 3)/2 = 8 × 5 / 2 = 20 diagonals."
+      },
+      {
+        "id": 99,
+        "topic": "Reasoning (Maths)",
+        "difficulty": "Hard",
+        "q": "At what time between 4 and 5 o'clock do the hands of a clock coincide?",
+        "options": [
+          "23 minutes past 4",
+          "22 minutes past 4",
+          "20 5/11 minutes past 4",
+          "21 9/11 minutes past 4"
+        ],
+        "correct": 3,
+        "explanation": "Initial gap is 120°. Relative speed between hands is 5.5°/min: 120 ÷ (11/2) = 240/11 = 21 9/11 minutes past 4."
+      },
+      {
+        "id": 100,
+        "topic": "Reasoning (Maths)",
+        "difficulty": "Medium",
+        "q": "Find the odd one out from this list: 64, 125, 216, 343, 512, 729, 1296",
+        "options": [
+          "343",
+          "512",
+          "729",
+          "1296"
+        ],
+        "correct": 3,
+        "explanation": "All numbers except 1296 are perfect cubes of integers: 4³, 5³, 6³, 7³, 8³, 9³. 1296 is 36² (6⁴), not a cube of an integer."
+      }
+    ]
+  },
+  {
+    "roundNumber": 5,
+    "roundTitle": "Round 5: Maths Aptitude Challenge",
+    "badge": "Round 5",
+    "topics": [
+      "Trigonometry ( Ratio and Angle)",
+      "Set Theory",
+      "Discount",
+      "Profit & Loss",
+      "Reasoning (Maths)"
+    ],
+    "questions": [
+      {
+        "id": 101,
+        "topic": "Trigonometry ( Ratio and Angle)",
+        "difficulty": "Easy",
+        "q": "Evaluate the value of: sin² 25° + sin² 65°",
+        "options": [
+          "0",
+          "1",
+          "1/2",
+          "2"
+        ],
+        "correct": 1,
+        "explanation": "By complementary angles, sin 65° = cos(90° - 65°) = cos 25°. Thus sin² 25° + cos² 25° = 1."
+      },
+      {
+        "id": 102,
+        "topic": "Trigonometry ( Ratio and Angle)",
+        "difficulty": "Medium",
+        "q": "If tan A = 1/√3 and tan B = √3, find the value of cos(A + B).",
+        "options": [
+          "0",
+          "1",
+          "1/2",
+          "√3/2"
+        ],
+        "correct": 0,
+        "explanation": "tan A = 1/√3 ⇒ A = 30°; tan B = √3 ⇒ B = 60°. Therefore, cos(A + B) = cos(30° + 60°) = cos 90° = 0."
+      },
+      {
+        "id": 103,
+        "topic": "Trigonometry ( Ratio and Angle)",
+        "difficulty": "Medium",
+        "q": "A vertical pole casts a shadow equal in length to its height. What is the sun's angle of elevation?",
+        "options": [
+          "90°",
+          "30°",
+          "60°",
+          "45°"
+        ],
+        "correct": 3,
+        "explanation": "tan θ = height / shadow = h / h = 1. Since tan 45° = 1, the angle of elevation is 45°."
+      },
+      {
+        "id": 104,
+        "topic": "Trigonometry ( Ratio and Angle)",
+        "difficulty": "Hard",
+        "q": "If sec θ + tan θ = 4, what is the value of cos θ?",
+        "options": [
+          "3/5",
+          "8/17",
+          "4/5",
+          "15/17"
+        ],
+        "correct": 1,
+        "explanation": "Since sec² θ - tan² θ = 1, sec θ - tan θ = 1/4. Adding yields 2 sec θ = 17/4 ⇒ sec θ = 17/8, so cos θ = 8/17."
+      },
+      {
+        "id": 105,
+        "topic": "Trigonometry ( Ratio and Angle)",
+        "difficulty": "Medium",
+        "q": "If tan θ = 3/4, evaluate the value of (1 - cos θ) ÷ (1 + cos θ).",
+        "options": [
+          "1/4",
+          "3/7",
+          "2/5",
+          "1/9"
+        ],
+        "correct": 3,
+        "explanation": "With tan θ = 3/4, hypotenuse = 5 and cos θ = 4/5. Then (1 - 4/5) / (1 + 4/5) = (1/5) / (9/5) = 1/9."
+      },
+      {
+        "id": 106,
+        "topic": "Set Theory",
+        "difficulty": "Easy",
+        "q": "If A = {x : x is an even prime number}, what type of set is A?",
+        "options": [
+          "An empty set",
+          "An infinite set",
+          "A universal set",
+          "A singleton set"
+        ],
+        "correct": 3,
+        "explanation": "The only even prime number is 2, so A = {2}. A set containing exactly one element is a singleton set."
+      },
+      {
+        "id": 107,
+        "topic": "Set Theory",
+        "difficulty": "Medium",
+        "q": "If set A is a subset of set B (A ⊆ B), which identity is ALWAYS TRUE?",
+        "options": [
+          "A ∩ B = A",
+          "A ∪ B = A",
+          "A - B = A",
+          "A ∩ B = B"
+        ],
+        "correct": 0,
+        "explanation": "Because every element of A is already contained in B, their common intersection A ∩ B is equal to A."
+      },
+      {
+        "id": 108,
+        "topic": "Set Theory",
+        "difficulty": "Hard",
+        "q": "For any three non-empty sets A, B, and C, what is A - (B ∪ C) equal to?",
+        "options": [
+          "(A ∩ B) - C",
+          "A ∪ (B - C)",
+          "(A - B) ∪ (A - C)",
+          "(A - B) ∩ (A - C)"
+        ],
+        "correct": 3,
+        "explanation": "By set subtraction laws: A - (B ∪ C) = A ∩ (B ∪ C)' = A ∩ (B' ∩ C') = (A - B) ∩ (A - C)."
+      },
+      {
+        "id": 109,
+        "topic": "Set Theory",
+        "difficulty": "Hard",
+        "q": "In a group of 60 students, 25 drink milk, 30 drink tea, and 15 drink neither. How many drink both?",
+        "options": [
+          "10",
+          "20",
+          "15",
+          "5"
+        ],
+        "correct": 0,
+        "explanation": "Drink at least one = 60 - 15 = 45. Using union formula: 45 = 25 + 30 - n(both) ⇒ n(both) = 55 - 45 = 10."
+      },
+      {
+        "id": 110,
+        "topic": "Set Theory",
+        "difficulty": "Medium",
+        "q": "If n(A) = 15 and n(B) = 25, what is the maximum possible number of elements in A ∩ B?",
+        "options": [
+          "40",
+          "25",
+          "15",
+          "10"
+        ],
+        "correct": 2,
+        "explanation": "The maximum intersection occurs when set A is completely contained inside B (A ⊆ B), giving min(15, 25) = 15 elements."
+      },
+      {
+        "id": 111,
+        "topic": "Discount",
+        "difficulty": "Easy",
+        "q": "A book with marked price ₹1200 is sold at a 15% discount. What is its selling price?",
+        "options": [
+          "₹980",
+          "₹1080",
+          "₹1020",
+          "₹1000"
+        ],
+        "correct": 2,
+        "explanation": "Discount = 15% of ₹1200 = ₹180. Selling Price = 1200 - 180 = ₹1020."
+      },
+      {
+        "id": 112,
+        "topic": "Discount",
+        "difficulty": "Medium",
+        "q": "What single discount is equivalent to two successive discounts of 20% and 10%?",
+        "options": [
+          "27%",
+          "30%",
+          "25%",
+          "28%"
+        ],
+        "correct": 3,
+        "explanation": "Successive discount formula: d₁ + d₂ - (d₁ × d₂)/100 = 20 + 10 - (20 × 10)/100 = 30 - 2 = 28%."
+      },
+      {
+        "id": 113,
+        "topic": "Discount",
+        "difficulty": "Medium",
+        "q": "A store offers 'Buy 4, Get 1 Free'. What is the effective discount percentage?",
+        "options": [
+          "25%",
+          "33.33%",
+          "20%",
+          "16.67%"
+        ],
+        "correct": 2,
+        "explanation": "The buyer gets 5 items while paying for only 4. Effective discount = (1 free / 5 total) × 100% = 20%."
+      },
+      {
+        "id": 114,
+        "topic": "Discount",
+        "difficulty": "Hard",
+        "q": "An item marked at ₹800 sells for ₹576 after two successive discounts. If the first was 20%, what was the second?",
+        "options": [
+          "15%",
+          "12%",
+          "8%",
+          "10%"
+        ],
+        "correct": 3,
+        "explanation": "Price after first discount: 800 × 0.80 = ₹640. Second discount = 640 - 576 = ₹64, which is (64/640) × 100% = 10%."
+      },
+      {
+        "id": 115,
+        "topic": "Discount",
+        "difficulty": "Hard",
+        "q": "An article marked ₹2000 is sold after three successive discounts of 10%, 10%, and 10%. Find the final selling price.",
+        "options": [
+          "₹1458",
+          "₹1500",
+          "₹1400",
+          "₹1420"
+        ],
+        "correct": 0,
+        "explanation": "Final price = 2000 × (0.9)³ = 2000 × 0.729 = ₹1458."
+      },
+      {
+        "id": 116,
+        "topic": "Profit & Loss",
+        "difficulty": "Easy",
+        "q": "An item is purchased for ₹450 and sold for ₹360. What is the loss percentage?",
+        "options": [
+          "25%",
+          "18%",
+          "20%",
+          "15%"
+        ],
+        "correct": 2,
+        "explanation": "Loss = 450 - 360 = ₹90. Loss % = (90 / 450) × 100% = 20%."
+      },
+      {
+        "id": 117,
+        "topic": "Profit & Loss",
+        "difficulty": "Medium",
+        "q": "A trader marks goods 40% above cost price and allows a 25% discount. What is his profit %?",
+        "options": [
+          "0%",
+          "5%",
+          "15%",
+          "10%"
+        ],
+        "correct": 1,
+        "explanation": "Let CP = 100, then Marked Price = 140. Selling Price = 140 × 0.75 = 105, which represents a 5% profit."
+      },
+      {
+        "id": 118,
+        "topic": "Profit & Loss",
+        "difficulty": "Hard",
+        "q": "Two articles sell for ₹990 each. One gains 10% and the other loses 10%. What is the net result?",
+        "options": [
+          "1% Loss",
+          "2% Loss",
+          "1% Gain",
+          "No profit, no loss"
+        ],
+        "correct": 0,
+        "explanation": "When two items sell at equal prices with ±x% profit/loss, net result is always a loss of (x/10)²% = (10/10)² = 1% Loss."
+      },
+      {
+        "id": 119,
+        "topic": "Profit & Loss",
+        "difficulty": "Hard",
+        "q": "Manufacturer sells at 10% profit; wholesaler sells at 20% profit; retailer sells at ₹1980 at 25% profit. Find manufacturer cost.",
+        "options": [
+          "₹1100",
+          "₹1300",
+          "₹1250",
+          "₹1200"
+        ],
+        "correct": 3,
+        "explanation": "Cost × 1.10 × 1.20 × 1.25 = 1980 ⇒ Cost × 1.65 = 1980 ⇒ Cost = 1980 ÷ 1.65 = ₹1200."
+      },
+      {
+        "id": 120,
+        "topic": "Profit & Loss",
+        "difficulty": "Medium",
+        "q": "An article is sold at a 10% loss. Had it been sold for ₹90 more, the seller would have gained 5%. What is the cost price?",
+        "options": [
+          "₹700",
+          "₹600",
+          "₹550",
+          "₹500"
+        ],
+        "correct": 1,
+        "explanation": "The change from a 10% loss to a 5% profit represents a 15% span of CP. 15% of CP = ₹90 ⇒ CP = 90 / 0.15 = ₹600."
+      },
+      {
+        "id": 121,
+        "topic": "Reasoning (Maths)",
+        "difficulty": "Easy",
+        "q": "If TRIANGLE is coded as '24' and SQUARE is coded as '18', what is CIRCLE coded as?",
+        "options": [
+          "24",
+          "18",
+          "21",
+          "15"
+        ],
+        "correct": 1,
+        "explanation": "Each word code is 3 times its number of letters: TRIANGLE (8×3=24), SQUARE (6×3=18). CIRCLE has 6 letters, so 6 × 3 = 18."
+      },
+      {
+        "id": 122,
+        "topic": "Reasoning (Maths)",
+        "difficulty": "Medium",
+        "q": "If 1st January 2024 was a Monday, what day was 31st December 2024 (2024 is a leap year)?",
+        "options": [
+          "Tuesday",
+          "Monday",
+          "Wednesday",
+          "Sunday"
+        ],
+        "correct": 0,
+        "explanation": "A leap year has 366 days (52 weeks + 2 odd days). The final day is always one weekday ahead of the starting day; Monday + 1 = Tuesday."
+      },
+      {
+        "id": 123,
+        "topic": "Reasoning (Maths)",
+        "difficulty": "Medium",
+        "q": "What is the unit digit of: 7⁹⁵ - 3⁵⁸ ?",
+        "options": [
+          "4",
+          "2",
+          "6",
+          "0"
+        ],
+        "correct": 0,
+        "explanation": "Powers cycle modulo 4: 95 mod 4 = 3 so 7³ ends in 3; 58 mod 4 = 2 so 3² ends in 9. Last digit = 13 - 9 = 4."
+      },
+      {
+        "id": 124,
+        "topic": "Reasoning (Maths)",
+        "difficulty": "Hard",
+        "q": "In a knockout single-elimination tournament with 32 players, how many total matches are played to crown a winner?",
+        "options": [
+          "30",
+          "32",
+          "31",
+          "16"
+        ],
+        "correct": 2,
+        "explanation": "Each match eliminates exactly 1 player. To eliminate 31 players and leave 1 champion, exactly 31 matches are required."
+      },
+      {
+        "id": 125,
+        "topic": "Reasoning (Maths)",
+        "difficulty": "Medium",
+        "q": "A train 150 meters long crosses a stationary electric pole in 15 seconds. What is the train's speed in km/h?",
+        "options": [
+          "36 km/h",
+          "45 km/h",
+          "40 km/h",
+          "30 km/h"
+        ],
+        "correct": 0,
+        "explanation": "Speed = distance / time = 150 m / 15 s = 10 m/s. Converting to km/h: 10 × (18 / 5) = 36 km/h."
+      }
+    ]
+  }
+]
