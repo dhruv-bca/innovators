@@ -198,7 +198,7 @@
     .hero-section {
       position: relative;
       z-index: 1;
-      padding: 60px 20px 40px 20px;
+      padding: 55px 20px 35px 20px;
       max-width: 1000px;
       margin: 0 auto;
       text-align: center;
@@ -235,7 +235,7 @@
     }
 
     .hero-desc {
-      font-size: 17px;
+      font-size: 16.5px;
       color: var(--text-secondary);
       max-width: 650px;
       margin: 0 auto 30px auto;
@@ -247,7 +247,7 @@
       justify-content: center;
       gap: 14px;
       flex-wrap: wrap;
-      margin-bottom: 45px;
+      margin-bottom: 40px;
     }
 
     .btn-primary {
@@ -290,7 +290,7 @@
       background: rgba(99, 102, 241, 0.05);
     }
 
-    /* Stat Cards Bar */
+    /* STATS COUNTER BAR (UPDATED: TOTAL WINS: 3, TOTAL ROUND PLAYED: 3) */
     .stats-bar {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
@@ -315,7 +315,7 @@
     }
 
     .stat-number {
-      font-size: 26px;
+      font-size: 30px;
       font-weight: 900;
       color: var(--accent-color);
       margin-bottom: 2px;
@@ -324,7 +324,7 @@
     .stat-label {
       font-size: 12px;
       color: var(--text-muted);
-      font-weight: 600;
+      font-weight: 700;
       text-transform: uppercase;
       letter-spacing: 0.5px;
     }
@@ -364,8 +364,22 @@
     .section-subtitle {
       font-size: 15px;
       color: var(--text-secondary);
-      max-width: 550px;
+      max-width: 600px;
       margin: 0 auto;
+    }
+
+    .sync-status-indicator {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12px;
+      font-weight: 700;
+      color: var(--accent-emerald);
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px solid rgba(16, 185, 129, 0.3);
+      padding: 3px 10px;
+      border-radius: 12px;
+      margin-top: 8px;
     }
 
     /* TESTS SHOWCASE (SHOWING ALL TESTS INSIDE test/) */
@@ -412,6 +426,7 @@
       border: 1px solid var(--border-highlight);
       color: var(--accent-color);
       border-radius: 8px;
+      word-break: break-all;
     }
 
     .test-status-pill {
@@ -425,6 +440,7 @@
       display: flex;
       align-items: center;
       gap: 5px;
+      flex-shrink: 0;
     }
 
     .test-status-dot {
@@ -436,7 +452,7 @@
     }
 
     .test-card-title {
-      font-size: 20px;
+      font-size: 19px;
       font-weight: 800;
       color: var(--text-primary);
       margin-bottom: 8px;
@@ -474,7 +490,7 @@
     }
 
     .test-meta-val {
-      font-size: 13.5px;
+      font-size: 13px;
       font-weight: 700;
       color: var(--text-primary);
     }
@@ -844,15 +860,15 @@
       </a>
     </div>
 
-    <!-- STATS COUNTER BAR -->
+    <!-- STATS COUNTER BAR (UPDATED BOXES FROM SCREENSHOT: Total Wins: 3, Total Rounds Played: 3) -->
     <div class="stats-bar">
       <div class="stat-card">
-        <div class="stat-number">125+</div>
-        <div class="stat-label">Battle Questions</div>
+        <div class="stat-number">3</div>
+        <div class="stat-label">Total Wins</div>
       </div>
       <div class="stat-card">
-        <div class="stat-number">5</div>
-        <div class="stat-label">Competition Rounds</div>
+        <div class="stat-number">3</div>
+        <div class="stat-label">Total Rounds Played</div>
       </div>
       <div class="stat-card">
         <div class="stat-number">100%</div>
@@ -873,6 +889,9 @@
       <p class="section-subtitle">
         Direct access to all tests hosted in the repository. Select any test to start immediately.
       </p>
+      <div class="sync-status-indicator" id="syncStatusIndicator">
+        <span>🟢 Auto-Sync Active: All files in /test loaded</span>
+      </div>
     </div>
 
     <div class="tests-grid" id="testsGrid">
@@ -966,8 +985,10 @@
   </footer>
 
   <script>
-    // --- TESTS REPOSITORY REGISTRY ---
-    const TESTS = [{"fileName": "test-1.html", "name": "test-1", "title": "The Mathematicians' Battle 2026", "badge": "Flagship Tournament", "badgeColor": "badge-purple", "questions": 125, "rounds": "5 Rounds (25 Qs each)", "duration": "90 Mins", "difficulty": "Easy to Hard (All Tiers)", "topics": ["Algebra & Set Theory", "Arithmetic & Reasoning", "Quantitative Aptitude", "Advanced Maths (Trig)", "Aptitude Challenge"], "description": "The ultimate collegiate mathematics challenge with 125 curated questions, instant green/red feedback, two-line step-by-step explanations, and live submission directly to D/Captain.", "path": "test/test-1.html", "status": "Active & Graded"}, {"fileName": "test-2.html", "name": "test-2", "title": "Speed Arithmetic & Mental Math Sprint", "badge": "Practice Sprint", "badgeColor": "badge-blue", "questions": 25, "rounds": "1 Fast-Paced Round", "duration": "20 Mins", "difficulty": "Easy to Medium", "topics": ["BODMAS Speed", "Mental Multiplication", "Percentage Tricks", "Fast Averages"], "description": "Rapid calculation practice designed to sharpen mental math reflexes, BODMAS operator speed, and percentage shortcuts.", "path": "test/test-2.html", "status": "Ready to Take"}];
+    // --- TESTS REPOSITORY REGISTRY (PRE-LOADED) ---
+    const BASELINE_TESTS = [{"fileName": "test-1-mathematics_125questions.html", "name": "test-1-mathematics_125questions", "title": "The Mathematicians' Battle 2026 (125 Questions)", "badge": "Flagship Tournament", "questions": 125, "rounds": "5 Rounds (25 Qs each)", "duration": "90 Mins", "topics": ["Algebra & Set Theory", "Arithmetic & Reasoning", "Quantitative Aptitude", "Advanced Maths", "Maths Aptitude"], "description": "The flagship collegiate mathematics competition featuring 125 questions across 5 rounds, instant green/red scoring, two-line solutions, and direct D/Captain Google Sheets tracking.", "path": "test/test-1-mathematics_125questions.html", "status": "Active & Graded"}, {"fileName": "test-1.html", "name": "test-1", "title": "The Mathematicians' Battle 2026 (125 Questions)", "badge": "Flagship Tournament", "questions": 125, "rounds": "5 Rounds (25 Qs each)", "duration": "90 Mins", "topics": ["Algebra & Set Theory", "Arithmetic & Reasoning", "Quantitative Aptitude", "Advanced Maths", "Maths Aptitude"], "description": "The flagship collegiate mathematics competition featuring 125 questions across 5 rounds, instant green/red scoring, two-line solutions, and direct D/Captain Google Sheets tracking.", "path": "test/test-1.html", "status": "Active & Graded"}, {"fileName": "test-2.html", "name": "test-2", "title": "Test 2: Speed Arithmetic & Mental Math Sprint", "badge": "Speed Sprint", "questions": 5, "rounds": "5 Sprint Questions", "duration": "15 Mins", "topics": ["Speed Arithmetic", "Mental Math", "Quick Operations", "Numerical Reasoning"], "description": "Rapid speed and arithmetic assessment consisting of 5 practice questions with instant solutions.", "path": "test/test-2.html", "status": "Active & Graded"}];
+
+    let activeTestsList = [...BASELINE_TESTS];
 
     // --- IMAGES LIST (ALL 12 RENAMED PHOTOS) ---
     const GALLERY_IMAGES = ["images/image1.jpeg", "images/image2.jpeg", "images/image3.jpeg", "images/image4.jpeg", "images/image5.jpeg", "images/image6.jpeg", "images/image7.jpeg", "images/image8.jpeg", "images/image9.jpeg", "images/image10.jpeg", "images/image11.jpeg", "images/image12.jpeg"];
@@ -981,6 +1002,7 @@
     const lightboxModal = document.getElementById('lightboxModal');
     const lightboxImg = document.getElementById('lightboxImg');
     const lightboxCloseBtn = document.getElementById('lightboxCloseBtn');
+    const syncStatusIndicator = document.getElementById('syncStatusIndicator');
 
     // --- THEME SWITCHER ---
     function initTheme() {
@@ -1006,10 +1028,140 @@
       setTheme(current === 'light' ? 'dark' : 'light');
     });
 
+    // --- AUTO-DISCOVERY & SYNC ENGINE FOR /test DIRECTORY ---
+    async function autoSyncTests() {
+      let hasUpdates = false;
+
+      // 1. Try to fetch test/manifest.json
+      try {
+        const res = await fetch('test/manifest.json?nocache=' + Date.now());
+        if (res.ok) {
+          const manifest = await res.json();
+          if (Array.isArray(manifest)) {
+            manifest.forEach(item => {
+              if (!activeTestsList.some(t => t.fileName === item.fileName)) {
+                activeTestsList.push(item);
+                hasUpdates = true;
+              }
+            });
+          }
+        }
+      } catch (e) {
+        // file:/// mode or static fallback
+      }
+
+      // 2. Try GitHub Contents API when hosted on GitHub Pages (Zero-Config Auto-Sync)
+      if (window.location.hostname.includes('github.io')) {
+        try {
+          const owner = window.location.hostname.split('.')[0];
+          const pathParts = window.location.pathname.split('/').filter(Boolean);
+          const repo = pathParts[0] || `${owner}.github.io`;
+          if (owner && repo) {
+            const apiUrl = `https://api.github.com/repos/${owner}/${repo}/contents/test`;
+            const apiRes = await fetch(apiUrl);
+            if (apiRes.ok) {
+              const gitFiles = await apiRes.json();
+              for (const file of gitFiles) {
+                if (file.name && file.name.endsWith('.html')) {
+                  if (!activeTestsList.some(t => t.fileName === file.name)) {
+                    let titleText = formatTitle(file.name);
+                    let qCount = file.name.includes('125') ? 125 : 25;
+                    let roundText = file.name.includes('125') ? "5 Rounds (25 Qs each)" : "Speed Sprint";
+                    let durationText = file.name.includes('125') ? "90 Mins" : "20 Mins";
+                    let badgeText = file.name.includes('125') ? "Flagship Tournament" : "Speed Sprint";
+
+                    try {
+                      const docRes = await fetch(`test/${file.name}`);
+                      if (docRes.ok) {
+                        const docHtml = await docRes.text();
+                        const tm = docHtml.match(/<title>(.*?)<\/title>/i);
+                        if (tm && tm[1]) {
+                          titleText = tm[1].replace(" (Vestor Innovators)", "").replace("Vestor Innovators • ", "").trim();
+                        }
+                      }
+                    } catch(e) {}
+
+                    activeTestsList.push({
+                      fileName: file.name,
+                      name: file.name.replace('.html', ''),
+                      title: titleText,
+                      badge: badgeText,
+                      questions: qCount,
+                      rounds: roundText,
+                      duration: durationText,
+                      topics: ["Auto-Discovered", "Repository File"],
+                      description: `Auto-synced repository test (${file.name}). Click below to take this test.`,
+                      path: `test/${file.name}`,
+                      status: "Active & Graded"
+                    });
+                    hasUpdates = true;
+                  }
+                }
+              }
+            }
+          }
+        } catch (err) {
+          console.warn("GitHub API Auto-Sync Notice:", err);
+        }
+      }
+
+      // 3. Probe candidate files when running on web server
+      const candidates = [
+        'test-1-mathematics_125questions.html',
+        'test-1.html',
+        'test-2.html',
+        'test-3.html',
+        'test-4.html',
+        'test-5.html',
+        'test-6.html',
+        'test-7.html',
+        'test-8.html',
+        'test-9.html',
+        'test-10.html'
+      ];
+
+      for (const cand of candidates) {
+        if (!activeTestsList.some(t => t.fileName === cand)) {
+          try {
+            const check = await fetch(`test/${cand}`, { method: 'HEAD' });
+            if (check.ok) {
+              activeTestsList.push({
+                fileName: cand,
+                name: cand.replace('.html', ''),
+                title: formatTitle(cand),
+                badge: "Discovered Test",
+                questions: cand.includes('125') ? 125 : 25,
+                rounds: cand.includes('125') ? "5 Rounds" : "1 Round",
+                duration: cand.includes('125') ? "90 Mins" : "20 Mins",
+                topics: ["Auto-Discovered", "Repository File"],
+                description: `Auto-synced repository test (${cand}). Click below to take this test.`,
+                path: `test/${cand}`,
+                status: "Active"
+              });
+              hasUpdates = true;
+            }
+          } catch (e) {}
+        }
+      }
+
+      if (hasUpdates) {
+        renderTests();
+        syncStatusIndicator.innerHTML = `<span>🟢 Auto-Synced: ${activeTestsList.length} Tests Active in /test</span>`;
+      }
+    }
+
+    function formatTitle(filename) {
+      let name = filename.replace('.html', '').replace(/[-_]/g, ' ');
+      if (name.toLowerCase().includes('125')) {
+        return "The Mathematicians' Battle 2026 (125 Questions)";
+      }
+      return name.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
+    }
+
     // --- RENDER TESTS CARDS (SHOWING ALL FILES IN test/) ---
     function renderTests() {
       testsGrid.innerHTML = '';
-      TESTS.forEach(t => {
+      activeTestsList.forEach(t => {
         const card = document.createElement('div');
         card.className = 'test-card';
 
@@ -1018,19 +1170,19 @@
         card.innerHTML = `
           <div>
             <div class="test-card-top">
-              <span class="test-filename-badge">${t.fileName} (${t.name})</span>
-              <span class="test-status-pill"><span class="test-status-dot"></span>${t.status}</span>
+              <span class="test-filename-badge">${t.fileName}</span>
+              <span class="test-status-pill"><span class="test-status-dot"></span>${t.status || 'Active'}</span>
             </div>
             <h3 class="test-card-title">${t.title}</h3>
             <p class="test-card-desc">${t.description}</p>
             
             <div class="test-meta-grid">
               <div class="test-meta-item">
-                <span class="test-meta-lbl">Total Questions</span>
+                <span class="test-meta-lbl">Questions & Format</span>
                 <span class="test-meta-val">${t.questions} Qs (${t.rounds})</span>
               </div>
               <div class="test-meta-item">
-                <span class="test-meta-lbl">Duration / Level</span>
+                <span class="test-meta-lbl">Duration</span>
                 <span class="test-meta-val">${t.duration}</span>
               </div>
             </div>
@@ -1068,10 +1220,10 @@
     function renderCarousel() {
       carouselTrack.innerHTML = '';
 
-      // We duplicate the list twice for seamless infinite marquee loop
+      // Duplicate list twice for seamless infinite marquee loop
       const fullList = [...GALLERY_IMAGES, ...GALLERY_IMAGES];
 
-      fullList.forEach((imgSrc, idx) => {
+      fullList.forEach((imgSrc) => {
         const card = document.createElement('div');
         card.className = 'photo-slide-card';
         card.innerHTML = `
@@ -1089,8 +1241,7 @@
       });
     }
 
-    // --- PAUSE ON TOUCH / INTERACTION ---
-    // The user requested: "all the image should be shown in nice auto scroll view repating the cycle automatically. unless someone touches a photo to stop."
+    // --- PAUSE ON TOUCH / HOVER ---
     carouselOuter.addEventListener('touchstart', () => {
       carouselTrack.classList.add('is-paused');
     }, { passive: true });
@@ -1119,7 +1270,6 @@
       }
     });
 
-    // Close on Escape key
     document.addEventListener('keydown', (e) => {
       if (e.key === 'Escape') lightboxModal.classList.remove('active');
     });
@@ -1129,6 +1279,7 @@
       initTheme();
       renderTests();
       renderCarousel();
+      autoSyncTests();
     });
   </script>
 </body>
