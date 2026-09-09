@@ -414,22 +414,18 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 14px;
+      margin-bottom: 12px;
     }
 
-    .test-filename-badge {
-      font-family: monospace;
-      font-size: 12px;
+    .test-type-tag {
+      font-size: 11px;
       font-weight: 700;
-      padding: 4px 10px;
-      background: rgba(99, 102, 241, 0.15);
-      border: 1px solid var(--border-highlight);
-      color: var(--accent-color);
-      border-radius: 8px;
-      word-break: break-all;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
     }
 
-    .test-status-pill {
+    .test-file-badge {
       font-size: 11px;
       font-weight: 700;
       padding: 4px 10px;
@@ -437,13 +433,13 @@
       background: rgba(16, 185, 129, 0.15);
       color: #10b981;
       border: 1px solid rgba(16, 185, 129, 0.3);
-      display: flex;
+      display: inline-flex;
       align-items: center;
       gap: 5px;
       flex-shrink: 0;
     }
 
-    .test-status-dot {
+    .test-file-dot {
       width: 6px;
       height: 6px;
       border-radius: 50%;
@@ -451,75 +447,46 @@
       box-shadow: 0 0 6px #10b981;
     }
 
-    .test-card-title {
-      font-size: 19px;
+    /* HIGHLIGHT FILENAME BANNER */
+    .test-filename-box {
+      background: rgba(99, 102, 241, 0.1);
+      border: 1.5px solid var(--border-highlight);
+      padding: 16px 16px;
+      border-radius: 12px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 4px 14px rgba(99, 102, 241, 0.12);
+      transition: border-color 0.2s ease, background 0.2s ease, transform 0.2s ease;
+    }
+
+    .test-card:hover .test-filename-box {
+      border-color: var(--accent-color);
+      background: rgba(99, 102, 241, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .file-icon {
+      font-size: 24px;
+      flex-shrink: 0;
+    }
+
+    .test-filename-text {
+      font-family: 'SF Mono', Consolas, Monaco, monospace;
+      font-size: 15.5px;
       font-weight: 800;
-      color: var(--text-primary);
-      margin-bottom: 8px;
-      line-height: 1.3;
-    }
-
-    .test-card-desc {
-      font-size: 13.5px;
-      color: var(--text-secondary);
-      line-height: 1.5;
-      margin-bottom: 18px;
-    }
-
-    .test-meta-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      background: var(--bg-secondary);
-      border: 1px solid var(--border-color);
-      border-radius: var(--radius-sm);
-      padding: 12px;
-      margin-bottom: 18px;
-    }
-
-    .test-meta-item {
-      display: flex;
-      flex-direction: column;
-    }
-
-    .test-meta-lbl {
-      font-size: 11px;
-      color: var(--text-muted);
-      font-weight: 600;
-      text-transform: uppercase;
-    }
-
-    .test-meta-val {
-      font-size: 13px;
-      font-weight: 700;
-      color: var(--text-primary);
-    }
-
-    .test-topics-pills {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      margin-bottom: 20px;
-    }
-
-    .test-topic-pill {
-      font-size: 11px;
-      font-weight: 600;
-      padding: 3px 8px;
-      border-radius: 8px;
-      background: rgba(255, 255, 255, 0.04);
-      border: 1px solid var(--border-color);
-      color: var(--text-secondary);
-    }
-
-    [data-theme="light"] .test-topic-pill {
-      background: rgba(0, 0, 0, 0.04);
+      color: var(--accent-color);
+      word-break: break-all;
+      line-height: 1.35;
+      letter-spacing: -0.2px;
     }
 
     .test-card-actions {
       display: flex;
       gap: 10px;
       align-items: center;
+      margin-top: auto;
     }
 
     .start-test-btn {
@@ -984,10 +951,12 @@
     </div>
   </footer>
 
+  <!-- DYNAMIC MANIFEST SCRIPT (Populated by sync.bat, loads offline on file:/// without CORS) -->
+  <script src="test/manifest.js"></script>
+
   <script>
-    // --- TESTS REPOSITORY REGISTRY (PRE-LOADED) ---
-   
-    let activeTestsList = [...BASELINE_TESTS];
+    // Zero preloaded test data in index.html - dynamically synchronized from /test
+    let activeTestsList = (window.REPO_TESTS && Array.isArray(window.REPO_TESTS)) ? [...window.REPO_TESTS] : [];
 
     // --- IMAGES LIST (ALL 12 RENAMED PHOTOS) ---
     const GALLERY_IMAGES = ["images/image1.jpeg", "images/image2.jpeg", "images/image3.jpeg", "images/image4.jpeg", "images/image5.jpeg", "images/image6.jpeg", "images/image7.jpeg", "images/image8.jpeg", "images/image9.jpeg", "images/image10.jpeg", "images/image11.jpeg", "images/image12.jpeg"];
@@ -1027,29 +996,9 @@
       setTheme(current === 'light' ? 'dark' : 'light');
     });
 
-    // --- AUTO-DISCOVERY & SYNC ENGINE FOR /test DIRECTORY ---
+    // --- AUTO-DISCOVERY & SYNC ENGINE FOR /test DIRECTORY (HANDLES ADDITIONS & DELETIONS) ---
     async function autoSyncTests() {
-      let hasUpdates = false;
-
-      // 1. Try to fetch test/manifest.json
-      try {
-        const res = await fetch('test/manifest.json?nocache=' + Date.now());
-        if (res.ok) {
-          const manifest = await res.json();
-          if (Array.isArray(manifest)) {
-            manifest.forEach(item => {
-              if (!activeTestsList.some(t => t.fileName === item.fileName)) {
-                activeTestsList.push(item);
-                hasUpdates = true;
-              }
-            });
-          }
-        }
-      } catch (e) {
-        // file:/// mode or static fallback
-      }
-
-      // 2. Try GitHub Contents API when hosted on GitHub Pages (Zero-Config Auto-Sync)
+      // 1. Live GitHub Pages Discovery (100% Automatic - No manifest file needed on GitHub!)
       if (window.location.hostname.includes('github.io')) {
         try {
           const owner = window.location.hostname.split('.')[0];
@@ -1060,42 +1009,18 @@
             const apiRes = await fetch(apiUrl);
             if (apiRes.ok) {
               const gitFiles = await apiRes.json();
-              for (const file of gitFiles) {
-                if (file.name && file.name.endsWith('.html')) {
-                  if (!activeTestsList.some(t => t.fileName === file.name)) {
-                    let titleText = formatTitle(file.name);
-                    let qCount = file.name.includes('125') ? 125 : 25;
-                    let roundText = file.name.includes('125') ? "5 Rounds (25 Qs each)" : "Speed Sprint";
-                    let durationText = file.name.includes('125') ? "90 Mins" : "20 Mins";
-                    let badgeText = file.name.includes('125') ? "Flagship Tournament" : "Speed Sprint";
+              if (Array.isArray(gitFiles)) {
+                const gitHtmlFiles = gitFiles.filter(file => file.name && file.name.endsWith('.html'));
 
-                    try {
-                      const docRes = await fetch(`test/${file.name}`);
-                      if (docRes.ok) {
-                        const docHtml = await docRes.text();
-                        const tm = docHtml.match(/<title>(.*?)<\/title>/i);
-                        if (tm && tm[1]) {
-                          titleText = tm[1].replace(" (Vestor Innovators)", "").replace("Vestor Innovators • ", "").trim();
-                        }
-                      }
-                    } catch(e) {}
+                activeTestsList = gitHtmlFiles.map(file => ({
+                  fileName: file.name,
+                  name: file.name.replace(/\.html$/i, ''),
+                  path: `test/${file.name}`
+                }));
 
-                    activeTestsList.push({
-                      fileName: file.name,
-                      name: file.name.replace('.html', ''),
-                      title: titleText,
-                      badge: badgeText,
-                      questions: qCount,
-                      rounds: roundText,
-                      duration: durationText,
-                      topics: ["Auto-Discovered", "Repository File"],
-                      description: `Auto-synced repository test (${file.name}). Click below to take this test.`,
-                      path: `test/${file.name}`,
-                      status: "Active & Graded"
-                    });
-                    hasUpdates = true;
-                  }
-                }
+                renderTests();
+                updateSyncIndicator();
+                return; // Live GitHub sync complete!
               }
             }
           }
@@ -1104,90 +1029,63 @@
         }
       }
 
-      // 3. Probe candidate files when running on web server
-      const candidates = [
-        'test-1-mathematics_125questions.html',
-        'test-1.html',
-        'test-2.html',
-        'test-3.html',
-        'test-4.html',
-        'test-5.html',
-        'test-6.html',
-        'test-7.html',
-        'test-8.html',
-        'test-9.html',
-        'test-10.html'
-      ];
-
-      for (const cand of candidates) {
-        if (!activeTestsList.some(t => t.fileName === cand)) {
-          try {
-            const check = await fetch(`test/${cand}`, { method: 'HEAD' });
-            if (check.ok) {
-              activeTestsList.push({
-                fileName: cand,
-                name: cand.replace('.html', ''),
-                title: formatTitle(cand),
-                badge: "Discovered Test",
-                questions: cand.includes('125') ? 125 : 25,
-                rounds: cand.includes('125') ? "5 Rounds" : "1 Round",
-                duration: cand.includes('125') ? "90 Mins" : "20 Mins",
-                topics: ["Auto-Discovered", "Repository File"],
-                description: `Auto-synced repository test (${cand}). Click below to take this test.`,
-                path: `test/${cand}`,
-                status: "Active"
-              });
-              hasUpdates = true;
-            }
-          } catch (e) {}
+      // 2. Fallback / Custom Domain: Try to fetch test/manifest.json
+      try {
+        const res = await fetch('test/manifest.json?nocache=' + Date.now());
+        if (res.ok) {
+          const manifest = await res.json();
+          if (Array.isArray(manifest) && manifest.length > 0) {
+            activeTestsList = manifest;
+            renderTests();
+            updateSyncIndicator();
+            return;
+          }
         }
+      } catch (e) {
+        // offline file:/// mode: already pre-loaded via test/manifest.js!
       }
 
-      if (hasUpdates) {
-        renderTests();
-        syncStatusIndicator.innerHTML = `<span>🟢 Auto-Synced: ${activeTestsList.length} Tests Active in /test</span>`;
+      updateSyncIndicator();
+    }
+
+    function updateSyncIndicator() {
+      if (activeTestsList.length > 0) {
+        syncStatusIndicator.innerHTML = `<span>🟢 Synced: ${activeTestsList.length} Tests in /test</span>`;
+      } else {
+        syncStatusIndicator.innerHTML = `<span>⚪ 0 Tests in /test</span>`;
       }
     }
 
-    function formatTitle(filename) {
-      let name = filename.replace('.html', '').replace(/[-_]/g, ' ');
-      if (name.toLowerCase().includes('125')) {
-        return "The Mathematicians' Battle 2026 (125 Questions)";
-      }
-      return name.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1)).join(' ');
-    }
-
-    // --- RENDER TESTS CARDS (SHOWING ALL FILES IN test/) ---
+    // --- RENDER TESTS CARDS (PROMINENTLY HIGHLIGHTING ONLY THE FILENAME) ---
     function renderTests() {
       testsGrid.innerHTML = '';
+
+      if (!activeTestsList || activeTestsList.length === 0) {
+        testsGrid.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 40px 20px; background: var(--bg-card); border-radius: var(--radius-md); border: 1.5px dashed var(--border-color);">
+            <div style="font-size: 36px; margin-bottom: 10px;">📁</div>
+            <h3 style="font-size: 17px; font-weight: 700; color: var(--text-primary); margin-bottom: 6px;">No Tests Found in /test</h3>
+            <p style="font-size: 13.5px; color: var(--text-secondary);">Add .html test files into the <code>test/</code> folder and run <code>sync.bat</code> to display them.</p>
+          </div>
+        `;
+        return;
+      }
+
       activeTestsList.forEach(t => {
         const card = document.createElement('div');
         card.className = 'test-card';
 
-        const topicsHtml = (t.topics || []).map(topic => `<span class="test-topic-pill">• ${topic}</span>`).join('');
+        const cleanName = (t.name || t.fileName).replace(/\.html$/i, '');
 
         card.innerHTML = `
           <div>
             <div class="test-card-top">
-              <span class="test-filename-badge">${t.fileName}</span>
-              <span class="test-status-pill"><span class="test-status-dot"></span>${t.status || 'Active'}</span>
-            </div>
-            <h3 class="test-card-title">${t.title}</h3>
-            <p class="test-card-desc">${t.description}</p>
-            
-            <div class="test-meta-grid">
-              <div class="test-meta-item">
-                <span class="test-meta-lbl">Questions & Format</span>
-                <span class="test-meta-val">${t.questions} Qs (${t.rounds})</span>
-              </div>
-              <div class="test-meta-item">
-                <span class="test-meta-lbl">Duration</span>
-                <span class="test-meta-val">${t.duration}</span>
-              </div>
+              <span class="test-file-badge"><span class="test-file-dot"></span>Active Test</span>
             </div>
 
-            <div class="test-topics-pills">
-              ${topicsHtml}
+            <div class="test-filename-box">
+              <span class="file-icon">📄</span>
+              <span class="test-filename-text">${cleanName}</span>
             </div>
           </div>
 
