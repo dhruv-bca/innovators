@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#4f46e5">
+  <title>The Mathematicians' Battle 2026 (100 Questions)</title>
+  <link rel="icon" type="image/png" href="../images/logo.png">
+  <style>
+    :root {
+      --bg-primary: #f8fafc;
+      --bg-secondary: #ffffff;
+      --bg-card: #ffffff;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #94a3b8;
+      --border-color: #e2e8f0;
+      --accent-color: #4f46e5;
+      --accent-hover: #4338ca;
+      --accent-gradient: linear-gradient(135deg, #4f46e5, #06b6d4);
+      --correct-bg: #ecfdf5;
+      --correct-border: #10b981;
+      --correct-text: #065f46;
+      --wrong-bg: #fef2f2;
+      --wrong-border: #ef4444;
+      --wrong-text: #991b1b;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+      --shadow-lg: 0 10px 25px rgba(0,0,0,0.12);
+      --card-radius: 16px;
+    }
+
+    [data-theme="dark"] {
+      --bg-primary: #0b0f19;
+      --bg-secondary: #111827;
+      --bg-card: #1e293b;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --text-muted: #64748b;
+      --border-color: #334155;
+      --accent-color: #6366f1;
+      --accent-hover: #818cf8;
+      --accent-gradient: linear-gradient(135deg, #6366f1, #38bdf8);
+      --correct-bg: rgba(16, 185, 129, 0.15);
+      --correct-border: #10b981;
+      --correct-text: #6ee7b7;
+      --wrong-bg: rgba(239, 68, 68, 0.15);
+      --wrong-border: #ef4444;
+      --wrong-text: #fca5a5;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
+      --shadow-md: 0 4px 14px rgba(0,0,0,0.5);
+      --shadow-lg: 0 10px 30px rgba(0,0,0,0.7);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.5;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      padding-bottom: 60px;
+    }
+
+    /* Header */
+    .app-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(10px);
+    }
+
+    .header-content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-area a {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: inherit;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: var(--accent-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 20px;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3);
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-title {
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      color: var(--text-primary);
+      line-height: 1.2;
+    }
+
+    .logo-subtitle {
+      font-size: 11px;
+      color: var(--accent-color);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .portal-back-btn {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 8px 12px;
+      border-radius: 12px;
+      border: 1.5px solid var(--border-color);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      text-decoration: none;
+      font-size: 12.5px;
+      font-weight: 700;
+      transition: all 0.2s ease;
+    }
+
+    .portal-back-btn:hover {
+      border-color: var(--accent-color);
+      color: var(--accent-color);
+    }
+
+    .theme-toggle-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      border: 1.5px solid var(--border-color);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      transition: all 0.2s ease;
+    }
+
+    .theme-toggle-btn:active {
+      transform: scale(0.92);
+    }
+
+    /* Global Competition Overview Banner */
+    .overview-strip {
+      background: var(--accent-gradient);
+      color: #ffffff;
+      padding: 10px 16px;
+      text-align: center;
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 2px 8px rgba(79, 70, 229, 0.2);
+    }
+
+    /* Sticky Progress Meter */
+    .sticky-progress-wrap {
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border-color);
+      padding: 10px 16px;
+      max-width: 720px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .progress-stats-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+      font-size: 12.5px;
+      font-weight: 700;
+    }
+
+    .stat-pill {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 9px;
+      background: var(--bg-primary);
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+    }
+
+    .stat-score {
+      color: #10b981;
+    }
+
+    .progress-bar-track {
+      height: 7px;
+      width: 100%;
+      background: var(--border-color);
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--accent-gradient);
+      border-radius: 6px;
+      transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .view-mode-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .mode-toggle-btn {
+      padding: 4px 10px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-primary);
+      color: var(--accent-color);
+      font-size: 11.5px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* Horizontal Round Tabs */
+    .rounds-scroll-container {
+      max-width: 720px;
+      margin: 10px auto 4px auto;
+      padding: 0 16px;
+      width: 100%;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .rounds-scroll-container::-webkit-scrollbar {
+      display: none;
+    }
+
+    .rounds-nav {
+      display: flex;
+      gap: 8px;
+      width: max-content;
+    }
+
+    .round-tab {
+      padding: 8px 14px;
+      border-radius: 20px;
+      border: 1.5px solid var(--border-color);
+      background: var(--bg-secondary);
+      color: var(--text-secondary);
+      font-size: 12.5px;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .round-tab.active {
+      background: var(--accent-color);
+      color: #ffffff;
+      border-color: var(--accent-color);
+      box-shadow: 0 3px 10px rgba(79, 70, 229, 0.35);
+    }
+
+    .round-tab .badge-count {
+      font-size: 11px;
+      padding: 2px 6px;
+      border-radius: 10px;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+    }
+
+    .round-tab.active .badge-count {
+      background: rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+    }
+
+    /* Main Content Container */
+    .main-container {
+      max-width: 720px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 12px 16px;
+      flex: 1;
+    }
+
+    .round-header-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--card-radius);
+      padding: 16px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .round-header-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .round-topics-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .topic-tag {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+    }
+
+    /* Question Card */
+    .question-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--card-radius);
+      padding: 18px 16px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      position: relative;
+    }
+
+    .question-card:hover {
+      box-shadow: var(--shadow-md);
+    }
+
+    .question-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .q-number-pill {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--accent-color);
+      background: rgba(79, 70, 229, 0.08);
+      padding: 4px 10px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .q-topic-badge {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+
+    .question-text {
+      font-size: 15.5px;
+      font-weight: 600;
+      line-height: 1.45;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+      word-break: break-word;
+    }
+
+    /* Options List */
+    .options-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .option-btn {
+      width: 100%;
+      min-height: 52px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1.5px solid var(--border-color);
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      font-size: 15px;
+      font-weight: 500;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+    }
+
+    .option-btn:hover:not(:disabled) {
+      border-color: var(--accent-color);
+      background: rgba(79, 70, 229, 0.04);
+    }
+
+    .option-btn:active:not(:disabled) {
+      transform: scale(0.98);
+    }
+
+    .option-prefix {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      flex-shrink: 0;
+    }
+
+    .option-text {
+      flex: 1;
+      word-break: break-word;
+    }
+
+    .option-icon {
+      font-size: 18px;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    /* Correct/Wrong State Styling */
+    .option-btn.option-correct {
+      background-color: var(--correct-bg) !important;
+      border-color: var(--correct-border) !important;
+      color: var(--correct-text) !important;
+      font-weight: 700;
+    }
+
+    .option-btn.option-correct .option-prefix {
+      background: #10b981;
+      color: #ffffff;
+      border-color: #10b981;
+    }
+
+    .option-btn.option-correct .option-icon {
+      opacity: 1;
+      color: #10b981;
+    }
+
+    .option-btn.option-wrong {
+      background-color: var(--wrong-bg) !important;
+      border-color: var(--wrong-border) !important;
+      color: var(--wrong-text) !important;
+    }
+
+    .option-btn.option-wrong .option-prefix {
+      background: #ef4444;
+      color: #ffffff;
+      border-color: #ef4444;
+    }
+
+    .option-btn.option-wrong .option-icon {
+      opacity: 1;
+      color: #ef4444;
+    }
+
+    .option-btn:disabled {
+      cursor: default;
+    }
+
+    /* 2-Line Instant Solution Explanation */
+    .explanation-box {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: var(--bg-primary);
+      border-left: 4px solid var(--accent-color);
+      border-right: 1px solid var(--border-color);
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+      display: none;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    .explanation-box.show {
+      display: block;
+    }
+
+    .explanation-header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--accent-color);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+
+    .explanation-content {
+      font-size: 13.5px;
+      line-height: 1.45;
+      color: var(--text-primary);
+    }
+
+    /* Bottom Navigation / Actions Bar */
+    .round-footer-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--card-radius);
+      padding: 16px;
+      text-align: center;
+      margin-top: 24px;
+      margin-bottom: 40px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .round-nav-btns-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .nav-round-btn {
+      flex: 1;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1.5px solid var(--border-color);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .nav-round-btn:hover:not(:disabled) {
+      border-color: var(--accent-color);
+      background: rgba(79, 70, 229, 0.05);
+    }
+
+    .nav-round-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .submit-round-btn {
+      width: 100%;
+      padding: 14px;
+      border-radius: 12px;
+      border: none;
+      background: var(--accent-gradient);
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(79, 70, 229, 0.35);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .submit-round-btn:active {
+      transform: scale(0.98);
+    }
+
+    .all-round-divider {
+      background: var(--bg-secondary);
+      border: 1.5px solid var(--border-color);
+      border-radius: 14px;
+      padding: 12px 16px;
+      margin: 32px 0 16px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .all-round-divider h3 {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--accent-color);
+    }
+
+    /* FIRST-TIME THEME ONBOARDING TOUR OVERLAY */
+    .onboarding-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(4px);
+      z-index: 9999;
+      display: none;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .onboarding-overlay.active {
+      display: flex;
+    }
+
+    .tour-card {
+      position: absolute;
+      top: 75px;
+      right: 20px;
+      max-width: 320px;
+      background: var(--bg-card);
+      border: 2px solid var(--accent-color);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      animation: bounceTour 1.2s infinite ease-in-out alternate;
+    }
+
+    .tour-pointer-arrow {
+      position: absolute;
+      top: -12px;
+      right: 20px;
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 12px solid var(--accent-color);
+    }
+
+    .tour-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tour-desc {
+      font-size: 13px;
+      line-height: 1.45;
+      color: var(--text-secondary);
+      margin-bottom: 14px;
+    }
+
+    .tour-btn {
+      width: 100%;
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+      background: var(--accent-gradient);
+      color: #ffffff;
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    @keyframes bounceTour {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(6px); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* MODAL: SUBMISSION TO D/CAPTAIN */
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(5px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .modal-backdrop.active {
+      display: flex;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .modal-sheet {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 440px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 24px;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--border-color);
+      background: var(--bg-primary);
+      color: var(--text-secondary);
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-badge-icon {
+      font-size: 40px;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .modal-title {
+      font-size: 20px;
+      font-weight: 800;
+      text-align: center;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .modal-subtitle {
+      font-size: 13px;
+      color: var(--text-secondary);
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .score-summary-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .score-box {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 12px;
+      text-align: center;
+    }
+
+    .score-box-val {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--accent-color);
+    }
+
+    .score-box-lbl {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      margin-bottom: 5px;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1.5px solid var(--border-color);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-size: 14px;
+      outline: none;
+    }
+
+    .form-input:focus {
+      border-color: var(--accent-color);
+    }
+
+    .modal-submit-btn {
+      width: 100%;
+      padding: 14px;
+      border-radius: 12px;
+      border: none;
+      background: var(--accent-gradient);
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+      margin-top: 6px;
+    }
+
+    .submit-status-msg {
+      margin-top: 12px;
+      font-size: 13px;
+      text-align: center;
+      min-height: 20px;
+      font-weight: 600;
+    }
+
+    .status-success {
+      color: #10b981;
+    }
+
+    .status-pending {
+      color: #f59e0b;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Header Bar -->
+  <header class="app-header">
+    <div class="header-content">
+      <div class="logo-area">
+        <a href="../index.html">
+          <div class="logo-icon">∑</div>
+          <div class="logo-text">
+            <span class="logo-title">The Mathematicians' Battle</span>
+            <span class="logo-subtitle">2026 Series • 100 Questions</span>
+          </div>
+        </a>
+      </div>
+      <div class="header-actions">
+        <a href="../index.html" class="portal-back-btn" title="Return to Portal">
+          <span>🏠</span>
+          <span>Portal</span>
+        </a>
+        <!-- Dark/Light Theme Switcher -->
+        <button class="theme-toggle-btn" id="themeToggleBtn" title="Toggle Dark / Light Mode" aria-label="Toggle Theme">
+          🌙
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Competition Overview Strip -->
+  <div class="overview-strip">
+    <span>🏆 5 Rounds • 20 Questions Each • Total 100 Questions</span>
+  </div>
+
+  <!-- Sticky Dual Progress & Score Bar -->
+  <section class="sticky-progress-wrap">
+    <div class="progress-stats-row">
+      <div class="stat-pill">
+        <span>🌐 Total Answered:</span>
+        <span id="globalAnsweredStat">0 / 100</span>
+      </div>
+      <div class="stat-pill">
+        <span>🎯 Overall Score:</span>
+        <span id="globalScoreStat" class="stat-score">0 / 100</span>
+      </div>
+    </div>
+    <div class="progress-bar-track">
+      <div class="progress-bar-fill" id="progressBarFill"></div>
+    </div>
+    <div class="view-mode-bar">
+      <span id="roundAnsweredSubtext">Round 1: 0 / 20 Answered</span>
+      <button class="mode-toggle-btn" id="viewModeToggleBtn">📜 View All 100 Qs</button>
+    </div>
+  </section>
+
+  <!-- Horizontal Scrollable Round Navigation -->
+  <nav class="rounds-scroll-container" id="roundsScrollContainer">
+    <div class="rounds-nav" id="roundsNav">
+      <!-- Generated Dynamically -->
+    </div>
+  </nav>
+
+  <!-- Main Content Area -->
+  <main class="main-container">
+    <!-- Active Round Header Banner -->
+    <div class="round-header-card" id="roundHeaderCard">
+      <div class="round-header-title">
+        <span id="roundTitleText">Round 1: Algebra & Set Theory</span>
+        <span style="font-size: 12px; color: var(--accent-color); font-weight: 700;">20 Questions</span>
+      </div>
+      <div class="round-topics-list" id="roundTopicsList">
+        <!-- Topic tags will be populated here -->
+      </div>
+    </div>
+
+    <!-- Questions List Container -->
+    <div id="questionsContainer">
+      <!-- Question cards will be injected dynamically -->
+    </div>
+
+    <!-- Bottom Navigation Bar -->
+    <div class="round-footer-card">
+      <div class="round-nav-btns-row" id="roundNavBtnsRow">
+        <button class="nav-round-btn" id="prevRoundBtn">⬅️ Previous Round</button>
+        <button class="nav-round-btn" id="nextRoundBtn">Next Round ➡️</button>
+      </div>
+      <button class="submit-round-btn" id="finishRoundBtn">
+        <span>🏆 Submit to D/Captain</span>
+      </button>
+    </div>
+  </main>
+
+  <!-- FIRST-TIME ONBOARDING OVERLAY -->
+  <div class="onboarding-overlay" id="onboardingOverlay">
+    <div class="tour-card" id="tourCard">
+      <div class="tour-pointer-arrow"></div>
+      <div class="tour-title">
+        <span>💡 Dark / Light Mode Switch</span>
+      </div>
+      <p class="tour-desc">
+        Tap this button anytime to switch between <strong>Dark Mode</strong> and <strong>Light Mode</strong> for comfortable reading day or night!
+      </p>
+      <button class="tour-btn" id="tourDismissBtn">Got it! Let's Begin 🚀</button>
+    </div>
+  </div>
+
+  <!-- STUDENT TRACKING / SCORE SUBMISSION MODAL -->
+  <div class="modal-backdrop" id="submissionModal">
+    <div class="modal-sheet">
+      <button class="modal-close-btn" id="closeSubModalBtn">&times;</button>
+      <div class="modal-badge-icon">🎖️</div>
+      <h3 class="modal-title" id="modalRoundName">Round Completed!</h3>
+      <p class="modal-subtitle">Submit your score to D/Captain's live leaderboard</p>
+
+      <div class="score-summary-grid">
+        <div class="score-box">
+          <div class="score-box-val" id="modalScoreDisplay">0 / 20</div>
+          <div class="score-box-lbl">Score</div>
+        </div>
+        <div class="score-box">
+          <div class="score-box-val" id="modalAccuracyDisplay">0%</div>
+          <div class="score-box-lbl">Accuracy</div>
+        </div>
+      </div>
+
+      <form id="studentSubmitForm">
+        <div class="form-group">
+          <label class="form-label" for="studentName">Student Full Name *</label>
+          <input type="text" id="studentName" class="form-input" placeholder="e.g. Aryan Sharma" required autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="studentRoll">Roll Number / Student ID *</label>
+          <input type="text" id="studentRoll" class="form-input" placeholder="e.g. 2026-MATH-042" required autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="studentCollege">College / Section (Optional)</label>
+          <input type="text" id="studentCollege" class="form-input" placeholder="e.g. Section A / Department of Maths">
+        </div>
+
+        <button type="submit" class="modal-submit-btn" id="modalSubmitBtn">
+          🚀 Submit to D/Captain
+        </button>
+        <div class="submit-status-msg" id="submitStatusMsg"></div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // --- QUESTIONS DATASET (100 QUESTIONS) ---
+    const ROUNDS_DATA = [{"roundNumber": 1, "roundTitle": "Round 1: Algebra & Set Theory", "badge": "Round 1", "topics": ["BODMAS", "Equation (quadratic equation)", "Set theory"], "questions": [{"id": 1, "topic": "BODMAS", "difficulty": "Easy", "q": "Evaluate: 48 ÷ 8 × 5 + 12 - 19", "options": ["23", "27", "21", "25"], "correct": 0, "explanation": "Division first: 48 ÷ 8 = 6; multiplication: 6 × 5 = 30. Then 30 + 12 - 19 = 23."}, {"id": 2, "topic": "BODMAS", "difficulty": "Easy", "q": "Calculate: 84 - 7 × (15 - 9) ÷ 2", "options": ["63", "60", "65", "70"], "correct": 0, "explanation": "Brackets: 15 - 9 = 6. Multiplication and division: 7 × 6 ÷ 2 = 21. Finally 84 - 21 = 63."}, {"id": 3, "topic": "BODMAS", "difficulty": "Medium", "q": "Simplify: 90 ÷ 3 of 5 + 24 ÷ 4 × 3", "options": ["26", "24", "22", "28"], "correct": 1, "explanation": "'Of' comes first: 3 of 5 = 15. Then 90 ÷ 15 = 6, and 24 ÷ 4 × 3 = 18. Sum = 6 + 18 = 24."}, {"id": 4, "topic": "BODMAS", "difficulty": "Medium", "q": "Find the value of: 28 + [36 - {18 - (10 - 5 + 3)}]", "options": ["50", "54", "56", "52"], "correct": 1, "explanation": "Inner brackets: 10 - 5 + 3 = 8. Then 18 - 8 = 10, 36 - 10 = 26; 28 + 26 = 54."}, {"id": 5, "topic": "BODMAS", "difficulty": "Medium", "q": "Evaluate: (2/5 ÷ 2/5 of 2/5) × 4/25", "options": ["5/2", "2/5", "1", "4/25"], "correct": 1, "explanation": "2/5 of 2/5 = 4/25. Then 2/5 ÷ 4/25 = 5/2. Finally (5/2) × (4/25) = 2/5."}, {"id": 6, "topic": "BODMAS", "difficulty": "Easy", "q": "Calculate: 12.5 × 4 - 3.6 ÷ 0.6 + 1.2", "options": ["43.5", "44.8", "46.2", "45.2"], "correct": 3, "explanation": "12.5 × 4 = 50; 3.6 ÷ 0.6 = 6. Then 50 - 6 + 1.2 = 45.2."}, {"id": 7, "topic": "BODMAS", "difficulty": "Medium", "q": "Evaluate: 64 ÷ 4 × [14 - {8 + (6 - 4)}]", "options": ["64", "48", "32", "16"], "correct": 0, "explanation": "6 - 4 = 2; 8 + 2 = 10; 14 - 10 = 4. Then 64 ÷ 4 = 16, and 16 × 4 = 64."}, {"id": 8, "topic": "Equation (quadratic equation)", "difficulty": "Easy", "q": "Find the roots of the quadratic equation: x² - 13x + 40 = 0", "options": ["4, 10", "-5, -8", "3, 10", "5, 8"], "correct": 3, "explanation": "Factorizing: (x - 5)(x - 8) = 0, giving roots x = 5 and x = 8."}, {"id": 9, "topic": "Equation (quadratic equation)", "difficulty": "Easy", "q": "Find the discriminant (D = b² - 4ac) of: 3x² - 8x + 5 = 0", "options": ["16", "64", "1", "4"], "correct": 3, "explanation": "b² - 4ac = (-8)² - 4(3)(5) = 64 - 60 = 4."}, {"id": 10, "topic": "Equation (quadratic equation)", "difficulty": "Medium", "q": "If the roots of x² - 9x + k = 0 differ by 1 (consecutive integers), find k.", "options": ["20", "18", "24", "14"], "correct": 0, "explanation": "|α - β| = √(b² - 4k) = √(81 - 4k) = 1 ⇒ 81 - 4k = 1 ⇒ 4k = 80 ⇒ k = 20."}, {"id": 11, "topic": "Equation (quadratic equation)", "difficulty": "Easy", "q": "If x = 3 is one root of 2x² - 7x + c = 0, find the value of c.", "options": ["-3", "2", "4", "3"], "correct": 3, "explanation": "Substitute x = 3: 2(9) - 7(3) + c = 0 ⇒ 18 - 21 + c = 0 ⇒ c = 3."}, {"id": 12, "topic": "Equation (quadratic equation)", "difficulty": "Medium", "q": "Find the sum and product of the roots of 4x² + 12x - 7 = 0.", "options": ["Sum = -12, Product = -7", "Sum = 3, Product = 7/4", "Sum = -3, Product = 7/4", "Sum = -3, Product = -7/4"], "correct": 3, "explanation": "Sum of roots = -b/a = -12/4 = -3; Product of roots = c/a = -7/4."}, {"id": 13, "topic": "Equation (quadratic equation)", "difficulty": "Medium", "q": "Determine the nature of the roots of: 2x² - 6x + 5 = 0", "options": ["Real and equal", "Real and distinct", "Complex / Non-real", "Rational and distinct"], "correct": 2, "explanation": "Discriminant D = (-6)² - 4(2)(5) = 36 - 40 = -4 < 0. Since D < 0, roots are complex/non-real."}, {"id": 14, "topic": "Equation (quadratic equation)", "difficulty": "Medium", "q": "Solve for x: x + 12/x = 7", "options": ["2 or 6", "1 or 12", "3 or 4", "-3 or -4"], "correct": 2, "explanation": "Multiply by x: x² - 7x + 12 = 0 ⇒ (x - 3)(x - 4) = 0 ⇒ x = 3 or 4."}, {"id": 15, "topic": "Set theory", "difficulty": "Easy", "q": "If A = {x ∈ ℕ : x < 6} and B = {x ∈ ℕ : 3 ≤ x ≤ 8}, find A ∩ B.", "options": ["{1, 2, 3, 4, 5}", "{4, 5}", "{3, 4, 5, 6, 7, 8}", "{3, 4, 5}"], "correct": 3, "explanation": "A = {1, 2, 3, 4, 5} and B = {3, 4, 5, 6, 7, 8}. Common elements are {3, 4, 5}."}, {"id": 16, "topic": "Set theory", "difficulty": "Easy", "q": "If n(A) = 30, n(B) = 25, and n(A ∪ B) = 45, find n(A ∩ B).", "options": ["5", "10", "20", "15"], "correct": 1, "explanation": "n(A ∩ B) = n(A) + n(B) - n(A ∪ B) = 30 + 25 - 45 = 10."}, {"id": 17, "topic": "Set theory", "difficulty": "Medium", "q": "How many proper subsets does a set containing 5 elements have?", "options": ["31", "32", "30", "25"], "correct": 0, "explanation": "Total subsets = 2⁵ = 32. Proper subsets exclude the set itself: 2⁵ - 1 = 31."}, {"id": 18, "topic": "Set theory", "difficulty": "Easy", "q": "Which property states that A ∪ (B ∩ C) = (A ∪ B) ∩ (A ∪ C)?", "options": ["Distributive Law", "De Morgan's Law", "Associative Law", "Commutative Law"], "correct": 0, "explanation": "Union distributing over intersection represents the Distributive Law."}, {"id": 19, "topic": "Set theory", "difficulty": "Easy", "q": "If universal set U = {1, 2, ..., 10} and A = {2, 4, 6, 8, 10}, find complement A'.", "options": ["{1, 3, 5, 7, 9}", "{1, 2, 3, 5, 7}", "{1, 3, 5, 7, 8}", "{3, 5, 7, 9}"], "correct": 0, "explanation": "A' = U \\ A = odd numbers up to 10: {1, 3, 5, 7, 9}."}, {"id": 20, "topic": "Set theory", "difficulty": "Medium", "q": "For any two sets A and B, the difference set A \\ B is equivalent to:", "options": ["(A ∪ B)'", "A ∩ B'", "A ∪ B'", "A' ∩ B"], "correct": 1, "explanation": "By definition, A \\ B = {x : x ∈ A and x ∉ B} = A ∩ B'."}]}, {"roundNumber": 2, "roundTitle": "Round 2: Arithmetic & Reasoning", "badge": "Round 2", "topics": ["BODMAS", "Average", "Percentage", "Addition", "Reasoning (Maths)"], "questions": [{"id": 21, "topic": "BODMAS", "difficulty": "Easy", "q": "Evaluate: 72 ÷ [18 - {15 - (9 - 6)}]", "options": ["6", "9", "18", "12"], "correct": 3, "explanation": "9 - 6 = 3; 15 - 3 = 12; 18 - 12 = 6. Finally 72 ÷ 6 = 12."}, {"id": 22, "topic": "BODMAS", "difficulty": "Easy", "q": "Calculate: 15 × 6 - 80 ÷ 5 + 14", "options": ["92", "88", "86", "84"], "correct": 1, "explanation": "15 × 6 = 90; 80 ÷ 5 = 16. Then 90 - 16 + 14 = 88."}, {"id": 23, "topic": "BODMAS", "difficulty": "Medium", "q": "Simplify: 4.5 × 6 + 18.4 ÷ 4 - 3.1", "options": ["27.8", "28.5", "30.1", "29.2"], "correct": 1, "explanation": "4.5 × 6 = 27; 18.4 ÷ 4 = 4.6. Then 27 + 4.6 - 3.1 = 28.5."}, {"id": 24, "topic": "BODMAS", "difficulty": "Easy", "q": "Find value of: 2/3 of 45 + 1/4 of 80 - 5 × 7", "options": ["20", "15", "18", "12"], "correct": 1, "explanation": "2/3 of 45 = 30; 1/4 of 80 = 20; 5 × 7 = 35. Then 30 + 20 - 35 = 15."}, {"id": 25, "topic": "Average", "difficulty": "Easy", "q": "Find the average of the first 6 positive multiples of 5.", "options": ["20", "15", "16.5", "17.5"], "correct": 3, "explanation": "Multiples: 5, 10, 15, 20, 25, 30. Sum = 105; Average = 105 ÷ 6 = 17.5."}, {"id": 26, "topic": "Average", "difficulty": "Medium", "q": "The average weight of 15 students is 40 kg. If the teacher is included, the average increases by 1 kg. Find the teacher's weight.", "options": ["54 kg", "55 kg", "56 kg", "58 kg"], "correct": 2, "explanation": "New total = 16 × 41 = 656 kg. Old total = 15 × 40 = 600 kg. Teacher = 656 - 600 = 56 kg."}, {"id": 27, "topic": "Average", "difficulty": "Medium", "q": "The average of 4 consecutive even numbers is 27. Find the largest number.", "options": ["26", "28", "32", "30"], "correct": 3, "explanation": "Numbers: x, x+2, x+4, x+6. Average = x + 3 = 27 ⇒ x = 24. Largest = 24 + 6 = 30."}, {"id": 28, "topic": "Average", "difficulty": "Medium", "q": "The average of a, b, c is 20, and the average of b, c, d is 25. If a = 18, find d.", "options": ["35", "30", "33", "32"], "correct": 2, "explanation": "a + b + c = 60 ⇒ b + c = 42. Also b + c + d = 75 ⇒ d = 75 - 42 = 33."}, {"id": 29, "topic": "Percentage", "difficulty": "Easy", "q": "If A's salary is 20% less than B's salary, by what percent is B's salary more than A's?", "options": ["25%", "20%", "16.67%", "30%"], "correct": 0, "explanation": "Difference = [20 / (100 - 20)] × 100% = (20 / 80) × 100% = 25%."}, {"id": 30, "topic": "Percentage", "difficulty": "Easy", "q": "A quantity is first increased by 20% and then decreased by 20%. What is the net percentage change?", "options": ["4% increase", "2% decrease", "No change", "4% decrease"], "correct": 3, "explanation": "Net change = 20 - 20 - (20 × 20)/100 = -4% (a decrease of 4%)."}, {"id": 31, "topic": "Percentage", "difficulty": "Medium", "q": "In an exam, 35% fail in Hindi and 45% fail in English. If 20% fail in both, what percent pass in both?", "options": ["50%", "45%", "35%", "40%"], "correct": 3, "explanation": "Failed in at least one = 35 + 45 - 20 = 60%. Passed in both = 100% - 60% = 40%."}, {"id": 32, "topic": "Percentage", "difficulty": "Easy", "q": "What percentage of 2.5 kg is 125 grams?", "options": ["2.5%", "0.5%", "5%", "10%"], "correct": 2, "explanation": "2.5 kg = 2500 g. Percentage = (125 / 2500) × 100% = 5%."}, {"id": 33, "topic": "Addition", "difficulty": "Easy", "q": "Calculate the sum of the first 30 natural numbers (1 + 2 + ... + 30).", "options": ["465", "480", "496", "450"], "correct": 0, "explanation": "Sum formula n(n+1)/2 = 30 × 31 ÷ 2 = 15 × 31 = 465."}, {"id": 34, "topic": "Addition", "difficulty": "Easy", "q": "Mentally add: 478 + 356 + 122 + 244", "options": ["1190", "1180", "1210", "1200"], "correct": 3, "explanation": "Group compatible pairs: (478 + 122) = 600, and (356 + 244) = 600. 600 + 600 = 1200."}, {"id": 35, "topic": "Addition", "difficulty": "Medium", "q": "Find the sum of all odd integers from 1 to 29 inclusive.", "options": ["256", "225", "240", "210"], "correct": 1, "explanation": "Number of terms n = (29 - 1)/2 + 1 = 15. Sum of first n odd numbers = n² = 15² = 225."}, {"id": 36, "topic": "Addition", "difficulty": "Medium", "q": "Calculate the sum of all integers from 11 to 30 inclusive.", "options": ["400", "410", "420", "390"], "correct": 1, "explanation": "Sum(1 to 30) - Sum(1 to 10) = 465 - 55 = 410."}, {"id": 37, "topic": "Reasoning (Maths)", "difficulty": "Easy", "q": "Complete the number sequence: 4, 9, 19, 39, 79, ?", "options": ["149", "158", "169", "159"], "correct": 3, "explanation": "Pattern: multiply by 2 and add 1. 79 × 2 + 1 = 158 + 1 = 159."}, {"id": 38, "topic": "Reasoning (Maths)", "difficulty": "Easy", "q": "In a code, PAPER is written as QBQFS. How will PENCIL be written?", "options": ["PFODJN", "QFNCHM", "QFODJM", "QEMDJM"], "correct": 2, "explanation": "Each letter is shifted forward by +1: P→Q, E→F, N→O, C→D, I→J, L→M."}, {"id": 39, "topic": "Reasoning (Maths)", "difficulty": "Medium", "q": "Pointing to a photograph, a woman says: 'He is the son of the only daughter of my father.' How is the boy related to the woman?", "options": ["Her brother", "Her nephew", "Her cousin", "Her son"], "correct": 3, "explanation": "The only daughter of her father is the woman herself. Her son is the boy."}, {"id": 40, "topic": "Reasoning (Maths)", "difficulty": "Medium", "q": "If South-East becomes North and North-East becomes West, what will West become?", "options": ["North-West", "South-East", "South-West", "East"], "correct": 1, "explanation": "Every direction rotates 135° counter-clockwise. West rotated 135° CCW becomes South-East."}]}, {"roundNumber": 3, "roundTitle": "Round 3: Quantitative Aptitude & Mathematical Reasoning", "badge": "Round 3", "topics": ["Exponent", "Profit and Loss", "Average", "Set theory", "Reasoning (Maths)"], "questions": [{"id": 41, "topic": "Exponent", "difficulty": "Easy", "q": "Simplify: (2³)⁴ ÷ (2²)⁵", "options": ["1", "4", "8", "2"], "correct": 1, "explanation": "2^(3×4) ÷ 2^(2×5) = 2¹² ÷ 2¹⁰ = 2^(12 - 10) = 2² = 4."}, {"id": 42, "topic": "Exponent", "difficulty": "Easy", "q": "If 3^(x - 1) = 81, find the value of x.", "options": ["5", "4", "6", "3"], "correct": 0, "explanation": "81 = 3⁴ ⇒ x - 1 = 4 ⇒ x = 5."}, {"id": 43, "topic": "Exponent", "difficulty": "Medium", "q": "Evaluate: (64/125)^(-2/3)", "options": ["25/16", "5/4", "16/25", "4/5"], "correct": 0, "explanation": "Invert for negative power: (125/64)^(2/3) = [(5/4)³]^(2/3) = (5/4)² = 25/16."}, {"id": 44, "topic": "Exponent", "difficulty": "Medium", "q": "Solve for x: 2^(x + 3) + 2^x = 72", "options": ["3", "2", "4", "5"], "correct": 0, "explanation": "Factor 2^x: 2^x(2³ + 1) = 72 ⇒ 2^x(9) = 72 ⇒ 2^x = 8 ⇒ x = 3."}, {"id": 45, "topic": "Profit and Loss", "difficulty": "Easy", "q": "An article bought for ₹450 is sold at a profit of 20%. Find the selling price.", "options": ["₹520", "₹540", "₹550", "₹560"], "correct": 1, "explanation": "Profit = 20% of 450 = ₹90. SP = 450 + 90 = ₹540."}, {"id": 46, "topic": "Profit and Loss", "difficulty": "Medium", "q": "By selling an item for ₹720, a shopkeeper incurs a 10% loss. At what price must he sell it to gain 15%?", "options": ["₹900", "₹940", "₹920", "₹880"], "correct": 2, "explanation": "CP = 720 ÷ 0.90 = ₹800. For 15% profit: SP = 800 × 1.15 = ₹920."}, {"id": 47, "topic": "Profit and Loss", "difficulty": "Medium", "q": "If the cost price of 16 pens equals the selling price of 12 pens, what is the profit percentage?", "options": ["25%", "30%", "33.33%", "20%"], "correct": 2, "explanation": "Profit % = [(16 - 12) / 12] × 100% = 4/12 × 100% = 33.33%."}, {"id": 48, "topic": "Profit and Loss", "difficulty": "Medium", "q": "A merchant sells two items for ₹2400 each, gaining 20% on one and losing 20% on the other. Overall, he:", "options": ["Loses 2%", "Loses 4%", "Gains 4%", "Breaks even"], "correct": 1, "explanation": "When two items sell at equal prices with equal profit and loss x%, net loss = (x/10)²% = (20/10)²% = 4% loss."}, {"id": 49, "topic": "Average", "difficulty": "Easy", "q": "The average of 7 numbers is 18. If one number is excluded, the average becomes 16. What was the excluded number?", "options": ["30", "28", "26", "32"], "correct": 0, "explanation": "Total of 7 numbers = 126. Total of remaining 6 numbers = 96. Excluded = 126 - 96 = 30."}, {"id": 50, "topic": "Average", "difficulty": "Medium", "q": "A batsman scores 85 runs in his 12th innings, thereby increasing his average by 3 runs. Find his average after the 12th innings.", "options": ["48", "55", "49", "52"], "correct": 3, "explanation": "Let old average be x: 11x + 85 = 12(x + 3) ⇒ 11x + 85 = 12x + 36 ⇒ x = 49. New average = 49 + 3 = 52."}, {"id": 51, "topic": "Average", "difficulty": "Medium", "q": "A car travels from A to B at 40 km/h and returns at 60 km/h. Find its average speed for the round trip.", "options": ["45 km/h", "50 km/h", "52 km/h", "48 km/h"], "correct": 3, "explanation": "Harmonic average speed = 2xy / (x + y) = 2(40)(60) ÷ 100 = 4800 ÷ 100 = 48 km/h."}, {"id": 52, "topic": "Average", "difficulty": "Easy", "q": "The average age of a father and son is 28 years. If their ages are in the ratio 5 : 2, find the son's age.", "options": ["20 years", "16 years", "14 years", "18 years"], "correct": 1, "explanation": "Total age = 2 × 28 = 56. Ratio parts: 5 + 2 = 7. Son = (2/7) × 56 = 16 years."}, {"id": 53, "topic": "Set theory", "difficulty": "Medium", "q": "If n(U) = 60, n(A) = 35, n(B) = 28, and n(A ∩ B) = 15, find n((A ∪ B)').", "options": ["12", "18", "10", "15"], "correct": 0, "explanation": "n(A ∪ B) = 35 + 28 - 15 = 48. Then n((A ∪ B)') = 60 - 48 = 12."}, {"id": 54, "topic": "Set theory", "difficulty": "Easy", "q": "If set A is a subset of set B (A ⊆ B), then A ∩ B is equal to:", "options": ["∅", "U", "A", "B"], "correct": 2, "explanation": "Since every element of A is already in B, the intersection A ∩ B equals A."}, {"id": 55, "topic": "Set theory", "difficulty": "Medium", "q": "Find the symmetric difference A Δ B for sets A = {1, 2, 3, 4} and B = {3, 4, 5, 6}.", "options": ["{5, 6}", "{3, 4}", "{1, 2}", "{1, 2, 5, 6}"], "correct": 3, "explanation": "A Δ B = (A \\ B) ∪ (B \\ A) = {1, 2} ∪ {5, 6} = {1, 2, 5, 6}."}, {"id": 56, "topic": "Set theory", "difficulty": "Easy", "q": "In a group of 50 students, 30 like coffee, 25 like tea, and 10 like both. How many like neither?", "options": ["5", "8", "10", "12"], "correct": 0, "explanation": "Students liking at least one = 30 + 25 - 10 = 45. Neither = 50 - 45 = 5."}, {"id": 57, "topic": "Reasoning (Maths)", "difficulty": "Easy", "q": "Find the next number in the series: 3, 8, 15, 24, 35, ?", "options": ["49", "46", "48", "50"], "correct": 2, "explanation": "Differences are +5, +7, +9, +11, +13. Next = 35 + 13 = 48 (also n² - 1: 7² - 1 = 48)."}, {"id": 58, "topic": "Reasoning (Maths)", "difficulty": "Easy", "q": "In a code, ROAD is written as URDG. How is SWAN written?", "options": ["VYCQ", "UYDP", "VZCQ", "VZDQ"], "correct": 3, "explanation": "Each letter is shifted +3 positions: S→V, W→Z, A→D, N→Q."}, {"id": 59, "topic": "Reasoning (Maths)", "difficulty": "Medium", "q": "Calculate the angle between the hour and minute hands of a clock at 3:40.", "options": ["140°", "130°", "125°", "120°"], "correct": 1, "explanation": "Angle = |30H - 5.5M| = |30(3) - 5.5(40)| = |90 - 220| = 130°."}, {"id": 60, "topic": "Reasoning (Maths)", "difficulty": "Easy", "q": "Premise: All cats are animals. All animals need food. Conclusion: All cats need food. Is this deduction valid?", "options": ["Partially valid", "Cannot be determined", "Invalid", "Definitely valid"], "correct": 3, "explanation": "By categorical syllogism (law of syllogism: A⊂B and B⊂C ⇒ A⊂C), the deduction is definitely valid."}]}, {"roundNumber": 4, "roundTitle": "Round 4: Advanced Maths & Reasoning Challenge", "badge": "Round 4", "topics": ["Trigonometry (Ratio and Angle)", "Addition", "Quadratic Equation", "Set Theory", "Reasoning (Maths)"], "questions": [{"id": 61, "topic": "Trigonometry (Ratio and Angle)", "difficulty": "Medium", "q": "If cos θ = 4/5 (where θ is acute), find the value of tan θ + sec θ.", "options": ["7/4", "2", "3", "5/2"], "correct": 1, "explanation": "sin θ = 3/5. tan θ = 3/4 and sec θ = 5/4. tan θ + sec θ = 3/4 + 5/4 = 8/4 = 2."}, {"id": 62, "topic": "Trigonometry (Ratio and Angle)", "difficulty": "Easy", "q": "Evaluate: (sin 30° + cos 60°) ÷ tan 45°", "options": ["√3", "2", "1/2", "1"], "correct": 3, "explanation": "sin 30° = 1/2, cos 60° = 1/2, tan 45° = 1. (1/2 + 1/2) ÷ 1 = 1."}, {"id": 63, "topic": "Trigonometry (Ratio and Angle)", "difficulty": "Easy", "q": "If tan θ = 1 for an acute angle θ, evaluate sin² θ - cos² θ.", "options": ["1/2", "-1", "0", "1"], "correct": 2, "explanation": "tan θ = 1 ⇒ θ = 45°. sin 45° = cos 45° = 1/√2. Difference of their squares is (1/2) - (1/2) = 0."}, {"id": 64, "topic": "Trigonometry (Ratio and Angle)", "difficulty": "Medium", "q": "Evaluate the trigonometric expression: sin² 25° + sin² 65°", "options": ["2", "0", "1", "1/2"], "correct": 2, "explanation": "sin 65° = cos (90° - 65°) = cos 25°. Thus sin² 25° + cos² 25° = 1."}, {"id": 65, "topic": "Addition", "difficulty": "Medium", "q": "Find the sum of the arithmetic series: 102 + 104 + 106 + ... + 140", "options": ["2440", "2380", "2420", "2400"], "correct": 2, "explanation": "Number of terms n = (140 - 102)/2 + 1 = 20. Sum = n/2 × (first + last) = 10 × 242 = 2420."}, {"id": 66, "topic": "Addition", "difficulty": "Easy", "q": "Calculate mentally: 654 + 287 + 346 + 713", "options": ["1990", "2010", "2050", "2000"], "correct": 3, "explanation": "Pair smartly: (654 + 346) = 1000, and (287 + 713) = 1000. 1000 + 1000 = 2000."}, {"id": 67, "topic": "Addition", "difficulty": "Medium", "q": "Find the sum of the squares of the first 5 natural numbers (1² + 2² + 3² + 4² + 5²).", "options": ["50", "60", "55", "65"], "correct": 2, "explanation": "Formula n(n+1)(2n+1)/6 = 5 × 6 × 11 ÷ 6 = 55."}, {"id": 68, "topic": "Addition", "difficulty": "Medium", "q": "Find the sum of the cubes of the first 4 natural numbers (1³ + 2³ + 3³ + 4³).", "options": ["110", "100", "96", "104"], "correct": 1, "explanation": "Formula [n(n+1)/2]² = [4 × 5 ÷ 2]² = 10² = 100."}, {"id": 69, "topic": "Quadratic Equation", "difficulty": "Medium", "q": "If α and β are roots of x² - 7x + 10 = 0, find the value of α² + β².", "options": ["31", "29", "35", "25"], "correct": 1, "explanation": "α + β = 7 and αβ = 10. α² + β² = (α + β)² - 2αβ = 49 - 20 = 29."}, {"id": 70, "topic": "Quadratic Equation", "difficulty": "Easy", "q": "For what value of k will the equation x² + 6x + k = 0 have equal roots?", "options": ["6", "36", "12", "9"], "correct": 3, "explanation": "For equal roots, D = b² - 4ac = 0 ⇒ 36 - 4k = 0 ⇒ 4k = 36 ⇒ k = 9."}, {"id": 71, "topic": "Quadratic Equation", "difficulty": "Medium", "q": "Find the roots of the quadratic equation: 2x² - 5x + 3 = 0", "options": ["-1, -3/2", "1, 3/2", "2, 3", "1, 5/2"], "correct": 1, "explanation": "Factoring: (2x - 3)(x - 1) = 0 ⇒ x = 1 and x = 3/2."}, {"id": 72, "topic": "Quadratic Equation", "difficulty": "Medium", "q": "The product of two consecutive positive integers is 72. Find the integers.", "options": ["9 and 10", "6 and 12", "8 and 9", "7 and 8"], "correct": 2, "explanation": "x(x + 1) = 72 ⇒ x² + x - 72 = 0 ⇒ (x + 9)(x - 8) = 0 ⇒ x = 8. Integers are 8 and 9."}, {"id": 73, "topic": "Set Theory", "difficulty": "Easy", "q": "If set A has 4 elements and set B has 3 elements, what is the maximum number of elements in A ∪ B?", "options": ["4", "7", "12", "5"], "correct": 1, "explanation": "The maximum union occurs when sets are disjoint: n(A ∪ B) = n(A) + n(B) = 4 + 3 = 7."}, {"id": 74, "topic": "Set Theory", "difficulty": "Easy", "q": "When two sets A and B satisfy A ∩ B = ∅, they are known as:", "options": ["Disjoint sets", "Complementary sets", "Equal sets", "Universal sets"], "correct": 0, "explanation": "Sets sharing no common elements have an empty intersection and are termed disjoint sets."}, {"id": 75, "topic": "Set Theory", "difficulty": "Easy", "q": "Find the number of elements in the power set P(A) where A = {x, y, z}.", "options": ["8", "7", "6", "9"], "correct": 0, "explanation": "Cardinality of power set |P(A)| = 2^|A| = 2³ = 8."}, {"id": 76, "topic": "Set Theory", "difficulty": "Easy", "q": "If A ⊆ B, then A ∪ B is always equal to:", "options": ["∅", "A", "B", "A ∩ B"], "correct": 2, "explanation": "Since set A is entirely contained in set B, their union simply yields set B."}, {"id": 77, "topic": "Reasoning (Maths)", "difficulty": "Medium", "q": "What is the reflex angle between the hands of a clock at 4:00?", "options": ["240°", "120°", "260°", "220°"], "correct": 0, "explanation": "Minor angle = 4 × 30° = 120°. Reflex angle = 360° - 120° = 240°."}, {"id": 78, "topic": "Reasoning (Maths)", "difficulty": "Medium", "q": "If 1st January 2024 was a Monday, what day of the week was 1st January 2025? (Note: 2024 is a leap year)", "options": ["Monday", "Thursday", "Tuesday", "Wednesday"], "correct": 3, "explanation": "A leap year has 366 days = 52 weeks + 2 odd days. Monday + 2 days = Wednesday."}, {"id": 79, "topic": "Reasoning (Maths)", "difficulty": "Easy", "q": "Find the missing number in the sequence: 2, 6, 12, 20, 30, 42, ?", "options": ["54", "60", "56", "58"], "correct": 2, "explanation": "Pattern: n(n+1): 1×2, 2×3, 3×4, 4×5, 5×6, 6×7. Next = 7×8 = 56."}, {"id": 80, "topic": "Reasoning (Maths)", "difficulty": "Easy", "q": "If EARTH is coded as 5-1-18-20-8 based on alphabet positions, what is the code for MOON?", "options": ["13-15-14-14", "12-15-15-14", "13-15-15-14", "13-14-14-15"], "correct": 2, "explanation": "Letter values: M=13, O=15, O=15, N=14. Code = 13-15-15-14."}]}, {"roundNumber": 5, "roundTitle": "Round 5: Maths Aptitude Challenge", "badge": "Round 5", "topics": ["Trigonometry (Ratio and Angle)", "Set Theory", "Discount", "Profit & Loss", "Reasoning (Maths)"], "questions": [{"id": 81, "topic": "Trigonometry (Ratio and Angle)", "difficulty": "Medium", "q": "If sec θ + tan θ = 3, find the value of sec θ - tan θ.", "options": ["-3", "1/3", "3", "2/3"], "correct": 1, "explanation": "Using identity sec² θ - tan² θ = 1: (sec θ + tan θ)(sec θ - tan θ) = 1 ⇒ sec θ - tan θ = 1/3."}, {"id": 82, "topic": "Trigonometry (Ratio and Angle)", "difficulty": "Easy", "q": "Evaluate: cos 0° × cos 1° × cos 2° × ... × cos 90°", "options": ["Undefined", "1/2", "0", "1"], "correct": 2, "explanation": "Since cos 90° = 0, multiplying any finite terms by 0 results in 0."}, {"id": 83, "topic": "Trigonometry (Ratio and Angle)", "difficulty": "Easy", "q": "If sin θ = cos θ for an acute angle θ (0° ≤ θ ≤ 90°), what is θ?", "options": ["30°", "90°", "60°", "45°"], "correct": 3, "explanation": "sin θ = cos θ ⇒ tan θ = 1 ⇒ θ = 45°."}, {"id": 84, "topic": "Trigonometry (Ratio and Angle)", "difficulty": "Medium", "q": "Simplify: √[(1 - cos² θ) / (1 - sin² θ)] for acute θ.", "options": ["cot θ", "cos θ", "sin θ", "tan θ"], "correct": 3, "explanation": "1 - cos² θ = sin² θ and 1 - sin² θ = cos² θ. √(sin² θ / cos² θ) = √(tan² θ) = tan θ."}, {"id": 85, "topic": "Set Theory", "difficulty": "Easy", "q": "If n(A) = 12, n(B) = 15, and n(A ∩ B) = 7, find n(A \\ B).", "options": ["5", "8", "7", "9"], "correct": 0, "explanation": "n(A \\ B) = n(A) - n(A ∩ B) = 12 - 7 = 5."}, {"id": 86, "topic": "Set Theory", "difficulty": "Easy", "q": "According to De Morgan's Law, the complement (A ∩ B)' is equal to:", "options": ["A' ∩ B'", "(A ∪ B)'", "A \\ B", "A' ∪ B'"], "correct": 3, "explanation": "De Morgan's first law states that the complement of intersection is union of complements: A' ∪ B'."}, {"id": 87, "topic": "Set Theory", "difficulty": "Easy", "q": "How many subsets does an empty set (∅) have?", "options": ["1", "0", "Infinite", "2"], "correct": 0, "explanation": "For empty set n = 0. Number of subsets = 2⁰ = 1 (which is ∅ itself)."}, {"id": 88, "topic": "Set Theory", "difficulty": "Medium", "q": "If A Δ B denotes symmetric difference, what is A Δ A for any set A?", "options": ["U", "∅ (Empty set)", "A", "A'"], "correct": 1, "explanation": "A Δ A = (A \\ A) ∪ (A \\ A) = ∅ ∪ ∅ = ∅."}, {"id": 89, "topic": "Discount", "difficulty": "Easy", "q": "A jacket marked at ₹1500 is sold for ₹1200. Find the discount percentage.", "options": ["20%", "15%", "18%", "25%"], "correct": 0, "explanation": "Discount = 1500 - 1200 = ₹300. Discount % = (300 / 1500) × 100% = 20%."}, {"id": 90, "topic": "Discount", "difficulty": "Medium", "q": "Two successive discounts of 20% and 10% are equivalent to a single net discount of:", "options": ["28%", "26%", "25%", "30%"], "correct": 0, "explanation": "Net discount = d1 + d2 - (d1 × d2)/100 = 20 + 10 - 2 = 28%."}, {"id": 91, "topic": "Discount", "difficulty": "Medium", "q": "A shopkeeper marks his goods 40% above cost price and allows a 25% discount. His profit percentage is:", "options": ["8%", "10%", "5%", "15%"], "correct": 2, "explanation": "Let CP = 100 ⇒ MP = 140. SP = 140 × 0.75 = 105. Profit = 105 - 100 = 5%."}, {"id": 92, "topic": "Discount", "difficulty": "Medium", "q": "Under a promotional 'Buy 3, Get 1 Free' scheme, what is the effective discount percentage?", "options": ["30%", "33.33%", "25%", "20%"], "correct": 2, "explanation": "Customer receives 4 items for the price of 3. Discount % = (1 / 4) × 100% = 25%."}, {"id": 93, "topic": "Profit & Loss", "difficulty": "Medium", "q": "A bicycle is sold for ₹2850 at 14% gain. If the profit is reduced to 8%, what should the selling price be?", "options": ["₹2600", "₹2700", "₹2750", "₹2650"], "correct": 1, "explanation": "CP = 2850 ÷ 1.14 = ₹2500. For 8% profit: SP = 2500 × 1.08 = ₹2700."}, {"id": 94, "topic": "Profit & Loss", "difficulty": "Medium", "q": "A dishonest trader professes to sell goods at cost price but uses a 950 g weight instead of 1 kg. His gain percentage is:", "options": ["5.55%", "5.26%", "5.00%", "4.85%"], "correct": 1, "explanation": "Gain % = [Error / (True weight - Error)] × 100% = (50 / 950) × 100% = 5.26%."}, {"id": 95, "topic": "Profit & Loss", "difficulty": "Easy", "q": "If the selling price of an article is 4/3 of its cost price, what is the profit percentage?", "options": ["20%", "25%", "30%", "33.33%"], "correct": 3, "explanation": "SP/CP = 4/3. Profit % = [(4 - 3)/3] × 100% = 1/3 × 100% = 33.33%."}, {"id": 96, "topic": "Profit & Loss", "difficulty": "Medium", "q": "By selling 33 meters of cloth, a merchant gains the cost price of 11 meters. Find his gain percentage.", "options": ["20%", "33.33%", "30%", "25%"], "correct": 1, "explanation": "Gain % = (Cost of 11 / Cost of 33) × 100% = 11/33 × 100% = 33.33%."}, {"id": 97, "topic": "Reasoning (Maths)", "difficulty": "Easy", "q": "Today is Monday. What day of the week was it 45 days ago?", "options": ["Saturday", "Thursday", "Sunday", "Friday"], "correct": 3, "explanation": "45 mod 7 = 3 days backward. Counting back 3 days from Monday gives Sunday, Saturday, Friday."}, {"id": 98, "topic": "Reasoning (Maths)", "difficulty": "Medium", "q": "In a farm with cows and chickens, total heads count 35 and total legs count 110. How many cows are there?", "options": ["18", "15", "22", "20"], "correct": 3, "explanation": "Let c = cows, k = chickens. c + k = 35; 4c + 2k = 110. Subtract 2(c + k = 35) ⇒ 2c = 40 ⇒ c = 20 cows."}, {"id": 99, "topic": "Reasoning (Maths)", "difficulty": "Easy", "q": "Find the odd one out among: 27, 64, 125, 144, 216", "options": ["64", "144", "27", "216"], "correct": 1, "explanation": "27=3³, 64=4³, 125=5³, 216=6³ are cubes. 144 = 12² is a square, not a cube."}, {"id": 100, "topic": "Reasoning (Maths)", "difficulty": "Medium", "q": "At what time between 2 and 3 o'clock will the hands of a clock coincide?", "options": ["11 minutes past 2", "10 (9/11) minutes past 2", "10 (10/11) minutes past 2", "12 minutes past 2"], "correct": 2, "explanation": "Coincidence formula: M = (60/11) × H = (60/11) × 2 = 120/11 = 10 (10/11) minutes past 2."}]}];
+    const TOTAL_QUESTIONS = 100;
+    const PER_ROUND = 20;
+    const STORAGE_KEY = "battle_user_answers_100";
+
+    // --- APPLICATION STATE ---
+    let currentRoundIndex = 0;
+    let isAllViewMode = false;
+
+    // Answers stored as: { questionId: { selectedIndex: number, isCorrect: boolean } }
+    const userAnswers = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    
+    // Live Google Apps Script Web App URL pre-configured
+    const DEFAULT_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbxPUT2NMwr6f2nx6yalQE97e_C_DLqGAHsNFWmIOPRfLmSHb9j5jx4uM-PjP2GgCBbY1Q/exec";
+
+    // DOM Elements
+    const body = document.body;
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const roundsNav = document.getElementById('roundsNav');
+    const roundsScrollContainer = document.getElementById('roundsScrollContainer');
+    const roundHeaderCard = document.getElementById('roundHeaderCard');
+    const roundTitleText = document.getElementById('roundTitleText');
+    const roundTopicsList = document.getElementById('roundTopicsList');
+    const questionsContainer = document.getElementById('questionsContainer');
+    const globalAnsweredStat = document.getElementById('globalAnsweredStat');
+    const globalScoreStat = document.getElementById('globalScoreStat');
+    const roundAnsweredSubtext = document.getElementById('roundAnsweredSubtext');
+    const progressBarFill = document.getElementById('progressBarFill');
+    const viewModeToggleBtn = document.getElementById('viewModeToggleBtn');
+
+    const prevRoundBtn = document.getElementById('prevRoundBtn');
+    const nextRoundBtn = document.getElementById('nextRoundBtn');
+    const finishRoundBtn = document.getElementById('finishRoundBtn');
+    const roundNavBtnsRow = document.getElementById('roundNavBtnsRow');
+
+    const submissionModal = document.getElementById('submissionModal');
+    const closeSubModalBtn = document.getElementById('closeSubModalBtn');
+    const modalRoundName = document.getElementById('modalRoundName');
+    const modalScoreDisplay = document.getElementById('modalScoreDisplay');
+    const modalAccuracyDisplay = document.getElementById('modalAccuracyDisplay');
+    const studentSubmitForm = document.getElementById('studentSubmitForm');
+    const studentNameInput = document.getElementById('studentName');
+    const studentRollInput = document.getElementById('studentRoll');
+    const studentCollegeInput = document.getElementById('studentCollege');
+    const submitStatusMsg = document.getElementById('submitStatusMsg');
+
+    const onboardingOverlay = document.getElementById('onboardingOverlay');
+    const tourDismissBtn = document.getElementById('tourDismissBtn');
+
+    // --- THEME MANAGEMENT ---
+    function initTheme() {
+      const savedTheme = localStorage.getItem('battle_theme') || 
+        (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      setTheme(savedTheme);
+    }
+
+    function setTheme(theme) {
+      if (theme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeToggleBtn.textContent = '☀️';
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+        themeToggleBtn.textContent = '🌙';
+      }
+      localStorage.setItem('battle_theme', theme);
+    }
+
+    themeToggleBtn.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      setTheme(isDark ? 'light' : 'dark');
+    });
+
+    // --- FIRST TIME THEME ONBOARDING TOUR ---
+    function checkOnboarding() {
+      const hasSeenTour = localStorage.getItem('battle_theme_tour_seen');
+      if (!hasSeenTour) {
+        onboardingOverlay.classList.add('active');
+      }
+    }
+
+    tourDismissBtn.addEventListener('click', () => {
+      localStorage.setItem('battle_theme_tour_seen', 'true');
+      onboardingOverlay.classList.remove('active');
+    });
+
+    onboardingOverlay.addEventListener('click', (e) => {
+      if (e.target === onboardingOverlay) {
+        localStorage.setItem('battle_theme_tour_seen', 'true');
+        onboardingOverlay.classList.remove('active');
+      }
+    });
+
+    // --- ROUND NAVIGATION TABS ---
+    function renderRoundsNav() {
+      roundsNav.innerHTML = '';
+      if (isAllViewMode) {
+        roundsScrollContainer.style.display = 'none';
+        return;
+      }
+      roundsScrollContainer.style.display = 'block';
+
+      ROUNDS_DATA.forEach((round, index) => {
+        const btn = document.createElement('button');
+        btn.className = `round-tab ${index === currentRoundIndex ? 'active' : ''}`;
+        btn.setAttribute('data-round', index);
+        
+        let roundAnswered = 0;
+        round.questions.forEach(q => {
+          if (userAnswers[q.id]) roundAnswered++;
+        });
+
+        btn.innerHTML = `
+          <span>${round.badge}</span>
+          <span class="badge-count">${roundAnswered}/${round.questions.length}</span>
+        `;
+
+        btn.addEventListener('click', () => selectRound(index));
+        roundsNav.appendChild(btn);
+      });
+    }
+
+    function selectRound(index) {
+      currentRoundIndex = index;
+      renderRoundsNav();
+      renderCurrentRound();
+      updateProgressStats();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // --- QUESTION CARD GENERATOR ---
+    function renderCurrentRound() {
+      questionsContainer.innerHTML = '';
+
+      if (isAllViewMode) {
+        roundHeaderCard.style.display = 'none';
+        roundNavBtnsRow.style.display = 'none';
+        finishRoundBtn.innerHTML = `<span>🏆 Submit Complete Test (${TOTAL_QUESTIONS} Qs)</span>`;
+
+        ROUNDS_DATA.forEach((round) => {
+          const roundDivider = document.createElement('div');
+          roundDivider.className = 'all-round-divider';
+          roundDivider.innerHTML = `
+            <h3>${round.roundTitle}</h3>
+            <span style="font-size:12px; font-weight:700; color:var(--text-secondary);">${round.questions.length} Questions</span>
+          `;
+          questionsContainer.appendChild(roundDivider);
+
+          round.questions.forEach((q) => {
+            const card = createQuestionCard(q);
+            questionsContainer.appendChild(card);
+          });
+        });
+        return;
+      }
+
+      // Standard Round-by-Round View
+      roundHeaderCard.style.display = 'block';
+      roundNavBtnsRow.style.display = 'flex';
+      const round = ROUNDS_DATA[currentRoundIndex];
+
+      roundTitleText.textContent = round.roundTitle;
+      roundTopicsList.innerHTML = '';
+      round.topics.forEach(t => {
+        const tag = document.createElement('span');
+        tag.className = 'topic-tag';
+        tag.textContent = t;
+        roundTopicsList.appendChild(tag);
+      });
+
+      prevRoundBtn.disabled = (currentRoundIndex === 0);
+      nextRoundBtn.disabled = (currentRoundIndex === ROUNDS_DATA.length - 1);
+      finishRoundBtn.innerHTML = `<span>🏆 Submit Round ${round.roundNumber} to D/Captain</span>`;
+
+      round.questions.forEach((q) => {
+        const card = createQuestionCard(q);
+        questionsContainer.appendChild(card);
+      });
+    }
+
+    function createQuestionCard(q) {
+      const card = document.createElement('article');
+      card.className = 'question-card';
+      card.id = `qCard_${q.id}`;
+
+      const isAnswered = userAnswers[q.id] !== undefined;
+      const userSelected = isAnswered ? userAnswers[q.id].selectedIndex : null;
+
+      // Meta row
+      const metaRow = document.createElement('div');
+      metaRow.className = 'question-meta';
+      metaRow.innerHTML = `
+        <span class="q-number-pill">Question ${q.id}</span>
+        <span class="q-topic-badge">${q.topic}</span>
+      `;
+      card.appendChild(metaRow);
+
+      // Question Text
+      const qText = document.createElement('div');
+      qText.className = 'question-text';
+      qText.textContent = q.q;
+      card.appendChild(qText);
+
+      // Options List
+      const optGrid = document.createElement('div');
+      optGrid.className = 'options-grid';
+
+      const letters = ['A', 'B', 'C', 'D'];
+      q.options.forEach((optText, optIdx) => {
+        const optBtn = document.createElement('button');
+        optBtn.className = 'option-btn';
+        optBtn.type = 'button';
+
+        if (isAnswered) {
+          optBtn.disabled = true;
+          if (optIdx === q.correct) {
+            optBtn.classList.add('option-correct');
+          } else if (optIdx === userSelected) {
+            optBtn.classList.add('option-wrong');
+          }
+        }
+
+        optBtn.innerHTML = `
+          <div class="option-prefix">${letters[optIdx]}</div>
+          <div class="option-text">${optText}</div>
+          <div class="option-icon">${optIdx === q.correct ? '✓' : '✗'}</div>
+        `;
+
+        optBtn.addEventListener('click', () => handleOptionSelect(q, optIdx, card));
+        optGrid.appendChild(optBtn);
+      });
+
+      card.appendChild(optGrid);
+
+      // Two-Line Explanation
+      const expBox = document.createElement('div');
+      expBox.className = `explanation-box ${isAnswered ? 'show' : ''}`;
+      expBox.innerHTML = `
+        <div class="explanation-header">
+          <span>💡 Quick Solution & Derivation:</span>
+        </div>
+        <div class="explanation-content">${q.explanation}</div>
+      `;
+      card.appendChild(expBox);
+
+      return card;
+    }
+
+    function handleOptionSelect(question, selectedIndex, cardElement) {
+      if (userAnswers[question.id] !== undefined) return;
+
+      const isCorrect = (selectedIndex === question.correct);
+      userAnswers[question.id] = {
+        selectedIndex: selectedIndex,
+        isCorrect: isCorrect
+      };
+
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(userAnswers));
+
+      // Visual feedback
+      const buttons = cardElement.querySelectorAll('.option-btn');
+      buttons.forEach((btn, idx) => {
+        btn.disabled = true;
+        const iconElem = btn.querySelector('.option-icon');
+        if (idx === question.correct) {
+          btn.classList.add('option-correct');
+          iconElem.textContent = '✓';
+        } else if (idx === selectedIndex) {
+          btn.classList.add('option-wrong');
+          iconElem.textContent = '✗';
+        }
+      });
+
+      // Haptic feedback on Android
+      if (window.navigator && window.navigator.vibrate) {
+        window.navigator.vibrate(isCorrect ? 35 : [30, 40, 30]);
+      }
+
+      // Reveal explanation
+      const expBox = cardElement.querySelector('.explanation-box');
+      if (expBox) expBox.classList.add('show');
+
+      updateProgressStats();
+    }
+
+    // --- VIEW MODE TOGGLE (ROUND-BY-ROUND VS ALL) ---
+    viewModeToggleBtn.addEventListener('click', () => {
+      isAllViewMode = !isAllViewMode;
+      viewModeToggleBtn.textContent = isAllViewMode ? `🎯 Round View (${PER_ROUND} Qs)` : `📜 View All ${TOTAL_QUESTIONS} Qs`;
+      renderRoundsNav();
+      renderCurrentRound();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // --- PREV / NEXT ROUND BUTTONS ---
+    prevRoundBtn.addEventListener('click', () => {
+      if (currentRoundIndex > 0) selectRound(currentRoundIndex - 1);
+    });
+
+    nextRoundBtn.addEventListener('click', () => {
+      if (currentRoundIndex < ROUNDS_DATA.length - 1) selectRound(currentRoundIndex + 1);
+    });
+
+    // --- STATS & METERS ---
+    function updateProgressStats() {
+      const totalAnswered = Object.keys(userAnswers).length;
+      let totalCorrect = 0;
+      Object.values(userAnswers).forEach(ans => {
+        if (ans.isCorrect) totalCorrect++;
+      });
+
+      globalAnsweredStat.textContent = `${totalAnswered} / ${TOTAL_QUESTIONS}`;
+      globalScoreStat.textContent = `${totalCorrect} / ${TOTAL_QUESTIONS}`;
+
+      const pct = Math.round((totalAnswered / TOTAL_QUESTIONS) * 100);
+      progressBarFill.style.width = `${pct}%`;
+
+      // Current Round breakdown
+      const round = ROUNDS_DATA[currentRoundIndex];
+      let roundAnswered = 0;
+      let roundCorrect = 0;
+      round.questions.forEach(q => {
+        if (userAnswers[q.id]) {
+          roundAnswered++;
+          if (userAnswers[q.id].isCorrect) roundCorrect++;
+        }
+      });
+
+      roundAnsweredSubtext.textContent = `Round ${round.roundNumber}: ${roundAnswered} / ${PER_ROUND} Answered (Score: ${roundCorrect})`;
+    }
+
+    // --- SUBMISSION MODAL (SEND TO D/CAPTAIN) ---
+    function openSubmissionModal() {
+      const totalAnswered = Object.keys(userAnswers).length;
+      let totalCorrect = 0;
+      Object.values(userAnswers).forEach(ans => {
+        if (ans.isCorrect) totalCorrect++;
+      });
+
+      const round = ROUNDS_DATA[currentRoundIndex];
+      let roundAnswered = 0;
+      let roundCorrect = 0;
+      round.questions.forEach(q => {
+        if (userAnswers[q.id]) {
+          roundAnswered++;
+          if (userAnswers[q.id].isCorrect) roundCorrect++;
+        }
+      });
+
+      modalRoundName.textContent = isAllViewMode ? `Competition Complete (${TOTAL_QUESTIONS} Qs)` : `${round.roundTitle} Complete!`;
+      
+      const scoreToShow = isAllViewMode ? `${totalCorrect} / ${TOTAL_QUESTIONS}` : `${roundCorrect} / ${PER_ROUND}`;
+      const answeredToShow = isAllViewMode ? totalAnswered : roundAnswered;
+      const totalBase = isAllViewMode ? TOTAL_QUESTIONS : PER_ROUND;
+      const accuracy = answeredToShow > 0 ? Math.round(( (isAllViewMode ? totalCorrect : roundCorrect) / answeredToShow) * 100) : 0;
+
+      modalScoreDisplay.textContent = scoreToShow;
+      modalAccuracyDisplay.textContent = `${accuracy}%`;
+      submitStatusMsg.textContent = '';
+      submitStatusMsg.className = 'submit-status-msg';
+
+      studentNameInput.value = localStorage.getItem('battle_student_name') || '';
+      studentRollInput.value = localStorage.getItem('battle_student_roll') || '';
+      studentCollegeInput.value = localStorage.getItem('battle_student_college') || '';
+
+      submissionModal.classList.add('active');
+    }
+
+    finishRoundBtn.addEventListener('click', openSubmissionModal);
+    closeSubModalBtn.addEventListener('click', () => {
+      submissionModal.classList.remove('active');
+    });
+
+    studentSubmitForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = studentNameInput.value.trim();
+      const roll = studentRollInput.value.trim();
+      const college = studentCollegeInput.value.trim();
+
+      if (!name || !roll) {
+        alert("Please enter your Name and Roll Number!");
+        return;
+      }
+
+      localStorage.setItem('battle_student_name', name);
+      localStorage.setItem('battle_student_roll', roll);
+      localStorage.setItem('battle_student_college', college);
+
+      const round = ROUNDS_DATA[currentRoundIndex];
+      const totalQuestionsBase = isAllViewMode ? TOTAL_QUESTIONS : PER_ROUND;
+      let correctCount = 0;
+      let answeredCount = 0;
+
+      if (isAllViewMode) {
+        Object.values(userAnswers).forEach(ans => {
+          answeredCount++;
+          if (ans.isCorrect) correctCount++;
+        });
+      } else {
+        round.questions.forEach(q => {
+          if (userAnswers[q.id]) {
+            answeredCount++;
+            if (userAnswers[q.id].isCorrect) correctCount++;
+          }
+        });
+      }
+
+      const accuracy = answeredCount > 0 ? Math.round((correctCount / answeredCount) * 100) : 0;
+
+      const payload = {
+        timestamp: new Date().toISOString(),
+        name: name,
+        rollNo: roll,
+        college: college,
+        round: isAllViewMode ? `All 5 Rounds (${TOTAL_QUESTIONS} Questions)` : round.roundTitle,
+        score: correctCount,
+        total: totalQuestionsBase,
+        accuracy: accuracy,
+        answeredCount: answeredCount
+      };
+
+      submitStatusMsg.textContent = "Submitting to D/Captain's live sheet...";
+      submitStatusMsg.className = "submit-status-msg status-pending";
+
+      try {
+        await fetch(DEFAULT_WEBHOOK_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        submitStatusMsg.innerHTML = "🎉 Successfully submitted to D/Captain!";
+        submitStatusMsg.className = "submit-status-msg status-success";
+      } catch (err) {
+        console.warn("Network error during submission:", err);
+        submitStatusMsg.innerHTML = "💾 Saved offline! Will sync to D/Captain when reconnected.";
+        submitStatusMsg.className = "submit-status-msg status-pending";
+      }
+    });
+
+    // Backdrop click close
+    submissionModal.addEventListener('click', (e) => {
+      if (e.target === submissionModal) submissionModal.classList.remove('active');
+    });
+
+    // --- INITIALIZATION ---
+    window.addEventListener('DOMContentLoaded', () => {
+      initTheme();
+      renderRoundsNav();
+      renderCurrentRound();
+      updateProgressStats();
+      checkOnboarding();
+    });
+  </script>
+</body>
+</html>

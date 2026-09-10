@@ -1,0 +1,1597 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+  <meta name="theme-color" content="#4f46e5">
+  <title>Master Formula & Study Notes | The Mathematicians' Battle 2026</title>
+  <link rel="icon" type="image/png" href="../images/logo.png">
+  <style>
+    :root {
+      --bg-primary: #f8fafc;
+      --bg-secondary: #ffffff;
+      --bg-card: #ffffff;
+      --bg-code: #f1f5f9;
+      --text-primary: #0f172a;
+      --text-secondary: #334155;
+      --text-muted: #64748b;
+      --border-color: #e2e8f0;
+      --border-focus: #6366f1;
+      --accent-color: #4f46e5;
+      --accent-hover: #4338ca;
+      --accent-light: rgba(79, 70, 229, 0.08);
+      --accent-gradient: linear-gradient(135deg, #4f46e5 0%, #06b6d4 100%);
+      
+      --success-bg: #ecfdf5;
+      --success-border: #10b981;
+      --success-text: #065f46;
+      
+      --warning-bg: #fffbeb;
+      --warning-border: #f59e0b;
+      --warning-text: #92400e;
+      
+      --example-bg: #f8fafc;
+      --example-border: #cbd5e1;
+      
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.06);
+      --shadow-md: 0 4px 14px rgba(0,0,0,0.08);
+      --shadow-lg: 0 10px 25px rgba(0,0,0,0.12);
+      --radius-lg: 16px;
+      --radius-md: 12px;
+    }
+
+    [data-theme="dark"] {
+      --bg-primary: #0b0f19;
+      --bg-secondary: #111827;
+      --bg-card: #1e293b;
+      --bg-code: #0f172a;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --text-muted: #94a3b8;
+      --border-color: #334155;
+      --border-focus: #818cf8;
+      --accent-color: #6366f1;
+      --accent-hover: #818cf8;
+      --accent-light: rgba(99, 102, 241, 0.15);
+      --accent-gradient: linear-gradient(135deg, #6366f1 0%, #38bdf8 100%);
+      
+      --success-bg: rgba(16, 185, 129, 0.15);
+      --success-border: #10b981;
+      --success-text: #6ee7b7;
+      
+      --warning-bg: rgba(245, 158, 11, 0.15);
+      --warning-border: #f59e0b;
+      --warning-text: #fcd34d;
+      
+      --example-bg: #162032;
+      --example-border: #334155;
+      
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
+      --shadow-md: 0 4px 14px rgba(0,0,0,0.5);
+      --shadow-lg: 0 10px 30px rgba(0,0,0,0.7);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.65;
+      transition: background-color 0.25s ease, color 0.25s ease;
+      padding-bottom: 80px;
+    }
+
+    /* Top Sticky App Header */
+    .app-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(12px);
+    }
+
+    .header-content {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .logo-area a {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      color: inherit;
+    }
+
+    .logo-icon {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      background: var(--accent-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 22px;
+      font-weight: bold;
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.35);
+      flex-shrink: 0;
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-title {
+      font-size: 16px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      color: var(--text-primary);
+      line-height: 1.2;
+    }
+
+    .logo-subtitle {
+      font-size: 11.5px;
+      color: var(--accent-color);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .portal-back-btn {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 9px 14px;
+      border-radius: 12px;
+      border: 1.5px solid var(--border-color);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 700;
+      transition: all 0.2s ease;
+    }
+
+    .portal-back-btn:hover {
+      border-color: var(--accent-color);
+      color: var(--accent-color);
+    }
+
+    .theme-toggle-btn {
+      width: 44px;
+      height: 44px;
+      border-radius: 12px;
+      border: 1.5px solid var(--border-color);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 19px;
+      transition: all 0.2s ease;
+    }
+
+    /* Hero Banner */
+    .hero-banner {
+      background: var(--accent-gradient);
+      color: #ffffff;
+      padding: 24px 18px;
+      text-align: center;
+      box-shadow: 0 4px 16px rgba(79, 70, 229, 0.25);
+    }
+
+    .hero-badge {
+      display: inline-block;
+      padding: 4px 12px;
+      border-radius: 20px;
+      background: rgba(255, 255, 255, 0.2);
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-bottom: 8px;
+    }
+
+    .hero-title {
+      font-size: 24px;
+      font-weight: 900;
+      margin-bottom: 6px;
+      letter-spacing: -0.4px;
+    }
+
+    .hero-desc {
+      font-size: 14px;
+      opacity: 0.95;
+      max-width: 640px;
+      margin: 0 auto;
+      line-height: 1.5;
+    }
+
+    /* Search & Live Filter Bar */
+    .filter-wrapper {
+      max-width: 860px;
+      width: 100%;
+      margin: 16px auto 8px auto;
+      padding: 0 16px;
+    }
+
+    .search-box {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .search-input {
+      width: 100%;
+      padding: 14px 16px 14px 44px;
+      border-radius: 14px;
+      border: 1.5px solid var(--border-color);
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      font-size: 15px;
+      outline: none;
+      box-shadow: var(--shadow-sm);
+      transition: border-color 0.2s ease;
+    }
+
+    .search-input:focus {
+      border-color: var(--border-focus);
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 15px;
+      font-size: 17px;
+      color: var(--text-muted);
+      pointer-events: none;
+    }
+
+    /* Category Jump Chips (Mobile Friendly Scrolling) */
+    .chips-scroll-wrap {
+      max-width: 860px;
+      margin: 10px auto 6px auto;
+      padding: 0 16px;
+      width: 100%;
+      overflow-x: auto;
+      scrollbar-width: none;
+    }
+
+    .chips-scroll-wrap::-webkit-scrollbar {
+      display: none;
+    }
+
+    .chips-container {
+      display: flex;
+      gap: 8px;
+      width: max-content;
+    }
+
+    .topic-chip {
+      padding: 8px 14px;
+      border-radius: 20px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-secondary);
+      color: var(--text-secondary);
+      font-size: 12.5px;
+      font-weight: 700;
+      white-space: nowrap;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+    }
+
+    .topic-chip:hover, .topic-chip.active {
+      background: var(--accent-color);
+      color: #ffffff;
+      border-color: var(--accent-color);
+    }
+
+    /* Main Container */
+    .main-container {
+      max-width: 860px;
+      width: 100%;
+      margin: 14px auto;
+      padding: 0 16px;
+      flex: 1;
+    }
+
+    .controls-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+    }
+
+    .section-counter {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text-secondary);
+    }
+
+    .toggle-all-btn {
+      padding: 6px 14px;
+      border-radius: 10px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-secondary);
+      color: var(--accent-color);
+      font-size: 12.5px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .toggle-all-btn:hover {
+      background: var(--accent-light);
+    }
+
+    /* Chapter Card (Accordion) */
+    .chapter-card {
+      background: var(--bg-card);
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-lg);
+      margin-bottom: 22px;
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      transition: border-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .chapter-card:hover {
+      box-shadow: var(--shadow-md);
+    }
+
+    .chapter-header {
+      padding: 18px 20px;
+      background: var(--bg-secondary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      user-select: none;
+      border-bottom: 1.5px solid transparent;
+      transition: background-color 0.2s ease;
+    }
+
+    .chapter-card.open .chapter-header {
+      border-bottom-color: var(--border-color);
+    }
+
+    .chapter-title-wrap {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .chapter-badge {
+      width: 38px;
+      height: 38px;
+      border-radius: 12px;
+      background: var(--accent-light);
+      color: var(--accent-color);
+      font-weight: 800;
+      font-size: 16px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+
+    .chapter-title {
+      font-size: 18px;
+      font-weight: 800;
+      color: var(--text-primary);
+      letter-spacing: -0.2px;
+    }
+
+    .chapter-subtopics {
+      font-size: 12px;
+      color: var(--text-muted);
+      font-weight: 600;
+      display: block;
+      margin-top: 2px;
+    }
+
+    .accordion-arrow {
+      font-size: 14px;
+      color: var(--text-secondary);
+      transition: transform 0.25s ease;
+    }
+
+    .chapter-card.open .accordion-arrow {
+      transform: rotate(180deg);
+    }
+
+    .chapter-body {
+      display: none;
+      padding: 22px 20px;
+    }
+
+    .chapter-card.open .chapter-body {
+      display: block;
+    }
+
+    /* Core Concept Overview Box */
+    .concept-callout {
+      background: var(--bg-primary);
+      border-left: 4px solid var(--accent-color);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      margin-bottom: 18px;
+      font-size: 14px;
+      color: var(--text-secondary);
+      line-height: 1.6;
+    }
+
+    .concept-callout strong {
+      color: var(--text-primary);
+    }
+
+    /* Section Subheadings */
+    .formula-section-title {
+      font-size: 14px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.7px;
+      color: var(--accent-color);
+      margin: 22px 0 12px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .formula-section-title:first-child {
+      margin-top: 0;
+    }
+
+    /* Formula Highlight Box */
+    .formula-box {
+      background: var(--bg-code);
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 14px 16px;
+      margin-bottom: 14px;
+    }
+
+    .formula-name {
+      font-size: 13.5px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .copy-btn {
+      background: transparent;
+      border: 1px solid var(--border-color);
+      background: var(--bg-card);
+      color: var(--accent-color);
+      font-size: 11.5px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      padding: 4px 9px;
+      border-radius: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .copy-btn:hover {
+      background: var(--accent-light);
+      border-color: var(--accent-color);
+    }
+
+    .formula-math {
+      font-family: "Courier New", Courier, monospace, sans-serif;
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+      letter-spacing: 0.3px;
+      word-break: break-word;
+      background: var(--bg-card);
+      padding: 10px 12px;
+      border-radius: 8px;
+      border: 1px dashed var(--border-color);
+    }
+
+    .formula-note {
+      font-size: 13px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+    }
+
+    /* Worked Example Box ("Watch It in Action") */
+    .worked-example-card {
+      background: var(--example-bg);
+      border: 1.5px solid var(--example-border);
+      border-radius: var(--radius-md);
+      padding: 15px 16px;
+      margin: 14px 0 18px 0;
+    }
+
+    .worked-example-header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 12.5px;
+      font-weight: 800;
+      color: var(--success-border);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 6px;
+    }
+
+    .worked-example-q {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--text-primary);
+      margin-bottom: 8px;
+    }
+
+    .worked-example-steps {
+      font-size: 13.5px;
+      color: var(--text-secondary);
+      line-height: 1.55;
+      background: var(--bg-card);
+      padding: 10px 12px;
+      border-radius: 8px;
+      border-left: 3px solid var(--success-border);
+    }
+
+    /* Common Traps / Pitfalls Box */
+    .pitfall-box {
+      background: var(--warning-bg);
+      border: 1.5px solid var(--warning-border);
+      border-radius: var(--radius-md);
+      padding: 12px 15px;
+      margin: 14px 0;
+      font-size: 13px;
+      color: var(--warning-text);
+      line-height: 1.5;
+    }
+
+    .pitfall-title {
+      font-weight: 800;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 4px;
+      text-transform: uppercase;
+      font-size: 11.5px;
+      letter-spacing: 0.5px;
+    }
+
+    /* High DPI SVG Illustration Cards */
+    .svg-diagram-card {
+      background: var(--bg-secondary);
+      border: 1.5px solid var(--border-color);
+      border-radius: var(--radius-md);
+      padding: 16px;
+      margin: 16px 0;
+      text-align: center;
+    }
+
+    .svg-diagram-title {
+      font-size: 12.5px;
+      font-weight: 800;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+      margin-bottom: 12px;
+    }
+
+    .svg-container {
+      width: 100%;
+      max-width: 520px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: center;
+    }
+
+    .svg-container svg {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    /* Tables */
+    .table-container {
+      width: 100%;
+      overflow-x: auto;
+      margin: 14px 0;
+      border-radius: var(--radius-md);
+      border: 1.5px solid var(--border-color);
+    }
+
+    .custom-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      text-align: center;
+      min-width: 320px;
+    }
+
+    .custom-table th {
+      background: var(--bg-code);
+      color: var(--text-primary);
+      font-weight: 800;
+      padding: 10px 12px;
+      border-bottom: 1.5px solid var(--border-color);
+    }
+
+    .custom-table td {
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border-color);
+      color: var(--text-secondary);
+    }
+
+    .custom-table tr:last-child td {
+      border-bottom: none;
+    }
+
+    .highlight-val {
+      font-weight: 800;
+      color: var(--accent-color);
+    }
+
+    /* Toast Notification */
+    .toast-msg {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(100px);
+      background: #0f172a;
+      color: #ffffff;
+      padding: 12px 24px;
+      border-radius: 30px;
+      font-size: 13.5px;
+      font-weight: 700;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.35);
+      z-index: 9999;
+      opacity: 0;
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      pointer-events: none;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .toast-msg.show {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+    }
+
+    /* Back To Top FAB */
+    .back-top-fab {
+      position: fixed;
+      bottom: 24px;
+      right: 24px;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--accent-color);
+      color: #ffffff;
+      border: none;
+      box-shadow: 0 4px 14px rgba(79, 70, 229, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 20px;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition: all 0.25s ease;
+      z-index: 90;
+    }
+
+    .back-top-fab.visible {
+      opacity: 1;
+      visibility: visible;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sticky App Header -->
+  <header class="app-header">
+    <div class="header-content">
+      <div class="logo-area">
+        <a href="../index.html">
+          <div class="logo-icon">📖</div>
+          <div class="logo-text">
+            <span class="logo-title">Competition Study Notes</span>
+            <span class="logo-subtitle">The Mathematicians' Battle 2026</span>
+          </div>
+        </a>
+      </div>
+      <div class="header-actions">
+        <a href="../index.html" class="portal-back-btn" title="Return to Portal">
+          <span>🏠</span>
+          <span>Portal</span>
+        </a>
+        <button class="theme-toggle-btn" id="themeToggleBtn" title="Toggle Dark/Light Mode">
+          🌙
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Banner -->
+  <section class="hero-banner">
+    <div class="hero-badge">Curated Syllabus Guide</div>
+    <h1 class="hero-title">High-Yield Formula & Concept Notes</h1>
+    <p class="hero-desc">Directly mapped to the 5 Competition Rounds: BODMAS, Quadratics, Sets, Averages, Percentages, Exponents, Profit & Loss, Discount, Trigonometry, and Reasoning.</p>
+  </section>
+
+  <!-- Search & Filter Bar -->
+  <div class="filter-wrapper">
+    <div class="search-box">
+      <span class="search-icon">🔍</span>
+      <input type="text" id="searchInput" class="search-input" placeholder="Search formula, rule, or concept (e.g. roots, trig, discount, clock)...">
+    </div>
+  </div>
+
+  <!-- Quick Category Jump Chips -->
+  <nav class="chips-scroll-wrap">
+    <div class="chips-container">
+      <a href="#chap-bodmas" class="topic-chip">1. BODMAS Order</a>
+      <a href="#chap-quadratic" class="topic-chip">2. Quadratic Equations</a>
+      <a href="#chap-sets" class="topic-chip">3. Set Theory</a>
+      <a href="#chap-arithmetic" class="topic-chip">4. Averages & %</a>
+      <a href="#chap-exponents" class="topic-chip">5. Exponents</a>
+      <a href="#chap-profit" class="topic-chip">6. Profit & Discount</a>
+      <a href="#chap-trig" class="topic-chip">7. Trigonometry</a>
+      <a href="#chap-reasoning" class="topic-chip">8. Clocks & Calendar</a>
+    </div>
+  </nav>
+
+  <!-- Main Notes Container -->
+  <main class="main-container">
+    <div class="controls-row">
+      <span class="section-counter" id="visibleCounter">8 Core Competition Chapters</span>
+      <button class="toggle-all-btn" id="toggleAllBtn">Expand All</button>
+    </div>
+
+    <!-- 1. BODMAS & CALCULATION ORDER -->
+    <article class="chapter-card open" id="chap-bodmas">
+      <div class="chapter-header" onclick="toggleChapter('chap-bodmas')">
+        <div class="chapter-title-wrap">
+          <div class="chapter-badge">1</div>
+          <div>
+            <h2 class="chapter-title">BODMAS & Calculation Order</h2>
+            <span class="chapter-subtopics">Round 1 & Round 2 Syllabus • Bracket Priorities • The 'Of' Operator</span>
+          </div>
+        </div>
+        <span class="accordion-arrow">▼</span>
+      </div>
+      <div class="chapter-body">
+        
+        <div class="concept-callout">
+          <strong>The Golden Rule:</strong> Mathematical expressions must never be solved randomly left-to-right. When operators compete, the standard priority hierarchy dictates which operation executes first.
+        </div>
+
+        <!-- SVG Hierarchy Pyramid -->
+        <div class="svg-diagram-card">
+          <div class="svg-diagram-title">Hierarchical Precedence Pyramid</div>
+          <div class="svg-container">
+            <svg viewBox="0 0 380 190" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <linearGradient id="pyr1" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#4f46e5"/><stop offset="100%" stop-color="#06b6d4"/>
+                </linearGradient>
+                <linearGradient id="pyr2" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#06b6d4"/><stop offset="100%" stop-color="#10b981"/>
+                </linearGradient>
+                <linearGradient id="pyr3" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#10b981"/><stop offset="100%" stop-color="#f59e0b"/>
+                </linearGradient>
+                <linearGradient id="pyr4" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stop-color="#f59e0b"/><stop offset="100%" stop-color="#ef4444"/>
+                </linearGradient>
+              </defs>
+              <polygon points="190,10 150,55 230,55" fill="url(#pyr1)"/>
+              <text x="190" y="42" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="900">B: Brackets ( ) { } [ ]</text>
+
+              <polygon points="150,59 230,59 265,100 115,100" fill="url(#pyr2)"/>
+              <text x="190" y="86" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="900">O: Orders &amp; 'Of' (x², √, of)</text>
+
+              <polygon points="115,104 265,104 300,145 80,145" fill="url(#pyr3)"/>
+              <text x="190" y="129" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="900">D &amp; M: Division &amp; Multiplication</text>
+
+              <polygon points="80,149 300,149 335,188 45,188" fill="url(#pyr4)"/>
+              <text x="190" y="174" text-anchor="middle" fill="#ffffff" font-size="12" font-weight="900">A &amp; S: Addition &amp; Subtraction</text>
+            </svg>
+          </div>
+        </div>
+
+        <div class="formula-section-title">Essential Rules</div>
+
+        <div class="formula-box">
+          <div class="formula-name">
+            <span>Nested Bracket Evaluation Order</span>
+            <button class="copy-btn" onclick="copyFormula('( ) Parentheses ⟶ { } Curly Braces ⟶ [ ] Square Brackets')">📋 Copy</button>
+          </div>
+          <div class="formula-math">( )  ⟶  { }  ⟶  [ ]</div>
+          <div class="formula-note">Always resolve the innermost parentheses <code>( )</code> first, then curly braces <code>{ }</code>, and lastly outer square brackets <code>[ ]</code>.</div>
+        </div>
+
+        <div class="formula-box">
+          <div class="formula-name">
+            <span>The 'Of' Operator Precedence</span>
+            <button class="copy-btn" onclick="copyFormula('a ÷ b of c = a ÷ (b * c)')">📋 Copy</button>
+          </div>
+          <div class="formula-math">A ÷ B of C  =  A ÷ (B × C)</div>
+          <div class="formula-note"><strong>Critical Trap:</strong> 'Of' is evaluated <em>before</em> regular division or multiplication. For example: <code>60 ÷ 5 of 3 = 60 ÷ 15 = 4</code> (NOT <code>60 ÷ 5 × 3 = 36</code>).</div>
+        </div>
+
+        <!-- Worked Example -->
+        <div class="worked-example-card">
+          <div class="worked-example-header">💡 Worked Test Problem</div>
+          <div class="worked-example-q">Evaluate: 84 - 7 × [15 - (9 - 3 of 2)] ÷ 6</div>
+          <div class="worked-example-steps">
+            <strong>Step 1:</strong> 'Of' first: <code>3 of 2 = 6</code>.<br>
+            <strong>Step 2:</strong> Innermost bracket: <code>9 - 6 = 3</code>.<br>
+            <strong>Step 3:</strong> Square brackets: <code>15 - 3 = 12</code>.<br>
+            <strong>Step 4:</strong> Multiply &amp; divide left-to-right: <code>7 × 12 ÷ 6 = 84 ÷ 6 = 14</code>.<br>
+            <strong>Step 5:</strong> Subtraction: <code>84 - 14 = 70</code>. (Answer: 70)
+          </div>
+        </div>
+
+        <div class="pitfall-box">
+          <div class="pitfall-title">⚠️ Common Student Mistake</div>
+          Do not confuse <code>3/4 ÷ 3/4 of 3/4</code>. The 'of' joins the second fraction into a single denominator: <code>3/4 ÷ (9/16) = 3/4 × 16/9 = 4/3</code>.
+        </div>
+      </div>
+    </article>
+
+    <!-- 2. QUADRATIC EQUATIONS -->
+    <article class="chapter-card open" id="chap-quadratic">
+      <div class="chapter-header" onclick="toggleChapter('chap-quadratic')">
+        <div class="chapter-title-wrap">
+          <div class="chapter-badge">2</div>
+          <div>
+            <h2 class="chapter-title">Quadratic Equations & Roots</h2>
+            <span class="chapter-subtopics">Round 1 & Round 4 Syllabus • Discriminant • Vieta's Relations</span>
+          </div>
+        </div>
+        <span class="accordion-arrow">▼</span>
+      </div>
+      <div class="chapter-body">
+
+        <div class="concept-callout">
+          <strong>Standard Quadratic Form:</strong> <code>ax² + bx + c = 0</code> (where a ≠ 0). The value of the discriminant determines how many real solutions exist and what the parabola looks like on a graph.
+        </div>
+
+        <!-- SVG Parabola Roots -->
+        <div class="svg-diagram-card">
+          <div class="svg-diagram-title">Discriminant & Parabola X-Axis Intersections</div>
+          <div class="svg-container">
+            <svg viewBox="0 0 380 160" xmlns="http://www.w3.org/2000/svg">
+              <line x1="15" y1="110" x2="365" y2="110" stroke="#94a3b8" stroke-width="2" stroke-dasharray="4,4"/>
+              <text x="360" y="105" font-size="11" fill="#94a3b8" font-weight="bold">X-Axis</text>
+
+              <!-- Case 1: D > 0 -->
+              <path d="M 25,35 Q 75,150 125,35" fill="none" stroke="#10b981" stroke-width="3"/>
+              <circle cx="50" cy="110" r="4" fill="#10b981"/>
+              <circle cx="100" cy="110" r="4" fill="#10b981"/>
+              <text x="75" y="24" text-anchor="middle" fill="#10b981" font-size="12" font-weight="bold">D &gt; 0 (2 Cuts)</text>
+              <text x="75" y="130" text-anchor="middle" fill="#10b981" font-size="10">Real &amp; Distinct</text>
+
+              <!-- Case 2: D = 0 -->
+              <path d="M 145,35 Q 190,110 235,35" fill="none" stroke="#6366f1" stroke-width="3"/>
+              <circle cx="190" cy="110" r="4" fill="#6366f1"/>
+              <text x="190" y="24" text-anchor="middle" fill="#6366f1" font-size="12" font-weight="bold">D = 0 (1 Touch)</text>
+              <text x="190" y="130" text-anchor="middle" fill="#6366f1" font-size="10">Real &amp; Equal</text>
+
+              <!-- Case 3: D < 0 -->
+              <path d="M 260,35 Q 305,75 350,35" fill="none" stroke="#ef4444" stroke-width="3"/>
+              <text x="305" y="24" text-anchor="middle" fill="#ef4444" font-size="12" font-weight="bold">D &lt; 0 (No Cut)</text>
+              <text x="305" y="130" text-anchor="middle" fill="#ef4444" font-size="10">Complex / Non-Real</text>
+            </svg>
+          </div>
+        </div>
+
+        <div class="formula-section-title">Quadratic Formulas & Discriminant Table</div>
+
+        <div class="formula-box">
+          <div class="formula-name">
+            <span>The Quadratic Formula & Discriminant D</span>
+            <button class="copy-btn" onclick="copyFormula('x = (-b ± √(b² - 4ac)) / (2a); D = b² - 4ac')">📋 Copy</button>
+          </div>
+          <div class="formula-math">x = (-b ± √D) / (2a)   where   D = b² - 4ac</div>
+          <div class="formula-note">
+            • <strong>D &gt; 0:</strong> Two distinct real roots.<br>
+            • <strong>D = 0:</strong> Two real and equal roots: <code>x = -b / (2a)</code>.<br>
+            • <strong>D &lt; 0:</strong> No real roots (two complex conjugate roots).<br>
+            • If <strong>a, b, c are rational</strong> and D is a perfect square, roots are rational; if D is not a perfect square, roots are conjugate surds.
+          </div>
+        </div>
+
+        <div class="formula-box">
+          <div class="formula-name">
+            <span>Vieta's Formulas (Sum & Product of Roots)</span>
+            <button class="copy-btn" onclick="copyFormula('Sum α+β = -b/a; Product αβ = c/a')">📋 Copy</button>
+          </div>
+          <div class="formula-math">Sum: α + β = -b/a   |   Product: α × β = c/a</div>
+          <div class="formula-note">
+            • <strong>Forming Equation from Roots:</strong> <code>x² - (Sum)x + (Product) = 0</code><br>
+            • <strong>Sum of Squares:</strong> <code>α² + β² = (α + β)² - 2αβ</code><br>
+            • <strong>Difference of Roots:</strong> <code>|α - β| = √D / |a|</code><br>
+            • <strong>Symmetric Fraction:</strong> <code>α/β + β/α = (α² + β²) / (αβ)</code>
+          </div>
+        </div>
+
+        <!-- Worked Example -->
+        <div class="worked-example-card">
+          <div class="worked-example-header">💡 Worked Test Problem</div>
+          <div class="worked-example-q">For what value of k will the equation 3x² - 12x + k = 0 have equal roots?</div>
+          <div class="worked-example-steps">
+            <strong>Condition:</strong> Equal roots occur when discriminant <code>D = b² - 4ac = 0</code>.<br>
+            <strong>Calculation:</strong> <code>(-12)² - 4(3)(k) = 0 ⟹ 144 - 12k = 0 ⟹ 12k = 144 ⟹ k = 12</code>.<br>
+            <strong>Result:</strong> <code>k = 12</code>.
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 3. SET THEORY -->
+    <article class="chapter-card open" id="chap-sets">
+      <div class="chapter-header" onclick="toggleChapter('chap-sets')">
+        <div class="chapter-title-wrap">
+          <div class="chapter-badge">3</div>
+          <div>
+            <h2 class="chapter-title">Set Theory & Venn Diagrams</h2>
+            <span class="chapter-subtopics">Round 1, 3, 4, 5 Syllabus • Cardinality • De Morgan's Laws</span>
+          </div>
+        </div>
+        <span class="accordion-arrow">▼</span>
+      </div>
+      <div class="chapter-body">
+
+        <div class="concept-callout">
+          <strong>Key Cardinality Rule:</strong> When combining sets, elements belonging to both sets must not be double-counted. Subsets counting formulas appear frequently in collegiate competition rounds.
+        </div>
+
+        <!-- SVG 2-Set Venn Diagram -->
+        <div class="svg-diagram-card">
+          <div class="svg-diagram-title">Two-Set Overlap & Region Decomposition</div>
+          <div class="svg-container">
+            <svg viewBox="0 0 380 170" xmlns="http://www.w3.org/2000/svg">
+              <rect x="15" y="10" width="350" height="150" rx="12" fill="none" stroke="#94a3b8" stroke-width="1.8"/>
+              <text x="32" y="32" fill="#94a3b8" font-size="13" font-weight="bold">Universal Set (U)</text>
+
+              <!-- Circle A -->
+              <circle cx="150" cy="85" r="55" fill="rgba(79, 70, 229, 0.25)" stroke="#4f46e5" stroke-width="2.2"/>
+              <text x="120" y="88" fill="#4f46e5" font-size="13" font-weight="bold">Only A (A\B)</text>
+
+              <!-- Circle B -->
+              <circle cx="230" cy="85" r="55" fill="rgba(6, 182, 212, 0.25)" stroke="#06b6d4" stroke-width="2.2"/>
+              <text x="260" y="88" fill="#06b6d4" font-size="13" font-weight="bold">Only B (B\A)</text>
+
+              <!-- Intersection -->
+              <text x="190" y="88" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="900">A ∩ B</text>
+
+              <!-- Outside Neither -->
+              <text x="305" y="145" fill="#94a3b8" font-size="11" font-weight="bold">(A ∪ B)'</text>
+            </svg>
+          </div>
+        </div>
+
+        <div class="formula-section-title">Cardinality & Set Identities</div>
+
+        <div class="formula-box">
+          <div class="formula-name">
+            <span>Inclusion-Exclusion Principle (2 & 3 Sets)</span>
+            <button class="copy-btn" onclick="copyFormula('n(A ∪ B) = n(A) + n(B) - n(A ∩ B)')">📋 Copy</button>
+          </div>
+          <div class="formula-math">n(A ∪ B) = n(A) + n(B) - n(A ∩ B)</div>
+          <div class="formula-note">
+            • <strong>Disjoint Sets:</strong> If A ∩ B = ∅, then <code>n(A ∪ B) = n(A) + n(B)</code>.<br>
+            • <strong>Neither Set:</strong> <code>n((A ∪ B)') = n(U) - n(A ∪ B)</code>.<br>
+            • <strong>Exactly One Set:</strong> <code>n(A \ B) + n(B \ A) = n(A ∪ B) - n(A ∩ B)</code>.<br>
+            • <strong>Three Sets:</strong> <code>n(A∪B∪C) = Σn(A) - Σn(A∩B) + n(A∩B∩C)</code>.
+          </div>
+        </div>
+
+        <div class="formula-box">
+          <div class="formula-name">
+            <span>Subsets & Power Set Counting</span>
+            <button class="copy-btn" onclick="copyFormula('Subsets = 2^n; Proper Subsets = 2^n - 1; Non-empty Proper = 2^n - 2')">📋 Copy</button>
+          </div>
+          <div class="formula-math">Total Subsets = 2ⁿ  |  Proper Subsets = 2ⁿ - 1</div>
+          <div class="formula-note">
+            • A set with 5 elements has <code>2⁵ = 32</code> subsets.<br>
+            • Proper subsets exclude the set itself: <code>32 - 1 = 31</code>.<br>
+            • Non-empty proper subsets exclude both ∅ and the set itself: <code>32 - 2 = 30</code>.
+          </div>
+        </div>
+
+        <div class="formula-box">
+          <div class="formula-name">
+            <span>De Morgan's Laws</span>
+            <button class="copy-btn" onclick="copyFormula('(A ∪ B)′ = A′ ∩ B′; (A ∩ B)′ = A′ ∪ B′')">📋 Copy</button>
+          </div>
+          <div class="formula-math">(A ∪ B)′ = A′ ∩ B′   |   (A ∩ B)′ = A′ ∪ B′</div>
+          <div class="formula-note">Complement of union is intersection of complements; complement of intersection is union of complements.</div>
+        </div>
+
+        <!-- Worked Example -->
+        <div class="worked-example-card">
+          <div class="worked-example-header">💡 Worked Test Problem</div>
+          <div class="worked-example-q">In a group of 50 students, 30 like Cricket, 25 like Football, and 10 like both. How many like neither?</div>
+          <div class="worked-example-steps">
+            <strong>Step 1 (Union):</strong> <code>n(C ∪ F) = n(C) + n(F) - n(C ∩ F) = 30 + 25 - 10 = 45</code>.<br>
+            <strong>Step 2 (Neither):</strong> <code>n((C ∪ F)') = Total - n(C ∪ F) = 50 - 45 = 5</code>.<br>
+            <strong>Result:</strong> Exactly 5 students like neither sport.
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 4. ARITHMETIC: AVERAGES & PERCENTAGES -->
+    <article class="chapter-card open" id="chap-arithmetic">
+      <div class="chapter-header" onclick="toggleChapter('chap-arithmetic')">
+        <div class="chapter-title-wrap">
+          <div class="chapter-badge">4</div>
+          <div>
+            <h2 class="chapter-title">Averages, Percentages & Series Sums</h2>
+            <span class="chapter-subtopics">Round 2 & Round 3 Syllabus • Harmonic Speed • Series Formulas</span>
+          </div>
+        </div>
+        <span class="accordion-arrow">▼</span>
+      </div>
+      <div class="chapter-body">
+
+        <div class="concept-callout">
+          <strong>Key Concept:</strong> Consecutive sequences and speed problems have instant mathematical shortcuts that avoid lengthy brute-force calculations.
+        </div>
+
+        <div class="formula-section-title">Averages & Shortcuts</div>
+
+        <div class="formula-box">
+          <div class="formula-name">
+            <span>Round-Trip Average Speed (Harmonic Mean)</span>
+            <button class="copy-btn" onclick="copyFormula('Average Speed = 2xy / (x + y)')">📋 Copy</button>
+          </div>
+          <div class="formula-math">Average Speed = (2 × x × y) / (x + y)</div>
+          <div class="formula-note">Applicable whenever equal distances are traveled at speed x and return at speed y. (Example: 40 km/h out and 60 km/h back gives <code>(2×40×60)/100 = 48 km/h</code>, NOT 50 km/h!).</div>
+        </div>
+
+        <div class="formula-box">
+          <div class="formula-name">
+            <span>Average Weight / Age Replacement Formula</span>
+            <button class="copy-btn" onclick="copyFormula('New Value = Replaced Value + (Total Count * Increase)')">📋 Copy</button>
+          </div>
+          <div class="formula-math">New Person = Excluded Person + (Total Members × Change in Avg)</div>
+          <div class="formula-note">If 15 students average 40 kg, and adding a teacher raises average by 1 kg: <code>New Total = 16 × 41 = 656; Teacher = 656 - 600 = 56 kg</code>.</div>
+        </div>
+
+        <div class="formula-section-title">Percentages & Expenditure Rules</div>
+
+        <div class="formula-box">
+          <div class="formula-name">
+            <span>Price vs. Consumption Invariance</span>
+            <button class="copy-btn" onclick="copyFormula('Reduction % = [r / (100 + r)] * 100%')">📋 Copy</button>
+          </div>
+          <div class="formula-math">Consumption Reduction = [r / (100 + r)] × 100%</div>
+          <div class="formula-note">If price rises by 25%, consumption reduction = <code>[25 / 125] × 100% = 20%</code>.<br>If A's salary is 20% less than B's, B is <code>[20 / 80] × 100% = 25%</code> higher than A.</div>
+        </div>
+
+        <div class="formula-box">
+          <div class="formula-name">
+            <span>Successive Percentage Change</span>
+            <button class="copy-btn" onclick="copyFormula('Net Change % = x + y + (x * y)/100')">📋 Copy</button>
+          </div>
+          <div class="formula-math">Net Change % = x + y + (x × y) / 100</div>
+          <div class="formula-note">When increased by x% and then decreased by x%, the net result is ALWAYS a decrease of <code>(x / 10)² %</code>. (Example: +20% and -20% = -4% net).</div>
+        </div>
+
+        <div class="formula-section-title">Natural Series Summation Shortcuts</div>
+
+        <div class="formula-box">
+          <div class="formula-name">
+            <span>Sum of Series Formulas</span>
+            <button class="copy-btn" onclick="copyFormula('Σn = n(n+1)/2; Σ(odd) = n²; Σ(even) = n(n+1); Σn² = n(n+1)(2n+1)/6')">📋 Copy</button>
+          </div>
+          <div class="formula-math">
+            Σn = n(n+1)/2   |   Σ(First n Odd) = n²   |   Σ(First n Even) = n(n+1)
+          </div>
+          <div class="formula-note">
+            • Sum of squares: <code>Σn² = n(n + 1)(2n + 1) / 6</code><br>
+            • Sum of cubes: <code>Σn³ = [n(n + 1) / 2]²</code>
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 5. EXPONENTS & POWERS -->
+    <article class="chapter-card open" id="chap-exponents">
+      <div class="chapter-header" onclick="toggleChapter('chap-exponents')">
+        <div class="chapter-title-wrap">
+          <div class="chapter-badge">5</div>
+          <div>
+            <h2 class="chapter-title">Exponents, Powers & Indices</h2>
+            <span class="chapter-subtopics">Round 3 Syllabus • Laws of Indices • Base Equating Rules</span>
+          </div>
+        </div>
+        <span class="accordion-arrow">▼</span>
+      </div>
+      <div class="chapter-body">
+
+        <div class="concept-callout">
+          <strong>Base Equating Rule:</strong> If <code>a^x = a^y</code> (with a > 0, a ≠ 1), then the powers must be strictly equal: <code>x = y</code>. Express both sides with the smallest prime base (2, 3, 5).
+        </div>
+
+        <div class="formula-section-title">Laws of Indices</div>
+
+        <div class="formula-box">
+          <div class="formula-name">
+            <span>Master Rules of Exponents</span>
+            <button class="copy-btn" onclick="copyFormula('a^m * a^n = a^(m+n); a^m / a^n = a^(m-n); (a^m)^n = a^(mn); a^(-n) = 1/a^n')">📋 Copy</button>
+          </div>
+          <div class="formula-math">
+            aᵐ × aⁿ = aᵐ⁺ⁿ   |   aᵐ ÷ aⁿ = aᵐ⁻ⁿ   |   (aᵐ)ⁿ = aᵐⁿ
+          </div>
+          <div class="formula-note">
+            • <strong>Negative Exponent:</strong> <code>a⁻ⁿ = 1 / aⁿ</code> and <code>(a/b)⁻ⁿ = (b/a)ⁿ</code><br>
+            • <strong>Fractional Exponent:</strong> <code>a^(m/n) = ⁿ√(aᵐ) = (ⁿ√a)ᵐ</code><br>
+            • <strong>Zero Power:</strong> <code>a⁰ = 1</code> (for any a ≠ 0)<br>
+            • <strong>Comparing Powers:</strong> Reduce exponents by dividing by their HCF.
+          </div>
+        </div>
+
+        <!-- Worked Example -->
+        <div class="worked-example-card">
+          <div class="worked-example-header">💡 Worked Test Problem</div>
+          <div class="worked-example-q">Solve for x: 2^(x + 3) + 2^x = 72</div>
+          <div class="worked-example-steps">
+            <strong>Step 1:</strong> Factor out common <code>2^x</code>: <code>2^x(2³ + 1) = 72</code>.<br>
+            <strong>Step 2:</strong> Simplify brackets: <code>2^x(8 + 1) = 72 ⟹ 2^x(9) = 72</code>.<br>
+            <strong>Step 3:</strong> Divide: <code>2^x = 8 = 2³</code>.<br>
+            <strong>Result:</strong> <code>x = 3</code>.
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 6. COMMERCIAL MATH: PROFIT, LOSS & DISCOUNT -->
+    <article class="chapter-card open" id="chap-profit">
+      <div class="chapter-header" onclick="toggleChapter('chap-profit')">
+        <div class="chapter-title-wrap">
+          <div class="chapter-badge">6</div>
+          <div>
+            <h2 class="chapter-title">Profit, Loss, Marked Price & Discount</h2>
+            <span class="chapter-subtopics">Round 3 & Round 5 Syllabus • Successive Discounts • Equal SP Rule</span>
+          </div>
+        </div>
+        <span class="accordion-arrow">▼</span>
+      </div>
+      <div class="chapter-body">
+
+        <div class="concept-callout">
+          <strong>The Golden Chain:</strong> Cost Price (CP) is the foundation for Profit/Loss %. Marked Price (MP) is the foundation for Discount %.
+        </div>
+
+        <!-- SVG Commercial Flow -->
+        <div class="svg-diagram-card">
+          <div class="svg-diagram-title">Commercial Transaction Transformation Chain</div>
+          <div class="svg-container">
+            <svg viewBox="0 0 380 110" xmlns="http://www.w3.org/2000/svg">
+              <!-- CP -->
+              <rect x="15" y="35" width="85" height="42" rx="10" fill="#4f46e5"/>
+              <text x="57" y="61" text-anchor="middle" fill="#fff" font-size="13" font-weight="900">Cost (CP)</text>
+
+              <!-- Arrow +Markup -->
+              <line x1="105" y1="56" x2="140" y2="56" stroke="#4f46e5" stroke-width="2.5"/>
+              <text x="122" y="47" text-anchor="middle" fill="#4f46e5" font-size="10" font-weight="bold">+Markup</text>
+
+              <!-- MP -->
+              <rect x="145" y="35" width="85" height="42" rx="10" fill="#f59e0b"/>
+              <text x="187" y="61" text-anchor="middle" fill="#fff" font-size="13" font-weight="900">Marked (MP)</text>
+
+              <!-- Arrow -Discount -->
+              <line x1="235" y1="56" x2="270" y2="56" stroke="#ef4444" stroke-width="2.5"/>
+              <text x="252" y="47" text-anchor="middle" fill="#ef4444" font-size="10" font-weight="bold">-Discount</text>
+
+              <!-- SP -->
+              <rect x="275" y="35" width="85" height="42" rx="10" fill="#10b981"/>
+              <text x="317" y="61" text-anchor="middle" fill="#fff" font-size="13" font-weight="900">Selling (SP)</text>
+            </svg>
+          </div>
+        </div>
+
+        <div class="formula-section-title">Core Commercial Formulas</div>
+
+        <div class="formula-box">
+          <div class="formula-name">
+            <span>Profit, Loss & Selling Price</span>
+            <button class="copy-btn" onclick="copyFormula('Profit % = [(SP - CP)/CP]*100; SP = CP * (100 + P%)/100')">📋 Copy</button>
+          </div>
+          <div class="formula-math">
+            Profit % = [(SP - CP) / CP] × 100%   |   Loss % = [(CP - SP) / CP] × 100%
+          </div>
+          <div class="formula-note">
+            • <code>SP = CP × (100 ± Gain/Loss %) / 100</code><br>
+            • <code>CP = SP × 100 / (100 ± Gain/Loss %)</code>
+          </div>
+        </div>
+
+        <div class="formula-box">
+          <div class="formula-name">
+            <span>Successive Discounts Formula</span>
+            <button class="copy-btn" onclick="copyFormula('Net Discount = d1 + d2 - (d1 * d2)/100')">📋 Copy</button>
+          </div>
+          <div class="formula-math">Net Discount % = d₁ + d₂ - (d₁ × d₂) / 100</div>
+          <div class="formula-note">
+            • <strong>Buy X, Get Y Free:</strong> <code>Effective Discount % = [Y / (X + Y)] × 100%</code>. Example: Buy 3 Get 1 Free = <code>1/4 × 100 = 25%</code>.<br>
+            • <strong>Equal SP Rule:</strong> If two items are sold at the same price, one at x% profit and the other at x% loss, there is ALWAYS an overall loss of <code>(x / 10)² %</code>.
+          </div>
+        </div>
+
+        <div class="formula-box">
+          <div class="formula-name">
+            <span>Dishonest Dealer / False Weights</span>
+            <button class="copy-btn" onclick="copyFormula('Gain % = [Error / (True Weight - Error)] * 100%')">📋 Copy</button>
+          </div>
+          <div class="formula-math">Gain % = [Error / (True Value - Error)] × 100%</div>
+          <div class="formula-note">Example: Using 950g instead of 1000g: Error = 50g. Gain % = <code>(50 / 950) × 100 = 5.26%</code>.</div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 7. TRIGONOMETRY -->
+    <article class="chapter-card open" id="chap-trig">
+      <div class="chapter-header" onclick="toggleChapter('chap-trig')">
+        <div class="chapter-title-wrap">
+          <div class="chapter-badge">7</div>
+          <div>
+            <h2 class="chapter-title">Trigonometry: Ratios, Angles & Identities</h2>
+            <span class="chapter-subtopics">Round 4 & Round 5 Syllabus • SOH CAH TOA • Standard Angles Table</span>
+          </div>
+        </div>
+        <span class="accordion-arrow">▼</span>
+      </div>
+      <div class="chapter-body">
+
+        <!-- SVG Right-Angle Triangle -->
+        <div class="svg-diagram-card">
+          <div class="svg-diagram-title">Right-Angled Triangle Ratio Definitions</div>
+          <div class="svg-container">
+            <svg viewBox="0 0 340 170" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="50,140 270,140 270,30" fill="rgba(99, 102, 241, 0.15)" stroke="#4f46e5" stroke-width="2.8"/>
+              <rect x="252" y="122" width="18" height="18" fill="none" stroke="#4f46e5" stroke-width="1.8"/>
+              <path d="M 85,140 A 35 35 0 0 0 80,126" fill="none" stroke="#ef4444" stroke-width="2.5"/>
+              <text x="96" y="133" fill="#ef4444" font-size="14" font-weight="900">θ</text>
+
+              <text x="160" y="158" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="bold">Adjacent (Base)</text>
+              <text x="290" y="85" text-anchor="middle" fill="#0f172a" font-size="12" font-weight="bold">Opposite (Perp)</text>
+              <text x="145" y="75" text-anchor="middle" fill="#4f46e5" font-size="12" font-weight="bold">Hypotenuse</text>
+            </svg>
+          </div>
+        </div>
+
+        <div class="formula-section-title">Standard Angles Table</div>
+
+        <div class="table-container">
+          <table class="custom-table">
+            <thead>
+              <tr>
+                <th>Ratio</th>
+                <th>0°</th>
+                <th>30°</th>
+                <th>45°</th>
+                <th>60°</th>
+                <th>90°</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td class="highlight-val">sin θ</td>
+                <td>0</td>
+                <td>1/2</td>
+                <td>1/√2</td>
+                <td>√3/2</td>
+                <td>1</td>
+              </tr>
+              <tr>
+                <td class="highlight-val">cos θ</td>
+                <td>1</td>
+                <td>√3/2</td>
+                <td>1/√2</td>
+                <td>1/2</td>
+                <td>0</td>
+              </tr>
+              <tr>
+                <td class="highlight-val">tan θ</td>
+                <td>0</td>
+                <td>1/√3</td>
+                <td>1</td>
+                <td>√3</td>
+                <td>Undefined</td>
+              </tr>
+              <tr>
+                <td class="highlight-val">sec θ</td>
+                <td>1</td>
+                <td>2/√3</td>
+                <td>√2</td>
+                <td>2</td>
+                <td>Undefined</td>
+              </tr>
+              <tr>
+                <td class="highlight-val">cosec θ</td>
+                <td>Undefined</td>
+                <td>2</td>
+                <td>√2</td>
+                <td>2/√3</td>
+                <td>1</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="formula-section-title">Pythagorean Identities & High-Speed Shortcuts</div>
+
+        <div class="formula-box">
+          <div class="formula-name">
+            <span>Fundamental Identities</span>
+            <button class="copy-btn" onclick="copyFormula('sin²θ + cos²θ = 1; 1 + tan²θ = sec²θ; 1 + cot²θ = cosec²θ')">📋 Copy</button>
+          </div>
+          <div class="formula-math">
+            sin²θ + cos²θ = 1   |   1 + tan²θ = sec²θ   |   1 + cot²θ = cosec²θ
+          </div>
+          <div class="formula-note">
+            • <strong>Conjugate Pairs:</strong> If <code>sec θ + tan θ = k</code>, then <code>sec θ - tan θ = 1/k</code>.<br>
+            • <strong>Complementary Angles:</strong> When A + B = 90°, <code>sin A = cos B</code> and <code>sin² A + sin² B = 1</code>.<br>
+            • <strong>Product Chain:</strong> <code>cos 0° × cos 1° × ... × cos 90° = 0</code> (since cos 90° = 0).
+          </div>
+        </div>
+      </div>
+    </article>
+
+    <!-- 8. REASONING: CLOCKS & CALENDARS -->
+    <article class="chapter-card open" id="chap-reasoning">
+      <div class="chapter-header" onclick="toggleChapter('chap-reasoning')">
+        <div class="chapter-title-wrap">
+          <div class="chapter-badge">8</div>
+          <div>
+            <h2 class="chapter-title">Mathematical Reasoning: Clocks & Calendar</h2>
+            <span class="chapter-subtopics">Round 2, 3, 4, 5 Syllabus • Hand Angles • Leap Year & Odd Days</span>
+          </div>
+        </div>
+        <span class="accordion-arrow">▼</span>
+      </div>
+      <div class="chapter-body">
+
+        <!-- SVG Clock Angle -->
+        <div class="svg-diagram-card">
+          <div class="svg-diagram-title">Clock Face Angle Arc (At 3:40)</div>
+          <div class="svg-container">
+            <svg viewBox="0 0 220 220" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="110" cy="110" r="95" fill="none" stroke="#4f46e5" stroke-width="3.5"/>
+              <circle cx="110" cy="110" r="6" fill="#4f46e5"/>
+
+              <!-- Markers -->
+              <line x1="110" y1="20" x2="110" y2="32" stroke="#0f172a" stroke-width="2.5"/>
+              <line x1="200" y1="110" x2="188" y2="110" stroke="#0f172a" stroke-width="2.5"/>
+              <line x1="110" y1="200" x2="110" y2="188" stroke="#0f172a" stroke-width="2.5"/>
+              <line x1="20" y1="110" x2="32" y2="110" stroke="#0f172a" stroke-width="2.5"/>
+
+              <!-- Minute Hand (points to 8) -->
+              <line x1="110" y1="110" x2="48" y2="150" stroke="#06b6d4" stroke-width="3.5" stroke-linecap="round"/>
+              <!-- Hour Hand (points to 3:40 position = 110 deg) -->
+              <line x1="110" y1="110" x2="152" y2="126" stroke="#ef4444" stroke-width="5" stroke-linecap="round"/>
+
+              <!-- Arc showing 130 deg -->
+              <path d="M 82,128 A 45 45 0 0 0 138,122" fill="none" stroke="#f59e0b" stroke-width="2.5" stroke-dasharray="3,2"/>
+              <text x="110" y="160" text-anchor="middle" fill="#f59e0b" font-size="14" font-weight="900">θ = 130°</text>
+            </svg>
+          </div>
+        </div>
+
+        <div class="formula-section-title">Clocks Formulas</div>
+
+        <div class="formula-box">
+          <div class="formula-name">
+            <span>Angle Between Clock Hands</span>
+            <button class="copy-btn" onclick="copyFormula('Angle θ = |30H - 5.5M|')">📋 Copy</button>
+          </div>
+          <div class="formula-math">Angle θ = |30 × H - 5.5 × M|</div>
+          <div class="formula-note">
+            • <strong>Reflex Angle:</strong> If θ &gt; 180°, reflex angle = <code>360° - θ</code>.<br>
+            • <strong>Coincidence (Together):</strong> <code>M = (60/11) × H</code> minutes past H.<br>
+            • <strong>Straight Line (Opposite 180°):</strong> <code>M = (60/11) × (H ± 6)</code>.<br>
+            • Hands coincide exactly 22 times in 24 hours.
+          </div>
+        </div>
+
+        <div class="formula-section-title">Calendar & Odd Days Calculation</div>
+
+        <div class="formula-box">
+          <div class="formula-name">
+            <span>Odd Days & Leap Year Rules</span>
+            <button class="copy-btn" onclick="copyFormula('Ordinary Year: 1 Odd Day; Leap Year: 2 Odd Days; Century Leap if divisible by 400')">📋 Copy</button>
+          </div>
+          <div class="formula-math">
+            Ordinary Year = 1 Odd Day   |   Leap Year = 2 Odd Days
+          </div>
+          <div class="formula-note">
+            • <strong>Odd Days Calculation:</strong> <code>Total Days mod 7 = Odd Days</code>.<br>
+            • <strong>Century Rule:</strong> A century year is a leap year ONLY if divisible by 400 (e.g. 2000 was a leap year; 1900, 2100 are ordinary years).<br>
+            • <strong>Day Shift:</strong> In an ordinary year, 1st Jan and 31st Dec are the same day of the week. In a leap year, 31st Dec is one day ahead.
+          </div>
+        </div>
+
+        <div class="formula-box">
+          <div class="formula-name">
+            <span>Polygon Diagonals Shortcut</span>
+            <button class="copy-btn" onclick="copyFormula('Diagonals = n(n - 3) / 2')">📋 Copy</button>
+          </div>
+          <div class="formula-math">Number of Diagonals = n(n - 3) / 2</div>
+          <div class="formula-note">For an 8-sided polygon (octagon): <code>8(8 - 3) / 2 = 8 × 5 / 2 = 20 diagonals</code>.</div>
+        </div>
+      </div>
+    </article>
+
+  </main>
+
+  <!-- Floating Toast Notification -->
+  <div class="toast-msg" id="toastMsg">
+    <span>✓</span>
+    <span id="toastText">Copied to clipboard!</span>
+  </div>
+
+  <!-- Back to Top FAB -->
+  <button class="back-top-fab" id="backTopFab" title="Back to top" aria-label="Back to top">
+    ↑
+  </button>
+
+  <script>
+    // --- THEME MANAGEMENT ---
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    function initTheme() {
+      const savedTheme = localStorage.getItem('battle_theme') || 
+        (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      setTheme(savedTheme);
+    }
+
+    function setTheme(theme) {
+      if (theme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeToggleBtn.textContent = '☀️';
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+        themeToggleBtn.textContent = '🌙';
+      }
+      localStorage.setItem('battle_theme', theme);
+    }
+
+    themeToggleBtn.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      setTheme(isDark ? 'light' : 'dark');
+    });
+
+    // --- ACCORDION TOGGLE ---
+    function toggleChapter(id) {
+      const card = document.getElementById(id);
+      if (card) {
+        card.classList.toggle('open');
+      }
+    }
+
+    const toggleAllBtn = document.getElementById('toggleAllBtn');
+    let allExpanded = true;
+    toggleAllBtn.addEventListener('click', () => {
+      allExpanded = !allExpanded;
+      document.querySelectorAll('.chapter-card').forEach(card => {
+        if (allExpanded) card.classList.add('open');
+        else card.classList.remove('open');
+      });
+      toggleAllBtn.textContent = allExpanded ? 'Collapse All' : 'Expand All';
+    });
+
+    // --- LIVE FORMULA SEARCH / FILTER ---
+    const searchInput = document.getElementById('searchInput');
+    searchInput.addEventListener('input', (e) => {
+      const term = e.target.value.toLowerCase().trim();
+      const cards = document.querySelectorAll('.chapter-card');
+
+      let visibleCount = 0;
+      cards.forEach(card => {
+        const text = card.textContent.toLowerCase();
+        if (!term || text.includes(term)) {
+          card.style.display = 'block';
+          if (term) card.classList.add('open');
+          visibleCount++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      document.getElementById('visibleCounter').textContent = term 
+        ? `${visibleCount} Topics matching "${term}"`
+        : '8 Core Competition Chapters';
+    });
+
+    // --- CLIPBOARD COPY TOAST ---
+    function copyFormula(text) {
+      navigator.clipboard.writeText(text).then(() => {
+        showToast('Copied: ' + text);
+      }).catch(() => {
+        showToast('Formula copied!');
+      });
+    }
+
+    function showToast(msg) {
+      const toast = document.getElementById('toastMsg');
+      document.getElementById('toastText').textContent = msg;
+      toast.classList.add('show');
+      setTimeout(() => {
+        toast.classList.remove('show');
+      }, 2200);
+    }
+
+    // --- BACK TO TOP FAB ---
+    const backTopFab = document.getElementById('backTopFab');
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backTopFab.classList.add('visible');
+      } else {
+        backTopFab.classList.remove('visible');
+      }
+    });
+
+    backTopFab.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // --- SMOOTH SCROLL CHIPS ---
+    document.querySelectorAll('.topic-chip').forEach(chip => {
+      chip.addEventListener('click', (e) => {
+        e.preventDefault();
+        const targetId = chip.getAttribute('href').substring(1);
+        const targetCard = document.getElementById(targetId);
+        if (targetCard) {
+          targetCard.classList.add('open');
+          targetCard.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+      initTheme();
+    });
+  </script>
+</body>
+</html>

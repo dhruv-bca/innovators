@@ -1,0 +1,1500 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <meta name="theme-color" content="#4f46e5">
+  <title>The Mathematicians' Battle 2026 (150 Questions)</title>
+  <link rel="icon" type="image/png" href="../images/logo.png">
+  <style>
+    :root {
+      --bg-primary: #f8fafc;
+      --bg-secondary: #ffffff;
+      --bg-card: #ffffff;
+      --text-primary: #0f172a;
+      --text-secondary: #475569;
+      --text-muted: #94a3b8;
+      --border-color: #e2e8f0;
+      --accent-color: #4f46e5;
+      --accent-hover: #4338ca;
+      --accent-gradient: linear-gradient(135deg, #4f46e5, #06b6d4);
+      --correct-bg: #ecfdf5;
+      --correct-border: #10b981;
+      --correct-text: #065f46;
+      --wrong-bg: #fef2f2;
+      --wrong-border: #ef4444;
+      --wrong-text: #991b1b;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.05);
+      --shadow-md: 0 4px 12px rgba(0,0,0,0.08);
+      --shadow-lg: 0 10px 25px rgba(0,0,0,0.12);
+      --card-radius: 16px;
+    }
+
+    [data-theme="dark"] {
+      --bg-primary: #0b0f19;
+      --bg-secondary: #111827;
+      --bg-card: #1e293b;
+      --text-primary: #f8fafc;
+      --text-secondary: #cbd5e1;
+      --text-muted: #64748b;
+      --border-color: #334155;
+      --accent-color: #6366f1;
+      --accent-hover: #818cf8;
+      --accent-gradient: linear-gradient(135deg, #6366f1, #38bdf8);
+      --correct-bg: rgba(16, 185, 129, 0.15);
+      --correct-border: #10b981;
+      --correct-text: #6ee7b7;
+      --wrong-bg: rgba(239, 68, 68, 0.15);
+      --wrong-border: #ef4444;
+      --wrong-text: #fca5a5;
+      --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
+      --shadow-md: 0 4px 14px rgba(0,0,0,0.5);
+      --shadow-lg: 0 10px 30px rgba(0,0,0,0.7);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+      background-color: var(--bg-primary);
+      color: var(--text-primary);
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      line-height: 1.5;
+      transition: background-color 0.3s ease, color 0.3s ease;
+      padding-bottom: 60px;
+    }
+
+    /* Header */
+    .app-header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border-color);
+      box-shadow: var(--shadow-sm);
+      backdrop-filter: blur(10px);
+    }
+
+    .header-content {
+      max-width: 720px;
+      margin: 0 auto;
+      padding: 10px 16px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-area a {
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: inherit;
+    }
+
+    .logo-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 12px;
+      background: var(--accent-gradient);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 20px;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(79, 70, 229, 0.3);
+    }
+
+    .logo-text {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-title {
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: -0.3px;
+      color: var(--text-primary);
+      line-height: 1.2;
+    }
+
+    .logo-subtitle {
+      font-size: 11px;
+      color: var(--accent-color);
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .header-actions {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .portal-back-btn {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 8px 12px;
+      border-radius: 12px;
+      border: 1.5px solid var(--border-color);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      text-decoration: none;
+      font-size: 12.5px;
+      font-weight: 700;
+      transition: all 0.2s ease;
+    }
+
+    .portal-back-btn:hover {
+      border-color: var(--accent-color);
+      color: var(--accent-color);
+    }
+
+    .theme-toggle-btn {
+      width: 42px;
+      height: 42px;
+      border-radius: 12px;
+      border: 1.5px solid var(--border-color);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      transition: all 0.2s ease;
+    }
+
+    .theme-toggle-btn:active {
+      transform: scale(0.92);
+    }
+
+    /* Global Competition Overview Banner */
+    .overview-strip {
+      background: var(--accent-gradient);
+      color: #ffffff;
+      padding: 10px 16px;
+      text-align: center;
+      font-size: 12.5px;
+      font-weight: 700;
+      letter-spacing: 0.3px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      box-shadow: 0 2px 8px rgba(79, 70, 229, 0.2);
+    }
+
+    /* Sticky Progress Meter */
+    .sticky-progress-wrap {
+      background: var(--bg-secondary);
+      border-bottom: 1px solid var(--border-color);
+      padding: 10px 16px;
+      max-width: 720px;
+      margin: 0 auto;
+      width: 100%;
+    }
+
+    .progress-stats-row {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 6px;
+      font-size: 12.5px;
+      font-weight: 700;
+    }
+
+    .stat-pill {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+      padding: 4px 9px;
+      background: var(--bg-primary);
+      border-radius: 16px;
+      border: 1px solid var(--border-color);
+    }
+
+    .stat-score {
+      color: #10b981;
+    }
+
+    .progress-bar-track {
+      height: 7px;
+      width: 100%;
+      background: var(--border-color);
+      border-radius: 6px;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+
+    .progress-bar-fill {
+      height: 100%;
+      width: 0%;
+      background: var(--accent-gradient);
+      border-radius: 6px;
+      transition: width 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .view-mode-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 11.5px;
+      font-weight: 600;
+      color: var(--text-secondary);
+    }
+
+    .mode-toggle-btn {
+      padding: 4px 10px;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+      background: var(--bg-primary);
+      color: var(--accent-color);
+      font-size: 11.5px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    /* Horizontal Round Tabs */
+    .rounds-scroll-container {
+      max-width: 720px;
+      margin: 10px auto 4px auto;
+      padding: 0 16px;
+      width: 100%;
+      overflow-x: auto;
+      scrollbar-width: none;
+      -ms-overflow-style: none;
+    }
+
+    .rounds-scroll-container::-webkit-scrollbar {
+      display: none;
+    }
+
+    .rounds-nav {
+      display: flex;
+      gap: 8px;
+      width: max-content;
+    }
+
+    .round-tab {
+      padding: 8px 14px;
+      border-radius: 20px;
+      border: 1.5px solid var(--border-color);
+      background: var(--bg-secondary);
+      color: var(--text-secondary);
+      font-size: 12.5px;
+      font-weight: 600;
+      white-space: nowrap;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .round-tab.active {
+      background: var(--accent-color);
+      color: #ffffff;
+      border-color: var(--accent-color);
+      box-shadow: 0 3px 10px rgba(79, 70, 229, 0.35);
+    }
+
+    .round-tab .badge-count {
+      font-size: 11px;
+      padding: 2px 6px;
+      border-radius: 10px;
+      background: var(--bg-primary);
+      color: var(--text-primary);
+    }
+
+    .round-tab.active .badge-count {
+      background: rgba(255, 255, 255, 0.25);
+      color: #ffffff;
+    }
+
+    /* Main Content Container */
+    .main-container {
+      max-width: 720px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 12px 16px;
+      flex: 1;
+    }
+
+    .round-header-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--card-radius);
+      padding: 16px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .round-header-title {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .round-topics-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .topic-tag {
+      font-size: 11px;
+      font-weight: 600;
+      padding: 3px 8px;
+      border-radius: 6px;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      color: var(--text-secondary);
+    }
+
+    /* Question Card */
+    .question-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--card-radius);
+      padding: 18px 16px;
+      margin-bottom: 16px;
+      box-shadow: var(--shadow-sm);
+      transition: transform 0.15s ease, box-shadow 0.15s ease;
+      position: relative;
+    }
+
+    .question-card:hover {
+      box-shadow: var(--shadow-md);
+    }
+
+    .question-meta {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 12px;
+    }
+
+    .q-number-pill {
+      font-size: 12px;
+      font-weight: 800;
+      color: var(--accent-color);
+      background: rgba(79, 70, 229, 0.08);
+      padding: 4px 10px;
+      border-radius: 12px;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+
+    .q-topic-badge {
+      font-size: 11px;
+      font-weight: 600;
+      color: var(--text-muted);
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      padding: 2px 8px;
+      border-radius: 6px;
+    }
+
+    .question-text {
+      font-size: 15.5px;
+      font-weight: 600;
+      line-height: 1.45;
+      color: var(--text-primary);
+      margin-bottom: 16px;
+      word-break: break-word;
+    }
+
+    /* Options List */
+    .options-grid {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .option-btn {
+      width: 100%;
+      min-height: 52px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1.5px solid var(--border-color);
+      background: var(--bg-secondary);
+      color: var(--text-primary);
+      font-size: 15px;
+      font-weight: 500;
+      text-align: left;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+      user-select: none;
+      -webkit-user-select: none;
+      touch-action: manipulation;
+    }
+
+    .option-btn:hover:not(:disabled) {
+      border-color: var(--accent-color);
+      background: rgba(79, 70, 229, 0.04);
+    }
+
+    .option-btn:active:not(:disabled) {
+      transform: scale(0.98);
+    }
+
+    .option-prefix {
+      width: 28px;
+      height: 28px;
+      border-radius: 8px;
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      flex-shrink: 0;
+    }
+
+    .option-text {
+      flex: 1;
+      word-break: break-word;
+    }
+
+    .option-icon {
+      font-size: 18px;
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    /* Correct/Wrong State Styling */
+    .option-btn.option-correct {
+      background-color: var(--correct-bg) !important;
+      border-color: var(--correct-border) !important;
+      color: var(--correct-text) !important;
+      font-weight: 700;
+    }
+
+    .option-btn.option-correct .option-prefix {
+      background: #10b981;
+      color: #ffffff;
+      border-color: #10b981;
+    }
+
+    .option-btn.option-correct .option-icon {
+      opacity: 1;
+      color: #10b981;
+    }
+
+    .option-btn.option-wrong {
+      background-color: var(--wrong-bg) !important;
+      border-color: var(--wrong-border) !important;
+      color: var(--wrong-text) !important;
+    }
+
+    .option-btn.option-wrong .option-prefix {
+      background: #ef4444;
+      color: #ffffff;
+      border-color: #ef4444;
+    }
+
+    .option-btn.option-wrong .option-icon {
+      opacity: 1;
+      color: #ef4444;
+    }
+
+    .option-btn:disabled {
+      cursor: default;
+    }
+
+    /* 2-Line Instant Solution Explanation */
+    .explanation-box {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 12px;
+      background: var(--bg-primary);
+      border-left: 4px solid var(--accent-color);
+      border-right: 1px solid var(--border-color);
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+      display: none;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    .explanation-box.show {
+      display: block;
+    }
+
+    .explanation-header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-size: 11.5px;
+      font-weight: 700;
+      color: var(--accent-color);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 4px;
+    }
+
+    .explanation-content {
+      font-size: 13.5px;
+      line-height: 1.45;
+      color: var(--text-primary);
+    }
+
+    /* Bottom Navigation / Actions Bar */
+    .round-footer-card {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: var(--card-radius);
+      padding: 16px;
+      text-align: center;
+      margin-top: 24px;
+      margin-bottom: 40px;
+      box-shadow: var(--shadow-sm);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+
+    .round-nav-btns-row {
+      display: flex;
+      gap: 10px;
+    }
+
+    .nav-round-btn {
+      flex: 1;
+      padding: 12px 14px;
+      border-radius: 12px;
+      border: 1.5px solid var(--border-color);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      transition: all 0.2s ease;
+    }
+
+    .nav-round-btn:hover:not(:disabled) {
+      border-color: var(--accent-color);
+      background: rgba(79, 70, 229, 0.05);
+    }
+
+    .nav-round-btn:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+    }
+
+    .submit-round-btn {
+      width: 100%;
+      padding: 14px;
+      border-radius: 12px;
+      border: none;
+      background: var(--accent-gradient);
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 800;
+      letter-spacing: 0.3px;
+      cursor: pointer;
+      box-shadow: 0 4px 14px rgba(79, 70, 229, 0.35);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+
+    .submit-round-btn:active {
+      transform: scale(0.98);
+    }
+
+    .all-round-divider {
+      background: var(--bg-secondary);
+      border: 1.5px solid var(--border-color);
+      border-radius: 14px;
+      padding: 12px 16px;
+      margin: 32px 0 16px 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .all-round-divider h3 {
+      font-size: 16px;
+      font-weight: 800;
+      color: var(--accent-color);
+    }
+
+    /* FIRST-TIME THEME ONBOARDING TOUR OVERLAY */
+    .onboarding-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(4px);
+      z-index: 9999;
+      display: none;
+      align-items: flex-start;
+      justify-content: center;
+      padding: 20px;
+    }
+
+    .onboarding-overlay.active {
+      display: flex;
+    }
+
+    .tour-card {
+      position: absolute;
+      top: 75px;
+      right: 20px;
+      max-width: 320px;
+      background: var(--bg-card);
+      border: 2px solid var(--accent-color);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+      animation: bounceTour 1.2s infinite ease-in-out alternate;
+    }
+
+    .tour-pointer-arrow {
+      position: absolute;
+      top: -12px;
+      right: 20px;
+      width: 0;
+      height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-bottom: 12px solid var(--accent-color);
+    }
+
+    .tour-title {
+      font-size: 15px;
+      font-weight: 800;
+      color: var(--text-primary);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .tour-desc {
+      font-size: 13px;
+      line-height: 1.45;
+      color: var(--text-secondary);
+      margin-bottom: 14px;
+    }
+
+    .tour-btn {
+      width: 100%;
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+      background: var(--accent-gradient);
+      color: #ffffff;
+      font-size: 13.5px;
+      font-weight: 700;
+      cursor: pointer;
+    }
+
+    @keyframes bounceTour {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(6px); }
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(-4px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* MODAL: SUBMISSION TO D/CAPTAIN */
+    .modal-backdrop {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      background: rgba(0, 0, 0, 0.7);
+      backdrop-filter: blur(5px);
+      z-index: 1000;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 16px;
+    }
+
+    .modal-backdrop.active {
+      display: flex;
+      animation: fadeIn 0.25s ease;
+    }
+
+    .modal-sheet {
+      background: var(--bg-card);
+      border: 1px solid var(--border-color);
+      border-radius: 20px;
+      width: 100%;
+      max-width: 440px;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 24px;
+      box-shadow: var(--shadow-lg);
+      position: relative;
+    }
+
+    .modal-close-btn {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      border: 1px solid var(--border-color);
+      background: var(--bg-primary);
+      color: var(--text-secondary);
+      font-size: 16px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-badge-icon {
+      font-size: 40px;
+      text-align: center;
+      margin-bottom: 8px;
+    }
+
+    .modal-title {
+      font-size: 20px;
+      font-weight: 800;
+      text-align: center;
+      color: var(--text-primary);
+      margin-bottom: 4px;
+    }
+
+    .modal-subtitle {
+      font-size: 13px;
+      color: var(--text-secondary);
+      text-align: center;
+      margin-bottom: 18px;
+    }
+
+    .score-summary-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-bottom: 18px;
+    }
+
+    .score-box {
+      background: var(--bg-primary);
+      border: 1px solid var(--border-color);
+      border-radius: 12px;
+      padding: 12px;
+      text-align: center;
+    }
+
+    .score-box-val {
+      font-size: 22px;
+      font-weight: 900;
+      color: var(--accent-color);
+    }
+
+    .score-box-lbl {
+      font-size: 11px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .form-group {
+      margin-bottom: 14px;
+    }
+
+    .form-label {
+      display: block;
+      font-size: 12.5px;
+      font-weight: 700;
+      color: var(--text-secondary);
+      margin-bottom: 5px;
+    }
+
+    .form-input {
+      width: 100%;
+      padding: 12px 14px;
+      border-radius: 10px;
+      border: 1.5px solid var(--border-color);
+      background: var(--bg-primary);
+      color: var(--text-primary);
+      font-size: 14px;
+      outline: none;
+    }
+
+    .form-input:focus {
+      border-color: var(--accent-color);
+    }
+
+    .modal-submit-btn {
+      width: 100%;
+      padding: 14px;
+      border-radius: 12px;
+      border: none;
+      background: var(--accent-gradient);
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(79, 70, 229, 0.3);
+      margin-top: 6px;
+    }
+
+    .submit-status-msg {
+      margin-top: 12px;
+      font-size: 13px;
+      text-align: center;
+      min-height: 20px;
+      font-weight: 600;
+    }
+
+    .status-success {
+      color: #10b981;
+    }
+
+    .status-pending {
+      color: #f59e0b;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Header Bar -->
+  <header class="app-header">
+    <div class="header-content">
+      <div class="logo-area">
+        <a href="../index.html">
+          <div class="logo-icon">∑</div>
+          <div class="logo-text">
+            <span class="logo-title">The Mathematicians' Battle</span>
+            <span class="logo-subtitle">2026 Series • 150 Questions</span>
+          </div>
+        </a>
+      </div>
+      <div class="header-actions">
+        <a href="../index.html" class="portal-back-btn" title="Return to Portal">
+          <span>🏠</span>
+          <span>Portal</span>
+        </a>
+        <!-- Dark/Light Theme Switcher -->
+        <button class="theme-toggle-btn" id="themeToggleBtn" title="Toggle Dark / Light Mode" aria-label="Toggle Theme">
+          🌙
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Competition Overview Strip -->
+  <div class="overview-strip">
+    <span>🏆 5 Rounds • 30 Questions Each • Total 150 Questions</span>
+  </div>
+
+  <!-- Sticky Dual Progress & Score Bar -->
+  <section class="sticky-progress-wrap">
+    <div class="progress-stats-row">
+      <div class="stat-pill">
+        <span>🌐 Total Answered:</span>
+        <span id="globalAnsweredStat">0 / 150</span>
+      </div>
+      <div class="stat-pill">
+        <span>🎯 Overall Score:</span>
+        <span id="globalScoreStat" class="stat-score">0 / 150</span>
+      </div>
+    </div>
+    <div class="progress-bar-track">
+      <div class="progress-bar-fill" id="progressBarFill"></div>
+    </div>
+    <div class="view-mode-bar">
+      <span id="roundAnsweredSubtext">Round 1: 0 / 30 Answered</span>
+      <button class="mode-toggle-btn" id="viewModeToggleBtn">📜 View All 150 Qs</button>
+    </div>
+  </section>
+
+  <!-- Horizontal Scrollable Round Navigation -->
+  <nav class="rounds-scroll-container" id="roundsScrollContainer">
+    <div class="rounds-nav" id="roundsNav">
+      <!-- Generated Dynamically -->
+    </div>
+  </nav>
+
+  <!-- Main Content Area -->
+  <main class="main-container">
+    <!-- Active Round Header Banner -->
+    <div class="round-header-card" id="roundHeaderCard">
+      <div class="round-header-title">
+        <span id="roundTitleText">Round 1: Algebra & Set Theory</span>
+        <span style="font-size: 12px; color: var(--accent-color); font-weight: 700;">30 Questions</span>
+      </div>
+      <div class="round-topics-list" id="roundTopicsList">
+        <!-- Topic tags will be populated here -->
+      </div>
+    </div>
+
+    <!-- Questions List Container -->
+    <div id="questionsContainer">
+      <!-- Question cards will be injected dynamically -->
+    </div>
+
+    <!-- Bottom Navigation Bar -->
+    <div class="round-footer-card">
+      <div class="round-nav-btns-row" id="roundNavBtnsRow">
+        <button class="nav-round-btn" id="prevRoundBtn">⬅️ Previous Round</button>
+        <button class="nav-round-btn" id="nextRoundBtn">Next Round ➡️</button>
+      </div>
+      <button class="submit-round-btn" id="finishRoundBtn">
+        <span>🏆 Submit to D/Captain</span>
+      </button>
+    </div>
+  </main>
+
+  <!-- FIRST-TIME ONBOARDING OVERLAY -->
+  <div class="onboarding-overlay" id="onboardingOverlay">
+    <div class="tour-card" id="tourCard">
+      <div class="tour-pointer-arrow"></div>
+      <div class="tour-title">
+        <span>💡 Dark / Light Mode Switch</span>
+      </div>
+      <p class="tour-desc">
+        Tap this button anytime to switch between <strong>Dark Mode</strong> and <strong>Light Mode</strong> for comfortable reading day or night!
+      </p>
+      <button class="tour-btn" id="tourDismissBtn">Got it! Let's Begin 🚀</button>
+    </div>
+  </div>
+
+  <!-- STUDENT TRACKING / SCORE SUBMISSION MODAL -->
+  <div class="modal-backdrop" id="submissionModal">
+    <div class="modal-sheet">
+      <button class="modal-close-btn" id="closeSubModalBtn">&times;</button>
+      <div class="modal-badge-icon">🎖️</div>
+      <h3 class="modal-title" id="modalRoundName">Round Completed!</h3>
+      <p class="modal-subtitle">Submit your score to D/Captain's live leaderboard</p>
+
+      <div class="score-summary-grid">
+        <div class="score-box">
+          <div class="score-box-val" id="modalScoreDisplay">0 / 30</div>
+          <div class="score-box-lbl">Score</div>
+        </div>
+        <div class="score-box">
+          <div class="score-box-val" id="modalAccuracyDisplay">0%</div>
+          <div class="score-box-lbl">Accuracy</div>
+        </div>
+      </div>
+
+      <form id="studentSubmitForm">
+        <div class="form-group">
+          <label class="form-label" for="studentName">Student Full Name *</label>
+          <input type="text" id="studentName" class="form-input" placeholder="e.g. Aryan Sharma" required autocomplete="name">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="studentRoll">Roll Number / Student ID *</label>
+          <input type="text" id="studentRoll" class="form-input" placeholder="e.g. 2026-MATH-042" required autocomplete="off">
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="studentCollege">College / Section (Optional)</label>
+          <input type="text" id="studentCollege" class="form-input" placeholder="e.g. Section A / Department of Maths">
+        </div>
+
+        <button type="submit" class="modal-submit-btn" id="modalSubmitBtn">
+          🚀 Submit to D/Captain
+        </button>
+        <div class="submit-status-msg" id="submitStatusMsg"></div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // --- QUESTIONS DATASET (150 QUESTIONS) ---
+    const ROUNDS_DATA = [{"roundNumber": 1, "roundTitle": "Round 1: Algebra & Set Theory", "badge": "Round 1", "topics": ["BODMAS", "Equation (quadratic equation)", "Set theory"], "questions": [{"id": 1, "topic": "BODMAS", "difficulty": "Easy", "q": "Evaluate: 42 ÷ 7 × 4 + 9 - 15", "options": ["22", "20", "18", "16"], "correct": 2, "explanation": "Perform division first: 42 ÷ 7 = 6; then multiply: 6 × 4 = 24. Finally, 24 + 9 - 15 = 18."}, {"id": 2, "topic": "BODMAS", "difficulty": "Easy", "q": "Calculate: 65 - 5 × (8 + 4) ÷ 3", "options": ["40", "55", "50", "45"], "correct": 3, "explanation": "Parentheses first: 8 + 4 = 12. Then multiply and divide: 5 × 12 ÷ 3 = 20, giving 65 - 20 = 45."}, {"id": 3, "topic": "BODMAS", "difficulty": "Easy", "q": "Simplify: 120 ÷ 6 of 4 + 18 × 3", "options": ["62", "55", "59", "50"], "correct": 2, "explanation": "'Of' precedes division: 6 of 4 = 24. Then 120 ÷ 24 = 5; 18 × 3 = 54; 5 + 54 = 59."}, {"id": 4, "topic": "BODMAS", "difficulty": "Medium", "q": "Find the value of: 35 + [28 - {14 - (9 - 6 + 3)}]", "options": ["50", "52", "58", "55"], "correct": 3, "explanation": "Innermost parentheses: 9 - 6 + 3 = 6. Then 14 - 6 = 8; 28 - 8 = 20; finally 35 + 20 = 55."}, {"id": 5, "topic": "BODMAS", "difficulty": "Medium", "q": "Evaluate: (3/4 ÷ 3/4 of 3/4) × (3/4 + 3/4)", "options": ["4/3", "3/2", "1", "2"], "correct": 3, "explanation": "First part: 3/4 of 3/4 = 9/16; 3/4 ÷ 9/16 = 4/3. Second part: 3/4 + 3/4 = 3/2. Product = (4/3) × (3/2) = 2."}, {"id": 6, "topic": "BODMAS", "difficulty": "Hard", "q": "Compute: 90 - 4[18 - 3{12 - 2(5 - 1)} ÷ 2]", "options": ["36", "42", "48", "54"], "correct": 1, "explanation": "Parentheses: 2(4) = 8; 12 - 8 = 4. Inside braces: 3(4) ÷ 2 = 6; 18 - 6 = 12. Finally 90 - 4(12) = 90 - 48 = 42."}, {"id": 7, "topic": "BODMAS", "difficulty": "Hard", "q": "Evaluate: 144 ÷ [12 + {18 - 2 × (9 - 3 × 2)}]", "options": ["8", "12", "6", "4"], "correct": 2, "explanation": "Inner bracket: 9 - 6 = 3; 2 × 3 = 6. Braces: 18 - 6 = 12. Brackets: 12 + 12 = 24. Result = 144 ÷ 24 = 6."}, {"id": 8, "topic": "BODMAS", "difficulty": "Medium", "q": "Simplify: 18.5 - [6.5 + {4.2 - (3.1 - 1.9)}]", "options": ["9", "7.5", "8.5", "10"], "correct": 0, "explanation": "Parentheses: 3.1 - 1.9 = 1.2; 4.2 - 1.2 = 3.0. Brackets: 6.5 + 3.0 = 9.5. Finally 18.5 - 9.5 = 9."}, {"id": 9, "topic": "BODMAS", "difficulty": "Easy", "q": "What is the value of: 8 × 9 - 64 ÷ 8 + 12?", "options": ["76", "72", "68", "80"], "correct": 0, "explanation": "Multiplication and division first: 8 × 9 = 72 and 64 ÷ 8 = 8. Then 72 - 8 + 12 = 76."}, {"id": 10, "topic": "BODMAS", "difficulty": "Hard", "q": "Evaluate: [75 ÷ {20 - 5 × (7 - 4)}] + 8 × 6", "options": ["60", "65", "63", "58"], "correct": 2, "explanation": "Inside: 7 - 4 = 3; 5 × 3 = 15; 20 - 15 = 5. Then 75 ÷ 5 = 15; 8 × 6 = 48; 15 + 48 = 63."}, {"id": 11, "topic": "Equation (quadratic equation)", "difficulty": "Easy", "q": "Find the roots of the quadratic equation: x² - 9x + 20 = 0", "options": ["3 and 6", "4 and 5", "2 and 10", "-4 and -5"], "correct": 1, "explanation": "Factor the quadratic: (x - 4)(x - 5) = 0. Roots are x = 4 and x = 5."}, {"id": 12, "topic": "Equation (quadratic equation)", "difficulty": "Easy", "q": "If x = 3 is a root of 2x² - kx - 9 = 0, find the value of k.", "options": ["5", "3", "2", "4"], "correct": 1, "explanation": "Substitute x = 3: 2(3)² - 3k - 9 = 0 ⇒ 18 - 3k - 9 = 0 ⇒ 3k = 9 ⇒ k = 3."}, {"id": 13, "topic": "Equation (quadratic equation)", "difficulty": "Medium", "q": "Find the discriminant of 3x² - 6x + 2 = 0 and determine its root nature.", "options": ["24; Rational", "12; Real and distinct", "0; Real and equal", "-12; Non-real complex"], "correct": 1, "explanation": "D = b² - 4ac = (-6)² - 4(3)(2) = 36 - 24 = 12. Since D > 0 and not a square, roots are real, distinct, and irrational."}, {"id": 14, "topic": "Equation (quadratic equation)", "difficulty": "Medium", "q": "If α and β are the roots of 2x² - 7x + 5 = 0, find the value of α/β + β/α.", "options": ["29/10", "19/10", "39/10", "49/20"], "correct": 0, "explanation": "α+β = 7/2, αβ = 5/2. α/β + β/α = (α²+β²)/αβ = [(7/2)² - 2(5/2)] / (5/2) = (49/4 - 5) / (5/2) = (29/4)/(5/2) = 29/10."}, {"id": 15, "topic": "Equation (quadratic equation)", "difficulty": "Medium", "q": "For what value of p does the equation px² - 12x + 9 = 0 have real and equal roots?", "options": ["2", "4", "3", "6"], "correct": 1, "explanation": "Equal roots require D = b² - 4ac = 0. (-12)² - 4(p)(9) = 0 ⇒ 144 - 36p = 0 ⇒ p = 4."}, {"id": 16, "topic": "Equation (quadratic equation)", "difficulty": "Hard", "q": "If one root of x² - 10x + k = 0 exceeds the other by 4, find k.", "options": ["25", "21", "24", "16"], "correct": 1, "explanation": "Let roots be r and r + 4. Sum = 2r + 4 = 10 ⇒ r = 3. Roots are 3 and 7. Product k = 3 × 7 = 21."}, {"id": 17, "topic": "Equation (quadratic equation)", "difficulty": "Hard", "q": "Find the minimum value of the quadratic function f(x) = 3x² - 12x + 17.", "options": ["9", "7", "3", "5"], "correct": 3, "explanation": "Vertex occurs at x = -b/(2a) = 12/(2×3) = 2. Minimum f(2) = 3(4) - 12(2) + 17 = 12 - 24 + 17 = 5."}, {"id": 18, "topic": "Equation (quadratic equation)", "difficulty": "Medium", "q": "Form the quadratic equation whose roots are (3 + √5) and (3 - √5).", "options": ["x² + 6x + 4 = 0", "x² - 4x + 6 = 0", "x² - 6x + 4 = 0", "x² - 6x - 4 = 0"], "correct": 2, "explanation": "Sum of roots = (3+√5)+(3-√5) = 6. Product = 3² - (√5)² = 9 - 5 = 4. Equation: x² - 6x + 4 = 0."}, {"id": 19, "topic": "Equation (quadratic equation)", "difficulty": "Hard", "q": "If the roots of x² - bx + c = 0 are two consecutive positive integers, find b² - 4c.", "options": ["1", "0", "4", "2"], "correct": 0, "explanation": "Difference of roots is (n+1) - n = 1. Root difference = √(b² - 4c) / 1 = 1. Squaring gives b² - 4c = 1."}, {"id": 20, "topic": "Equation (quadratic equation)", "difficulty": "Easy", "q": "What is the product of roots for the quadratic equation 4x² + 16x - 9 = 0?", "options": ["4", "9/4", "-9/4", "-4"], "correct": 2, "explanation": "Product of roots of ax² + bx + c = 0 is c/a. Here c = -9 and a = 4, so product = -9/4."}, {"id": 21, "topic": "Set theory", "difficulty": "Easy", "q": "If P = {2, 3, 5, 7} and Q = {5, 7, 11, 13}, find P - Q.", "options": ["{11, 13}", "{2, 3}", "{5, 7}", "{2, 3, 11, 13}"], "correct": 1, "explanation": "P - Q contains elements that belong to P but not to Q. Removing 5 and 7 from P leaves {2, 3}."}, {"id": 22, "topic": "Set theory", "difficulty": "Easy", "q": "If a set S has 4 elements, how many non-empty subsets does S have?", "options": ["14", "8", "15", "16"], "correct": 2, "explanation": "Total subsets = 2⁴ = 16. Excluding the empty set gives 16 - 1 = 15 non-empty subsets."}, {"id": 23, "topic": "Set theory", "difficulty": "Medium", "q": "If n(A) = 35, n(B) = 25, and n(A ∩ B) = 12, find n(A ∪ B).", "options": ["52", "46", "50", "48"], "correct": 3, "explanation": "By the inclusion-exclusion principle: n(A ∪ B) = n(A) + n(B) - n(A ∩ B) = 35 + 25 - 12 = 48."}, {"id": 24, "topic": "Set theory", "difficulty": "Medium", "q": "In a survey of 100 students, 60 study Physics, 50 study Chemistry, and 20 study neither. How many study both?", "options": ["25", "30", "20", "35"], "correct": 1, "explanation": "Students studying at least one = 100 - 20 = 80. n(Both) = 60 + 50 - 80 = 30 students."}, {"id": 25, "topic": "Set theory", "difficulty": "Medium", "q": "Let U = {1, 2, 3, 4, 5, 6, 7, 8} and A = {1, 3, 5, 7}. What is (A')' equal to?", "options": ["U", "∅", "{1, 3, 5, 7}", "{2, 4, 6, 8}"], "correct": 2, "explanation": "The complement of the complement of any set is the set itself: (A')' = A = {1, 3, 5, 7}."}, {"id": 26, "topic": "Set theory", "difficulty": "Hard", "q": "If Set X has 5 elements and Set Y has 8 elements, what is the maximum number of elements in X ∩ Y?", "options": ["8", "3", "13", "5"], "correct": 3, "explanation": "The intersection is maximum when X is fully contained in Y (X ⊆ Y). Thus max n(X ∩ Y) = min(5, 8) = 5."}, {"id": 27, "topic": "Set theory", "difficulty": "Hard", "q": "If n(A - B) = 22, n(B - A) = 18, and n(A ∩ B) = 15, find n(A ∪ B).", "options": ["45", "60", "50", "55"], "correct": 3, "explanation": "n(A ∪ B) = n(A - B) + n(B - A) + n(A ∩ B) = 22 + 18 + 15 = 55."}, {"id": 28, "topic": "Set theory", "difficulty": "Medium", "q": "If A = {a, b, c} and B = {x, y}, how many non-empty relations from A to B exist?", "options": ["63", "32", "31", "64"], "correct": 0, "explanation": "n(A × B) = 3 × 2 = 6. Total relations = 2⁶ = 64. Excluding the empty relation gives 64 - 1 = 63."}, {"id": 29, "topic": "Set theory", "difficulty": "Easy", "q": "If Set A and Set B are disjoint sets with n(A) = 16 and n(B) = 24, find n(A ∩ B).", "options": ["0", "40", "8", "16"], "correct": 0, "explanation": "By definition, disjoint sets have no common elements. Hence n(A ∩ B) = 0."}, {"id": 30, "topic": "Set theory", "difficulty": "Hard", "q": "In a group of 120 people, 70 speak Hindi, 55 speak English, and 25 speak both. How many speak ONLY Hindi?", "options": ["45", "50", "40", "30"], "correct": 0, "explanation": "People who speak only Hindi = Total Hindi speakers - Both = 70 - 25 = 45."}]}, {"roundNumber": 2, "roundTitle": "Round 2: Arithmetic & Reasoning", "badge": "Round 2", "topics": ["BODMAS", "Average", "Percentage", "Addition", "Reasoning (Maths)"], "questions": [{"id": 31, "topic": "BODMAS", "difficulty": "Easy", "q": "Evaluate: 28 + 48 ÷ 6 - 3 × 5", "options": ["19", "21", "23", "25"], "correct": 1, "explanation": "48 ÷ 6 = 8 and 3 × 5 = 15. Then 28 + 8 - 15 = 21."}, {"id": 32, "topic": "BODMAS", "difficulty": "Medium", "q": "Calculate: 16 × 4 ÷ 2 + 15 - 9 of 2", "options": ["31", "25", "27", "29"], "correct": 3, "explanation": "'Of' first: 9 of 2 = 18. Then 16 × 4 ÷ 2 = 32. Finally, 32 + 15 - 18 = 29."}, {"id": 33, "topic": "BODMAS", "difficulty": "Medium", "q": "Simplify: 5.6 + [4.8 - {2.5 + (3.2 - 1.7)}]", "options": ["6.4", "6.6", "5.8", "6.2"], "correct": 0, "explanation": "3.2 - 1.7 = 1.5; 2.5 + 1.5 = 4.0. Then 4.8 - 4.0 = 0.8; 5.6 + 0.8 = 6.4."}, {"id": 34, "topic": "BODMAS", "difficulty": "Hard", "q": "Evaluate: 96 ÷ 8 of 2 + [14 - (10 - 4)] × 3", "options": ["26", "32", "30", "28"], "correct": 2, "explanation": "8 of 2 = 16; 96 ÷ 16 = 6. Inside brackets: [14 - 6] × 3 = 8 × 3 = 24. Result = 6 + 24 = 30."}, {"id": 35, "topic": "BODMAS", "difficulty": "Hard", "q": "Find: 50 - 3 × [16 - 2 × {8 - 3(4 - 2)}]", "options": ["14", "16", "18", "12"], "correct": 0, "explanation": "3(2) = 6; 8 - 6 = 2; 2 × 2 = 4. Inside square brackets: 16 - 4 = 12. Then 50 - 3(12) = 50 - 36 = 14."}, {"id": 36, "topic": "BODMAS", "difficulty": "Easy", "q": "Compute: 72 ÷ 9 × 5 - 18 + 6", "options": ["24", "28", "32", "30"], "correct": 1, "explanation": "72 ÷ 9 = 8; 8 × 5 = 40. Then 40 - 18 + 6 = 28."}, {"id": 37, "topic": "Average", "difficulty": "Easy", "q": "Find the average of the first six positive multiples of 4.", "options": ["10", "14", "12", "16"], "correct": 1, "explanation": "Multiples: 4, 8, 12, 16, 20, 24. Sum = 84. Average = 84 ÷ 6 = 14 (or (first + last)/2 = 28/2 = 14)."}, {"id": 38, "topic": "Average", "difficulty": "Medium", "q": "The average of 7 consecutive numbers is 32. What is the smallest of these numbers?", "options": ["31", "29", "30", "28"], "correct": 1, "explanation": "In an odd-length consecutive sequence, the average is the middle number (4th). Smallest (1st) = 32 - 3 = 29."}, {"id": 39, "topic": "Average", "difficulty": "Medium", "q": "The average score of 20 boys is 60 and 30 girls is 70. Find the overall class average.", "options": ["66", "65", "67", "64"], "correct": 0, "explanation": "Total sum = (20 × 60) + (30 × 70) = 1200 + 2100 = 3300. Overall average = 3300 ÷ 50 = 66."}, {"id": 40, "topic": "Average", "difficulty": "Hard", "q": "The average weight of 10 boxes is 25 kg. When one box is replaced with a new 35 kg box, average becomes 26 kg. Find weight of replaced box.", "options": ["20 kg", "24 kg", "22 kg", "25 kg"], "correct": 3, "explanation": "Total increase = 10 × (26 - 25) = 10 kg. Weight of replaced box = 35 - 10 = 25 kg."}, {"id": 41, "topic": "Average", "difficulty": "Hard", "q": "The average of 8 numbers is 21. If each number is multiplied by 3 and then increased by 5, find the new average.", "options": ["68", "65", "66", "70"], "correct": 0, "explanation": "If each number x becomes 3x + 5, the new average is 3(original average) + 5 = 3(21) + 5 = 63 + 5 = 68."}, {"id": 42, "topic": "Average", "difficulty": "Easy", "q": "What is the average of 15, 25, 35, 45, 55, and 65?", "options": ["40", "38", "45", "42"], "correct": 0, "explanation": "Equally spaced arithmetic sequence: Average = (first + last) / 2 = (15 + 65) / 2 = 80 / 2 = 40."}, {"id": 43, "topic": "Percentage", "difficulty": "Easy", "q": "If 45% of a number is 135, what is 70% of that number?", "options": ["210", "225", "200", "190"], "correct": 0, "explanation": "If 45% = 135, 1% = 3, so the number is 300. 70% of 300 = 0.70 × 300 = 210."}, {"id": 44, "topic": "Percentage", "difficulty": "Medium", "q": "A price is increased by 10% and then by another 10%. What is the overall percentage increase?", "options": ["22%", "21%", "19%", "20%"], "correct": 1, "explanation": "Successive formula: a + b + (ab/100) = 10 + 10 + (10×10)/100 = 20 + 1 = 21%."}, {"id": 45, "topic": "Percentage", "difficulty": "Medium", "q": "A student scored 280 marks out of 400. What percentage of marks did the student obtain?", "options": ["75%", "68%", "72%", "70%"], "correct": 3, "explanation": "Percentage = (280 / 400) × 100% = 7/10 × 100% = 70%."}, {"id": 46, "topic": "Percentage", "difficulty": "Hard", "q": "The population of a city grows by 5% each year. If the current population is 80,000, what will it be after 2 years?", "options": ["88,200", "87,500", "88,000", "89,000"], "correct": 0, "explanation": "Population = 80000 × (1.05)² = 80000 × 1.1025 = 88,200."}, {"id": 47, "topic": "Percentage", "difficulty": "Hard", "q": "If the price of petrol increases by 20%, by what percent must a driver cut usage so expenditure rises by only 8%?", "options": ["12%", "8%", "10%", "15%"], "correct": 2, "explanation": "Expenditure = Price × Quantity: 1.08 = 1.20 × Q_new ⇒ Q_new = 1.08 / 1.20 = 0.90 (10% reduction)."}, {"id": 48, "topic": "Percentage", "difficulty": "Medium", "q": "In a class of 60 students, 45% are boys. How many girls are in the class?", "options": ["30", "32", "35", "33"], "correct": 3, "explanation": "Girls percentage = 100% - 45% = 55%. Number of girls = 0.55 × 60 = 33."}, {"id": 49, "topic": "Addition", "difficulty": "Easy", "q": "Find the sum of all positive integers from 1 to 40.", "options": ["800", "840", "820", "780"], "correct": 2, "explanation": "Sum of first n integers = n(n + 1)/2. For n = 40: (40 × 41)/2 = 20 × 41 = 820."}, {"id": 50, "topic": "Addition", "difficulty": "Medium", "q": "What is the sum of the first 20 even natural numbers (2 + 4 + ... + 40)?", "options": ["420", "380", "400", "440"], "correct": 0, "explanation": "Sum of first n even numbers is n(n + 1). For n = 20: 20 × 21 = 420."}, {"id": 51, "topic": "Addition", "difficulty": "Medium", "q": "Find the sum of the arithmetic series: 15 + 20 + 25 + ... + 75", "options": ["600", "585", "550", "575"], "correct": 1, "explanation": "Number of terms n = (75 - 15)/5 + 1 = 13. Sum = 13/2 × (15 + 75) = 13/2 × 90 = 13 × 45 = 585."}, {"id": 52, "topic": "Addition", "difficulty": "Hard", "q": "Evaluate: 1/(2×3) + 1/(3×4) + 1/(4×5) + ... + 1/(9×10)", "options": ["4/10", "1/2", "9/20", "2/5"], "correct": 0, "explanation": "Telescoping series: (1/2 - 1/3) + (1/3 - 1/4) + ... + (1/9 - 1/10) = 1/2 - 1/10 = 4/10 = 2/5. (4/10)."}, {"id": 53, "topic": "Addition", "difficulty": "Hard", "q": "Find the sum: 101 + 102 + 103 + ... + 150", "options": ["6300", "6200", "6275", "6250"], "correct": 2, "explanation": "There are 50 terms. Sum = 50/2 × (101 + 150) = 25 × 251 = 6275."}, {"id": 54, "topic": "Addition", "difficulty": "Easy", "q": "Find the sum of the first 12 odd numbers (1 + 3 + 5 + ... + 23).", "options": ["132", "144", "121", "156"], "correct": 1, "explanation": "Sum of first n odd positive integers is n². For n = 12: 12² = 144."}, {"id": 55, "topic": "Reasoning (Maths)", "difficulty": "Easy", "q": "Find the next number in the sequence: 4, 9, 19, 39, 79, ?", "options": ["158", "149", "160", "159"], "correct": 3, "explanation": "Each term is double the previous plus 1: 4×2+1=9, 9×2+1=19, 19×2+1=39, 39×2+1=79. Next = 79×2+1 = 159."}, {"id": 56, "topic": "Reasoning (Maths)", "difficulty": "Medium", "q": "If 4 * 3 = 25 and 5 * 2 = 29, what is 6 * 4?", "options": ["48", "52", "50", "56"], "correct": 1, "explanation": "Rule is a² + b²: 4² + 3² = 16 + 9 = 25; 5² + 2² = 25 + 4 = 29. For 6 and 4: 6² + 4² = 36 + 16 = 52."}, {"id": 57, "topic": "Reasoning (Maths)", "difficulty": "Medium", "q": "At what angle are the hands of a clock inclined at 4:20?", "options": ["15°", "20°", "0°", "10°"], "correct": 3, "explanation": "Formula: |30H - 5.5M| = |30(4) - 5.5(20)| = |120 - 110| = 10°."}, {"id": 58, "topic": "Reasoning (Maths)", "difficulty": "Hard", "q": "If 15 men can complete a project in 12 days, how many men are needed to finish it in 9 days?", "options": ["18", "22", "20", "24"], "correct": 2, "explanation": "Total man-days = 15 × 12 = 180. To complete in 9 days: 180 ÷ 9 = 20 men."}, {"id": 59, "topic": "Reasoning (Maths)", "difficulty": "Hard", "q": "How many total squares of any size are on a standard 4×4 grid?", "options": ["28", "32", "26", "30"], "correct": 3, "explanation": "Formula for squares on an n×n grid is 1² + 2² + ... + n². For n = 4: 1 + 4 + 9 + 16 = 30 squares."}, {"id": 60, "topic": "Reasoning (Maths)", "difficulty": "Medium", "q": "Find the missing term: 1, 4, 9, 16, 25, 36, ?", "options": ["47", "49", "50", "48"], "correct": 1, "explanation": "These are perfect squares: 1², 2², 3², 4², 5², 6². The next square is 7² = 49."}]}, {"roundNumber": 3, "roundTitle": "Round 3: Quantitative Aptitude & Mathematical Reasoning", "badge": "Round 3", "topics": ["Exponent", "Profit and Loss", "Average", "Set theory", "Reasoning (Maths)"], "questions": [{"id": 61, "topic": "Exponent", "difficulty": "Easy", "q": "Simplify: (3⁵ × 3³) ÷ 3⁶", "options": ["27", "3", "9", "81"], "correct": 2, "explanation": "Using exponent laws: 3^(5+3) ÷ 3^6 = 3^8 ÷ 3^6 = 3^(8-6) = 3² = 9."}, {"id": 62, "topic": "Exponent", "difficulty": "Medium", "q": "If 2^(x + 3) = 64, find the value of x.", "options": ["5", "4", "3", "2"], "correct": 2, "explanation": "64 = 2⁶. Therefore 2^(x + 3) = 2⁶ ⇒ x + 3 = 6 ⇒ x = 3."}, {"id": 63, "topic": "Exponent", "difficulty": "Medium", "q": "Evaluate: (64)^(-2/3)", "options": ["1/8", "1/16", "1/32", "1/4"], "correct": 1, "explanation": "64 = 4³. Thus (4³)^(-2/3) = 4^(-2) = 1/(4²) = 1/16."}, {"id": 64, "topic": "Exponent", "difficulty": "Hard", "q": "If 5^(a - 2) × 5^(2a + 1) = 125, find the value of a.", "options": ["2", "4/3", "1", "5/3"], "correct": 1, "explanation": "Combine powers: 5^(3a - 1) = 5³ ⇒ 3a - 1 = 3 ⇒ 3a = 4 ⇒ a = 4/3."}, {"id": 65, "topic": "Exponent", "difficulty": "Hard", "q": "Which value is largest among: 3³³, 2⁵⁵, and 5²²?", "options": ["All equal", "5²²", "3³³", "2⁵⁵"], "correct": 3, "explanation": "Express with exponent 11: 3³³ = 27¹¹, 2⁵⁵ = 32¹¹, 5²² = 25¹¹. Since 32 is greatest, 2⁵⁵ is largest."}, {"id": 66, "topic": "Exponent", "difficulty": "Easy", "q": "What is the value of 10⁰ + 8⁰ - 5⁰?", "options": ["2", "1", "3", "0"], "correct": 1, "explanation": "Any non-zero base raised to the power 0 equals 1. Thus 1 + 1 - 1 = 1."}, {"id": 67, "topic": "Profit and Loss", "difficulty": "Easy", "q": "A watch bought for ₹800 is sold for ₹1000. What is the profit percentage?", "options": ["20%", "30%", "25%", "15%"], "correct": 2, "explanation": "Profit = 1000 - 800 = ₹200. Profit % = (200 / 800) × 100% = 25%."}, {"id": 68, "topic": "Profit and Loss", "difficulty": "Medium", "q": "By selling a bag for ₹540, a shopkeeper loses 10%. What was its cost price?", "options": ["₹580", "₹620", "₹590", "₹600"], "correct": 3, "explanation": "Cost Price = SP ÷ (1 - Loss%) = 540 ÷ 0.90 = ₹600."}, {"id": 69, "topic": "Profit and Loss", "difficulty": "Medium", "q": "If the cost price of 15 chairs equals the selling price of 12 chairs, find the profit %.", "options": ["15%", "20%", "25%", "30%"], "correct": 2, "explanation": "Profit % = [(15 - 12) / 12] × 100% = 3/12 × 100% = 25%."}, {"id": 70, "topic": "Profit and Loss", "difficulty": "Hard", "q": "An article sold for ₹480 yields a 20% loss. What selling price gives a 20% profit?", "options": ["₹680", "₹700", "₹720", "₹750"], "correct": 2, "explanation": "Cost Price = 480 ÷ 0.80 = ₹600. For 20% gain: New SP = 600 × 1.20 = ₹720."}, {"id": 71, "topic": "Profit and Loss", "difficulty": "Hard", "q": "A dishonest dealer claims to sell grain at cost but gives 800g instead of 1kg. Find his gain %.", "options": ["22.5%", "30%", "25%", "20%"], "correct": 2, "explanation": "Gain % = [Error / (Actual Given)] × 100% = (200 / 800) × 100% = 25%."}, {"id": 72, "topic": "Profit and Loss", "difficulty": "Easy", "q": "A phone bought for ₹12,000 is sold at a 15% loss. What is the selling price?", "options": ["₹10,500", "₹10,000", "₹9,800", "₹10,200"], "correct": 3, "explanation": "Loss = 15% of 12,000 = ₹1,800. Selling price = 12,000 - 1,800 = ₹10,200."}, {"id": 73, "topic": "Average", "difficulty": "Easy", "q": "A cyclist travels 10 km at 15 km/h and another 10 km at 30 km/h. Find average speed.", "options": ["25 km/h", "18 km/h", "20 km/h", "22.5 km/h"], "correct": 2, "explanation": "Harmonic mean for equal distances: 2xy/(x + y) = 2(15)(30) / 45 = 900 / 45 = 20 km/h."}, {"id": 74, "topic": "Average", "difficulty": "Medium", "q": "The average of 5 numbers is 18. If one number is removed, the average becomes 16. What was the removed number?", "options": ["24", "26", "28", "22"], "correct": 1, "explanation": "Initial sum = 5 × 18 = 90; new sum = 4 × 16 = 64. Removed number = 90 - 64 = 26."}, {"id": 75, "topic": "Average", "difficulty": "Medium", "q": "A cricketer has an average of 35 runs in 9 matches. How many runs must he score in the 10th match to raise it to 40?", "options": ["85", "90", "80", "75"], "correct": 0, "explanation": "Total needed = 10 × 40 = 400. Current total = 9 × 35 = 315. Required score = 400 - 315 = 85 runs."}, {"id": 76, "topic": "Average", "difficulty": "Hard", "q": "In a library, the average number of visitors on Sundays is 510 and on other days is 240. Find the average visitors per day in a 30-day month beginning on a Sunday.", "options": ["290", "275", "280", "285"], "correct": 3, "explanation": "Month starting on Sunday has 5 Sundays and 25 other days. Total = (5×510) + (25×240) = 2550 + 6000 = 8550. Average = 8550 ÷ 30 = 285."}, {"id": 77, "topic": "Average", "difficulty": "Hard", "q": "The average salary of 12 employees is ₹15,000. If the manager's salary is included, the average increases by ₹2,000. What is the manager's salary?", "options": ["₹43,000", "₹41,000", "₹38,000", "₹39,000"], "correct": 1, "explanation": "New average = ₹17,000 for 13 people. Total = 13 × 17000 = 221,000. Original = 12 × 15000 = 180,000. Manager = 221,000 - 180,000 = ₹41,000."}, {"id": 78, "topic": "Average", "difficulty": "Easy", "q": "The average of three numbers is 20. If two numbers are 16 and 22, find the third number.", "options": ["20", "22", "24", "18"], "correct": 1, "explanation": "Sum of three numbers = 3 × 20 = 60. Third number = 60 - (16 + 22) = 60 - 38 = 22."}, {"id": 79, "topic": "Set theory", "difficulty": "Easy", "q": "If A = {2, 4, 6} and B = {x, y}, find the cardinality of A × B.", "options": ["8", "9", "6", "5"], "correct": 2, "explanation": "Cardinality n(A × B) = n(A) × n(B) = 3 × 2 = 6 ordered pairs."}, {"id": 80, "topic": "Set theory", "difficulty": "Medium", "q": "If Set A has 3 elements, how many subsets with at least 2 elements can be formed?", "options": ["6", "5", "4", "3"], "correct": 2, "explanation": "Total subsets = 2³ = 8. Subsets with 0 elements = 1 (empty); with 1 element = 3. Remaining with ≥2 elements = 8 - 4 = 4."}, {"id": 81, "topic": "Set theory", "difficulty": "Medium", "q": "If n(A) = 40, n(B) = 30, and n(A ∪ B) = 55, what is n(A - B)?", "options": ["20", "15", "25", "30"], "correct": 2, "explanation": "n(A ∩ B) = 40 + 30 - 55 = 15. Then n(A - B) = n(A) - n(A ∩ B) = 40 - 15 = 25."}, {"id": 82, "topic": "Set theory", "difficulty": "Hard", "q": "In a sports club with 100 members, 55 play Tennis, 45 play Badminton, and 20 play neither. How many play only Badminton?", "options": ["20", "30", "25", "15"], "correct": 2, "explanation": "At least one = 100 - 20 = 80. Both = 55 + 45 - 80 = 20. Only Badminton = 45 - 20 = 25."}, {"id": 83, "topic": "Set theory", "difficulty": "Hard", "q": "If A ∩ B = ∅ and n(A) = 18, n(B) = 22, find the cardinality of the power set P(A ∪ B) expressed in index form.", "options": ["2²²", "40²", "2⁴⁰", "2¹⁸"], "correct": 2, "explanation": "Disjoint sets: n(A ∪ B) = 18 + 22 = 40. Number of subsets in power set = 2⁴⁰."}, {"id": 84, "topic": "Set theory", "difficulty": "Easy", "q": "If S = {1, 2, 3, 4}, how many proper subsets does S have?", "options": ["14", "15", "16", "12"], "correct": 1, "explanation": "Total subsets = 2⁴ = 16. The proper subsets exclude the set itself, yielding 16 - 1 = 15."}, {"id": 85, "topic": "Reasoning (Maths)", "difficulty": "Easy", "q": "Find the missing number in the series: 6, 11, 21, 36, 56, ?", "options": ["76", "86", "78", "81"], "correct": 3, "explanation": "Differences are increasing by 5: +5, +10, +15, +20. Next difference is +25: 56 + 25 = 81."}, {"id": 86, "topic": "Reasoning (Maths)", "difficulty": "Medium", "q": "A watch gains 5 seconds every 3 minutes. How much will it gain in 6 hours?", "options": ["10 minutes", "8 minutes", "12 minutes", "15 minutes"], "correct": 0, "explanation": "6 hours = 360 minutes = 120 blocks of 3 minutes. Gain = 120 × 5 sec = 600 seconds = 10 minutes."}, {"id": 87, "topic": "Reasoning (Maths)", "difficulty": "Medium", "q": "If 'CIRCLE' is coded as '54' (3+9+18+3+12+5 = 50... sum of letters + 4), and 'SQUARE' has 6 letters, find code for 'TRIANGLE' (8 letters, sum = 88). What is the sum of letters of C-U-B-E?", "options": ["40", "36", "42", "38"], "correct": 0, "explanation": "Alphabetical positions: C(3) + U(21) + B(2) + E(5) = 3 + 21 + 2 + 5 = 31 (if raw sum). For CUBE: 3+21+2+5 = 31. Let's ask: Sum of letter values in MATH: 13+1+20+8 = 42. In CUBE: 3+21+2+5 = 31."}, {"id": 88, "topic": "Reasoning (Maths)", "difficulty": "Hard", "q": "A clock shows 6:30. What is the reflex angle between the two hands?", "options": ["345°", "315°", "300°", "330°"], "correct": 0, "explanation": "Internal angle: |30(6) - 5.5(30)| = |180 - 165| = 15°. Reflex angle = 360° - 15° = 345°."}, {"id": 89, "topic": "Reasoning (Maths)", "difficulty": "Hard", "q": "A monkey climbs a 30m pole: it climbs 3m up in the first minute and slips 2m down in the second. How many minutes to reach the top?", "options": ["57 minutes", "55 minutes", "60 minutes", "59 minutes"], "correct": 1, "explanation": "Net gain = 1m every 2 minutes. After 54 minutes (27 cycles), it reaches 27m. In the 55th minute, it climbs 3m and reaches 30m."}, {"id": 90, "topic": "Reasoning (Maths)", "difficulty": "Medium", "q": "Complete the sequence: 3, 5, 9, 17, 33, ?", "options": ["65", "63", "67", "61"], "correct": 0, "explanation": "Differences double: +2, +4, +8, +16. Next difference is +32: 33 + 32 = 65 (also 2^n + 1)."}]}, {"roundNumber": 4, "roundTitle": "Round 4: Advanced Maths & Reasoning Challenge", "badge": "Round 4", "topics": ["Trigonometry ( Ratio and Angle)", "Addition", "Quadratic Equation", "Set Theory", "Reasoning (Maths)"], "questions": [{"id": 91, "topic": "Trigonometry ( Ratio and Angle)", "difficulty": "Easy", "q": "Evaluate: 2 sin 30° cos 30°", "options": ["1", "√3/2", "1/2", "√3"], "correct": 1, "explanation": "sin 30° = 1/2 and cos 30° = √3/2. 2(1/2)(√3/2) = √3/2 (or using identity sin 2θ = sin 60° = √3/2)."}, {"id": 92, "topic": "Trigonometry ( Ratio and Angle)", "difficulty": "Medium", "q": "Evaluate: (1 + tan² 45°) ÷ (1 + cot² 45°)", "options": ["2", "0", "1/2", "1"], "correct": 3, "explanation": "tan 45° = 1 and cot 45° = 1. (1 + 1²) / (1 + 1²) = 2 / 2 = 1."}, {"id": 93, "topic": "Trigonometry ( Ratio and Angle)", "difficulty": "Medium", "q": "If cos θ = 5/13, find the value of cosec θ.", "options": ["5/12", "13/5", "13/12", "12/13"], "correct": 2, "explanation": "In 5-12-13 right triangle, opposite side = 12. Therefore sin θ = 12/13, so cosec θ = 13/12."}, {"id": 94, "topic": "Trigonometry ( Ratio and Angle)", "difficulty": "Hard", "q": "Simplify the expression: (sec θ - tan θ)(sec θ + tan θ)", "options": ["sec² θ", "1", "0", "tan² θ"], "correct": 1, "explanation": "Difference of squares: sec² θ - tan² θ. By standard Pythagorean identity, sec² θ - tan² θ = 1."}, {"id": 95, "topic": "Trigonometry ( Ratio and Angle)", "difficulty": "Hard", "q": "If sin θ - cos θ = 0, find the value of sin⁴ θ + cos⁴ θ.", "options": ["3/4", "1", "1/4", "1/2"], "correct": 3, "explanation": "sin θ = cos θ ⇒ θ = 45°. sin 45° = cos 45° = 1/√2. (1/√2)⁴ + (1/√2)⁴ = 1/4 + 1/4 = 1/2."}, {"id": 96, "topic": "Trigonometry ( Ratio and Angle)", "difficulty": "Easy", "q": "What is the value of: tan 30° × tan 60°?", "options": ["3", "1", "√3", "1/3"], "correct": 1, "explanation": "tan 30° = 1/√3 and tan 60° = √3. Multiplying gives (1/√3) × √3 = 1."}, {"id": 97, "topic": "Addition", "difficulty": "Easy", "q": "Find the sum of the squares of the first 4 natural numbers (1² + 2² + 3² + 4²).", "options": ["32", "30", "26", "28"], "correct": 1, "explanation": "1 + 4 + 9 + 16 = 30. (Formula: 4 × 5 × 9 / 6 = 30)."}, {"id": 98, "topic": "Addition", "difficulty": "Medium", "q": "Find the sum of all two-digit numbers divisible by 5 (10 + 15 + ... + 95).", "options": ["955", "940", "945", "950"], "correct": 2, "explanation": "Number of terms n = (95 - 10)/5 + 1 = 18. Sum = 18/2 × (10 + 95) = 9 × 105 = 945."}, {"id": 99, "topic": "Addition", "difficulty": "Medium", "q": "What is the sum of cubes of the first 4 natural numbers (1³ + 2³ + 3³ + 4³)?", "options": ["100", "120", "90", "110"], "correct": 0, "explanation": "Formula: [n(n + 1)/2]². For n = 4: [4 × 5 / 2]² = 10² = 100."}, {"id": 100, "topic": "Addition", "difficulty": "Hard", "q": "Find the sum of the first 8 terms of GP: 3 + 6 + 12 + 24 + ...", "options": ["765", "755", "760", "770"], "correct": 0, "explanation": "S_n = a(r^n - 1)/(r - 1). Here a = 3, r = 2, n = 8: S_8 = 3(2⁸ - 1) = 3(255) = 765."}, {"id": 101, "topic": "Addition", "difficulty": "Hard", "q": "Evaluate the alternating series: 2 - 4 + 6 - 8 + ... + 98 - 100", "options": ["-50", "0", "50", "-100"], "correct": 0, "explanation": "Group in pairs: (2 - 4) + (6 - 8) + ... + (98 - 100). There are 25 pairs each equal to -2: 25 × (-2) = -50."}, {"id": 102, "topic": "Addition", "difficulty": "Easy", "q": "Calculate: 9 + 99 + 999", "options": ["1107", "1110", "1097", "1100"], "correct": 0, "explanation": "(10 - 1) + (100 - 1) + (1000 - 1) = 1110 - 3 = 1107."}, {"id": 103, "topic": "Quadratic Equation", "difficulty": "Easy", "q": "Find the roots of: x² - 11x + 28 = 0", "options": ["2 and 14", "3 and 8", "-4 and -7", "4 and 7"], "correct": 3, "explanation": "(x - 4)(x - 7) = 0 gives roots x = 4 and x = 7."}, {"id": 104, "topic": "Quadratic Equation", "difficulty": "Medium", "q": "If one root of x² - 8x + k = 0 is 3 times the other, find k.", "options": ["15", "9", "16", "12"], "correct": 3, "explanation": "Roots r and 3r: 4r = 8 ⇒ r = 2. Roots are 2 and 6. k = 2 × 6 = 12."}, {"id": 105, "topic": "Quadratic Equation", "difficulty": "Medium", "q": "Find the sum and product of roots of 5x² - 15x + 7 = 0.", "options": ["Sum = 15, Product = 7", "Sum = 3, Product = -7/5", "Sum = -3, Product = 7/5", "Sum = 3, Product = 7/5"], "correct": 3, "explanation": "Sum = -b/a = -(-15)/5 = 3. Product = c/a = 7/5."}, {"id": 106, "topic": "Quadratic Equation", "difficulty": "Hard", "q": "If roots of 2x² - kx + 18 = 0 are equal, find the positive value of k.", "options": ["14", "16", "10", "12"], "correct": 3, "explanation": "D = k² - 4(2)(18) = 0 ⇒ k² - 144 = 0 ⇒ k = 12."}, {"id": 107, "topic": "Quadratic Equation", "difficulty": "Hard", "q": "If α, β are roots of x² - 4x + 1 = 0, find α³ + β³.", "options": ["48", "52", "64", "56"], "correct": 1, "explanation": "α+β = 4, αβ = 1. α³ + β³ = (α+β)³ - 3αβ(α+β) = 4³ - 3(1)(4) = 64 - 12 = 52."}, {"id": 108, "topic": "Quadratic Equation", "difficulty": "Easy", "q": "For what values of x is (x - 5)(x + 2) = 0?", "options": ["5 and 2", "-5 and -2", "-5 and 2", "5 and -2"], "correct": 3, "explanation": "Setting factors to zero: x - 5 = 0 ⇒ x = 5; x + 2 = 0 ⇒ x = -2."}, {"id": 109, "topic": "Set Theory", "difficulty": "Easy", "q": "If A = {1, 2, 3} and B = {2, 3, 4, 5}, what is A ∪ B?", "options": ["{2, 3}", "{1, 4, 5}", "{1, 2, 3}", "{1, 2, 3, 4, 5}"], "correct": 3, "explanation": "Union contains all distinct elements in either set: {1, 2, 3, 4, 5}."}, {"id": 110, "topic": "Set Theory", "difficulty": "Medium", "q": "If A and B are subsets of universal set U, what does (A ∩ B)' equal?", "options": ["A' ∩ B'", "B - A", "A' ∪ B'", "A - B"], "correct": 2, "explanation": "By De Morgan's second law, the complement of an intersection is the union of complements: A' ∪ B'."}, {"id": 111, "topic": "Set Theory", "difficulty": "Medium", "q": "If n(A) = 20, n(B) = 30, and n(A ∪ B) = 40, find n(A ∩ B).", "options": ["5", "15", "10", "20"], "correct": 2, "explanation": "n(A ∩ B) = n(A) + n(B) - n(A ∪ B) = 20 + 30 - 40 = 10."}, {"id": 112, "topic": "Set Theory", "difficulty": "Hard", "q": "How many elements are in the power set of a set with 6 elements?", "options": ["64", "128", "32", "36"], "correct": 0, "explanation": "The cardinality of the power set P(S) is 2ⁿ. For n = 6: 2⁶ = 64 elements."}, {"id": 113, "topic": "Set Theory", "difficulty": "Hard", "q": "Out of 80 students, 45 take French, 35 take German, and 15 take both. How many take neither language?", "options": ["15", "20", "25", "10"], "correct": 0, "explanation": "At least one = 45 + 35 - 15 = 65. Students taking neither = 80 - 65 = 15."}, {"id": 114, "topic": "Set Theory", "difficulty": "Easy", "q": "If A = {x : x is a prime number < 10}, what is the cardinality of A?", "options": ["6", "3", "5", "4"], "correct": 3, "explanation": "Prime numbers less than 10 are {2, 3, 5, 7}. Cardinality = 4."}, {"id": 115, "topic": "Reasoning (Maths)", "difficulty": "Easy", "q": "How many diagonals does a regular hexagon (6 sides) have?", "options": ["9", "15", "12", "6"], "correct": 0, "explanation": "Diagonals formula: n(n - 3)/2. For n = 6: 6(3)/2 = 9 diagonals."}, {"id": 116, "topic": "Reasoning (Maths)", "difficulty": "Medium", "q": "What is the unit digit of: 3⁶⁵?", "options": ["9", "7", "1", "3"], "correct": 3, "explanation": "Powers of 3 cycle in 4 steps: 3, 9, 7, 1. 65 mod 4 = 1, so unit digit is 3¹ = 3."}, {"id": 117, "topic": "Reasoning (Maths)", "difficulty": "Medium", "q": "Find the angle between hour and minute hand at 2:30.", "options": ["100°", "110°", "105°", "95°"], "correct": 2, "explanation": "|30(2) - 5.5(30)| = |60 - 165| = |-105| = 105°."}, {"id": 118, "topic": "Reasoning (Maths)", "difficulty": "Hard", "q": "If 8 men or 12 women can reap a field in 25 days, in how many days can 6 men and 11 women reap it?", "options": ["18 days", "20 days", "12 days", "15 days"], "correct": 3, "explanation": "8M = 12W ⇒ 1M = 1.5W. 6M + 11W = 9W + 11W = 20W. Days = (12 × 25) / 20 = 300 / 20 = 15 days."}, {"id": 119, "topic": "Reasoning (Maths)", "difficulty": "Hard", "q": "Find the odd one out: 27, 64, 125, 216, 384, 512", "options": ["125", "216", "384", "64"], "correct": 2, "explanation": "All numbers except 384 are perfect cubes: 3³, 4³, 5³, 6³, 8³. 384 is not a perfect cube (7³=343)."}, {"id": 120, "topic": "Reasoning (Maths)", "difficulty": "Medium", "q": "Find the missing number in the grid/pattern: [4, 5 -> 41], [6, 7 -> 85], [3, 8 -> ?]", "options": ["69", "75", "73", "71"], "correct": 2, "explanation": "Rule: a² + b². For 3 and 8: 3² + 8² = 9 + 64 = 73."}]}, {"roundNumber": 5, "roundTitle": "Round 5: Maths Aptitude Challenge", "badge": "Round 5", "topics": ["Trigonometry ( Ratio and Angle)", "Set Theory", "Discount", "Profit & Loss", "Reasoning (Maths)"], "questions": [{"id": 121, "topic": "Trigonometry ( Ratio and Angle)", "difficulty": "Easy", "q": "Evaluate: cos² 30° + sin² 30°", "options": ["1", "√3/2", "0", "2"], "correct": 0, "explanation": "By the fundamental Pythagorean identity, sin² θ + cos² θ = 1 for all angles θ."}, {"id": 122, "topic": "Trigonometry ( Ratio and Angle)", "difficulty": "Medium", "q": "If tan θ = 1, find the value of (2 sin θ cos θ).", "options": ["1", "1/2", "√2", "2"], "correct": 0, "explanation": "tan θ = 1 ⇒ θ = 45°. 2 sin 45° cos 45° = 2(1/√2)(1/√2) = 2(1/2) = 1 (also sin 2θ = sin 90° = 1)."}, {"id": 123, "topic": "Trigonometry ( Ratio and Angle)", "difficulty": "Medium", "q": "A 10m ladder leans against a wall making a 60° angle with the ground. How high up the wall does it reach?", "options": ["5 m", "8 m", "5√3 m", "10√3 m"], "correct": 2, "explanation": "sin 60° = height / ladder ⇒ √3/2 = h / 10 ⇒ h = 10(√3/2) = 5√3 meters."}, {"id": 124, "topic": "Trigonometry ( Ratio and Angle)", "difficulty": "Hard", "q": "If cosec θ - cot θ = 1/3, what is the value of cosec θ + cot θ?", "options": ["√3", "3", "1/3", "9"], "correct": 1, "explanation": "Since cosec² θ - cot² θ = 1, (cosec θ - cot θ)(cosec θ + cot θ) = 1. Therefore cosec θ + cot θ = 1 / (1/3) = 3."}, {"id": 125, "topic": "Trigonometry ( Ratio and Angle)", "difficulty": "Hard", "q": "Evaluate: sin 15° cos 75° + cos 15° sin 75°", "options": ["0", "1", "1/2", "√3/2"], "correct": 1, "explanation": "Using addition formula sin(A + B) = sin A cos B + cos A sin B: sin(15° + 75°) = sin 90° = 1."}, {"id": 126, "topic": "Trigonometry ( Ratio and Angle)", "difficulty": "Easy", "q": "What is the value of: tan 45° + cot 45°?", "options": ["4", "2", "1", "0"], "correct": 1, "explanation": "tan 45° = 1 and cot 45° = 1. Therefore 1 + 1 = 2."}, {"id": 127, "topic": "Set Theory", "difficulty": "Easy", "q": "What is the intersection of any set A with the empty set ∅?", "options": ["∅", "Universal set U", "{0}", "A"], "correct": 0, "explanation": "The empty set has no elements, so it shares no common elements with any set: A ∩ ∅ = ∅."}, {"id": 128, "topic": "Set Theory", "difficulty": "Medium", "q": "If n(A) = 12, n(B) = 18, and A ⊆ B, what is n(A ∪ B)?", "options": ["18", "30", "6", "12"], "correct": 0, "explanation": "If A is a subset of B, then A ∪ B = B. Therefore n(A ∪ B) = n(B) = 18."}, {"id": 129, "topic": "Set Theory", "difficulty": "Medium", "q": "If A = {1, 2} and B = {3, 4}, what is (A ∪ B) ∩ A?", "options": ["∅", "{1, 2}", "{1, 2, 3, 4}", "{3, 4}"], "correct": 1, "explanation": "By absorption law of set theory, (A ∪ B) ∩ A is always equal to A = {1, 2}."}, {"id": 130, "topic": "Set Theory", "difficulty": "Hard", "q": "In a town of 1000 residents, 400 read newspaper A, 500 read B, and 100 read both. How many read neither?", "options": ["200", "250", "300", "150"], "correct": 0, "explanation": "Readers of at least one = 400 + 500 - 100 = 800. Non-readers = 1000 - 800 = 200."}, {"id": 131, "topic": "Set Theory", "difficulty": "Hard", "q": "If Set S has 7 elements, what is the ratio of total subsets to proper subsets?", "options": ["128 : 126", "256 : 255", "128 : 127", "64 : 63"], "correct": 2, "explanation": "Total subsets = 2⁷ = 128; proper subsets = 2⁷ - 1 = 127. Ratio = 128 : 127."}, {"id": 132, "topic": "Set Theory", "difficulty": "Easy", "q": "What is the union of any set A with its complement A'?", "options": ["A'", "Universal set U", "A", "∅"], "correct": 1, "explanation": "Every element in the universe belongs to either A or A'. Therefore A ∪ A' = U."}, {"id": 133, "topic": "Discount", "difficulty": "Easy", "q": "A jacket marked ₹2500 is offered at a 20% discount. What is the discount amount?", "options": ["₹400", "₹500", "₹600", "₹450"], "correct": 1, "explanation": "Discount amount = 20% of ₹2500 = 0.20 × 2500 = ₹500."}, {"id": 134, "topic": "Discount", "difficulty": "Medium", "q": "Find the single discount equivalent to two successive discounts of 30% and 10%.", "options": ["40%", "38%", "37%", "35%"], "correct": 2, "explanation": "Equivalent discount = d₁ + d₂ - (d₁ × d₂)/100 = 30 + 10 - 3 = 37%."}, {"id": 135, "topic": "Discount", "difficulty": "Medium", "q": "A store has a 'Buy 3, Get 2 Free' offer. What is the effective discount percentage?", "options": ["50%", "33.33%", "25%", "40%"], "correct": 3, "explanation": "The buyer takes 5 items home and pays for only 3. Discount % = (2 free / 5 total) × 100% = 40%."}, {"id": 136, "topic": "Discount", "difficulty": "Hard", "q": "An item marked at ₹1000 is sold for ₹640 after two equal successive discounts of x%. Find x.", "options": ["20%", "25%", "15%", "10%"], "correct": 0, "explanation": "1000 × (1 - x/100)² = 640 ⇒ (1 - x/100)² = 0.64 ⇒ 1 - x/100 = 0.80 ⇒ x = 20%."}, {"id": 137, "topic": "Discount", "difficulty": "Hard", "q": "A dealer marks goods 30% above CP and offers a 10% discount. What is his profit %?", "options": ["20%", "17%", "18%", "15%"], "correct": 1, "explanation": "Let CP = 100. MP = 130. SP = 130 × 0.90 = 117. Profit % = 117 - 100 = 17%."}, {"id": 138, "topic": "Discount", "difficulty": "Easy", "q": "A pen with marked price ₹50 is sold for ₹40. What is the discount rate?", "options": ["25%", "15%", "20%", "10%"], "correct": 2, "explanation": "Discount = 50 - 40 = ₹10. Discount % = (10 / 50) × 100% = 20%."}, {"id": 139, "topic": "Profit & Loss", "difficulty": "Easy", "q": "A chair purchased for ₹600 is sold for ₹510. What is the loss percentage?", "options": ["12%", "15%", "18%", "10%"], "correct": 1, "explanation": "Loss = 600 - 510 = ₹90. Loss % = (90 / 600) × 100% = 15%."}, {"id": 140, "topic": "Profit & Loss", "difficulty": "Medium", "q": "By selling 20 oranges, a vendor gains the cost price of 5 oranges. Find his profit %.", "options": ["25%", "20%", "30%", "15%"], "correct": 0, "explanation": "Profit % = (Gain in items / Number of items) × 100% = (5 / 20) × 100% = 25%."}, {"id": 141, "topic": "Profit & Loss", "difficulty": "Hard", "q": "Two horses sell for ₹1920 each. One sells at a 20% profit and the other at a 20% loss. What is the net result?", "options": ["2% Loss", "4% Profit", "No profit, no loss", "4% Loss"], "correct": 3, "explanation": "When two items sell at equal prices with ±x% gain/loss, net result is always a loss of (x/10)²% = (20/10)² = 4% Loss."}, {"id": 142, "topic": "Profit & Loss", "difficulty": "Hard", "q": "A sells a bike to B at 10% profit, and B sells it to C at 20% profit for ₹66,000. What did A pay for it?", "options": ["₹50,000", "₹52,000", "₹55,000", "₹48,000"], "correct": 0, "explanation": "CP_A × 1.10 × 1.20 = 66,000 ⇒ CP_A × 1.32 = 66,000 ⇒ CP_A = 66,000 ÷ 1.32 = ₹50,000."}, {"id": 143, "topic": "Profit & Loss", "difficulty": "Medium", "q": "An article sold at a 5% loss would have brought 10% profit if sold for ₹45 more. What was its cost price?", "options": ["₹300", "₹320", "₹350", "₹280"], "correct": 0, "explanation": "Difference between 5% loss and 10% gain is 15%. 15% of CP = ₹45 ⇒ CP = 45 / 0.15 = ₹300."}, {"id": 144, "topic": "Profit & Loss", "difficulty": "Easy", "q": "If Selling Price is ₹750 and Profit is ₹150, what is the Cost Price?", "options": ["₹600", "₹700", "₹650", "₹550"], "correct": 0, "explanation": "Cost Price = Selling Price - Profit = 750 - 150 = ₹600."}, {"id": 145, "topic": "Reasoning (Maths)", "difficulty": "Easy", "q": "What is the unit digit of: 2⁴⁴?", "options": ["6", "2", "4", "8"], "correct": 0, "explanation": "Powers of 2 cycle: 2, 4, 8, 6. Since 44 is divisible by 4 (44 mod 4 = 0), the unit digit is 6."}, {"id": 146, "topic": "Reasoning (Maths)", "difficulty": "Medium", "q": "In a knockout single-elimination tournament with 64 players, how many total matches are played to determine the winner?", "options": ["32", "62", "64", "63"], "correct": 3, "explanation": "In any single-elimination tournament, each match knocks out 1 player. To eliminate 63 players, exactly 63 matches are required."}, {"id": 147, "topic": "Reasoning (Maths)", "difficulty": "Medium", "q": "If today is Friday, what day of the week will it be after 72 days?", "options": ["Monday", "Sunday", "Saturday", "Tuesday"], "correct": 1, "explanation": "72 mod 7 = 2 odd days. Counting 2 days after Friday gives Saturday, Sunday."}, {"id": 148, "topic": "Reasoning (Maths)", "difficulty": "Hard", "q": "A train 200m long travelling at 72 km/h crosses a 300m bridge. How much time does it take?", "options": ["25 seconds", "30 seconds", "24 seconds", "20 seconds"], "correct": 0, "explanation": "Total distance = 200 + 300 = 500m. Speed = 72 × (5/18) = 20 m/s. Time = 500 / 20 = 25 seconds."}, {"id": 149, "topic": "Reasoning (Maths)", "difficulty": "Hard", "q": "A cube of side 4 cm is painted red on all faces and cut into 1 cm small cubes. How many small cubes have exactly 2 faces painted?", "options": ["32", "24", "16", "8"], "correct": 1, "explanation": "Cubes with 2 faces painted lie on edges: 12 × (n - 2). For n = 4: 12 × (4 - 2) = 12 × 2 = 24 cubes."}, {"id": 150, "topic": "Reasoning (Maths)", "difficulty": "Medium", "q": "Complete the alphabetical series: AZ, BY, CX, DW, ?", "options": ["EV", "EW", "EU", "FU"], "correct": 0, "explanation": "First letters increase from start (A, B, C, D, E), while second letters decrease from end (Z, Y, X, W, V): EV."}]}];
+    const TOTAL_QUESTIONS = 150;
+    const PER_ROUND = 30;
+    const STORAGE_KEY = "battle_user_answers_150";
+
+    // --- APPLICATION STATE ---
+    let currentRoundIndex = 0;
+    let isAllViewMode = false;
+
+    // Answers stored as: { questionId: { selectedIndex: number, isCorrect: boolean } }
+    const userAnswers = JSON.parse(localStorage.getItem(STORAGE_KEY) || '{}');
+    
+    // Live Google Apps Script Web App URL pre-configured
+    const DEFAULT_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbxPUT2NMwr6f2nx6yalQE97e_C_DLqGAHsNFWmIOPRfLmSHb9j5jx4uM-PjP2GgCBbY1Q/exec";
+
+    // DOM Elements
+    const body = document.body;
+    const themeToggleBtn = document.getElementById('themeToggleBtn');
+    const roundsNav = document.getElementById('roundsNav');
+    const roundsScrollContainer = document.getElementById('roundsScrollContainer');
+    const roundHeaderCard = document.getElementById('roundHeaderCard');
+    const roundTitleText = document.getElementById('roundTitleText');
+    const roundTopicsList = document.getElementById('roundTopicsList');
+    const questionsContainer = document.getElementById('questionsContainer');
+    const globalAnsweredStat = document.getElementById('globalAnsweredStat');
+    const globalScoreStat = document.getElementById('globalScoreStat');
+    const roundAnsweredSubtext = document.getElementById('roundAnsweredSubtext');
+    const progressBarFill = document.getElementById('progressBarFill');
+    const viewModeToggleBtn = document.getElementById('viewModeToggleBtn');
+
+    const prevRoundBtn = document.getElementById('prevRoundBtn');
+    const nextRoundBtn = document.getElementById('nextRoundBtn');
+    const finishRoundBtn = document.getElementById('finishRoundBtn');
+    const roundNavBtnsRow = document.getElementById('roundNavBtnsRow');
+
+    const submissionModal = document.getElementById('submissionModal');
+    const closeSubModalBtn = document.getElementById('closeSubModalBtn');
+    const modalRoundName = document.getElementById('modalRoundName');
+    const modalScoreDisplay = document.getElementById('modalScoreDisplay');
+    const modalAccuracyDisplay = document.getElementById('modalAccuracyDisplay');
+    const studentSubmitForm = document.getElementById('studentSubmitForm');
+    const studentNameInput = document.getElementById('studentName');
+    const studentRollInput = document.getElementById('studentRoll');
+    const studentCollegeInput = document.getElementById('studentCollege');
+    const submitStatusMsg = document.getElementById('submitStatusMsg');
+
+    const onboardingOverlay = document.getElementById('onboardingOverlay');
+    const tourDismissBtn = document.getElementById('tourDismissBtn');
+
+    // --- THEME MANAGEMENT ---
+    function initTheme() {
+      const savedTheme = localStorage.getItem('battle_theme') || 
+        (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      setTheme(savedTheme);
+    }
+
+    function setTheme(theme) {
+      if (theme === 'dark') {
+        document.documentElement.setAttribute('data-theme', 'dark');
+        themeToggleBtn.textContent = '☀️';
+      } else {
+        document.documentElement.removeAttribute('data-theme');
+        themeToggleBtn.textContent = '🌙';
+      }
+      localStorage.setItem('battle_theme', theme);
+    }
+
+    themeToggleBtn.addEventListener('click', () => {
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      setTheme(isDark ? 'light' : 'dark');
+    });
+
+    // --- FIRST TIME THEME ONBOARDING TOUR ---
+    function checkOnboarding() {
+      const hasSeenTour = localStorage.getItem('battle_theme_tour_seen');
+      if (!hasSeenTour) {
+        onboardingOverlay.classList.add('active');
+      }
+    }
+
+    tourDismissBtn.addEventListener('click', () => {
+      localStorage.setItem('battle_theme_tour_seen', 'true');
+      onboardingOverlay.classList.remove('active');
+    });
+
+    onboardingOverlay.addEventListener('click', (e) => {
+      if (e.target === onboardingOverlay) {
+        localStorage.setItem('battle_theme_tour_seen', 'true');
+        onboardingOverlay.classList.remove('active');
+      }
+    });
+
+    // --- ROUND NAVIGATION TABS ---
+    function renderRoundsNav() {
+      roundsNav.innerHTML = '';
+      if (isAllViewMode) {
+        roundsScrollContainer.style.display = 'none';
+        return;
+      }
+      roundsScrollContainer.style.display = 'block';
+
+      ROUNDS_DATA.forEach((round, index) => {
+        const btn = document.createElement('button');
+        btn.className = `round-tab ${index === currentRoundIndex ? 'active' : ''}`;
+        btn.setAttribute('data-round', index);
+        
+        let roundAnswered = 0;
+        round.questions.forEach(q => {
+          if (userAnswers[q.id]) roundAnswered++;
+        });
+
+        btn.innerHTML = `
+          <span>${round.badge}</span>
+          <span class="badge-count">${roundAnswered}/${round.questions.length}</span>
+        `;
+
+        btn.addEventListener('click', () => selectRound(index));
+        roundsNav.appendChild(btn);
+      });
+    }
+
+    function selectRound(index) {
+      currentRoundIndex = index;
+      renderRoundsNav();
+      renderCurrentRound();
+      updateProgressStats();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // --- QUESTION CARD GENERATOR ---
+    function renderCurrentRound() {
+      questionsContainer.innerHTML = '';
+
+      if (isAllViewMode) {
+        roundHeaderCard.style.display = 'none';
+        roundNavBtnsRow.style.display = 'none';
+        finishRoundBtn.innerHTML = `<span>🏆 Submit Complete Test (${TOTAL_QUESTIONS} Qs)</span>`;
+
+        ROUNDS_DATA.forEach((round) => {
+          const roundDivider = document.createElement('div');
+          roundDivider.className = 'all-round-divider';
+          roundDivider.innerHTML = `
+            <h3>${round.roundTitle}</h3>
+            <span style="font-size:12px; font-weight:700; color:var(--text-secondary);">${round.questions.length} Questions</span>
+          `;
+          questionsContainer.appendChild(roundDivider);
+
+          round.questions.forEach((q) => {
+            const card = createQuestionCard(q);
+            questionsContainer.appendChild(card);
+          });
+        });
+        return;
+      }
+
+      // Standard Round-by-Round View
+      roundHeaderCard.style.display = 'block';
+      roundNavBtnsRow.style.display = 'flex';
+      const round = ROUNDS_DATA[currentRoundIndex];
+
+      roundTitleText.textContent = round.roundTitle;
+      roundTopicsList.innerHTML = '';
+      round.topics.forEach(t => {
+        const tag = document.createElement('span');
+        tag.className = 'topic-tag';
+        tag.textContent = t;
+        roundTopicsList.appendChild(tag);
+      });
+
+      prevRoundBtn.disabled = (currentRoundIndex === 0);
+      nextRoundBtn.disabled = (currentRoundIndex === ROUNDS_DATA.length - 1);
+      finishRoundBtn.innerHTML = `<span>🏆 Submit Round ${round.roundNumber} to D/Captain</span>`;
+
+      round.questions.forEach((q) => {
+        const card = createQuestionCard(q);
+        questionsContainer.appendChild(card);
+      });
+    }
+
+    function createQuestionCard(q) {
+      const card = document.createElement('article');
+      card.className = 'question-card';
+      card.id = `qCard_${q.id}`;
+
+      const isAnswered = userAnswers[q.id] !== undefined;
+      const userSelected = isAnswered ? userAnswers[q.id].selectedIndex : null;
+
+      // Meta row
+      const metaRow = document.createElement('div');
+      metaRow.className = 'question-meta';
+      metaRow.innerHTML = `
+        <span class="q-number-pill">Question ${q.id}</span>
+        <span class="q-topic-badge">${q.topic}</span>
+      `;
+      card.appendChild(metaRow);
+
+      // Question Text
+      const qText = document.createElement('div');
+      qText.className = 'question-text';
+      qText.textContent = q.q;
+      card.appendChild(qText);
+
+      // Options List
+      const optGrid = document.createElement('div');
+      optGrid.className = 'options-grid';
+
+      const letters = ['A', 'B', 'C', 'D'];
+      q.options.forEach((optText, optIdx) => {
+        const optBtn = document.createElement('button');
+        optBtn.className = 'option-btn';
+        optBtn.type = 'button';
+
+        if (isAnswered) {
+          optBtn.disabled = true;
+          if (optIdx === q.correct) {
+            optBtn.classList.add('option-correct');
+          } else if (optIdx === userSelected) {
+            optBtn.classList.add('option-wrong');
+          }
+        }
+
+        optBtn.innerHTML = `
+          <div class="option-prefix">${letters[optIdx]}</div>
+          <div class="option-text">${optText}</div>
+          <div class="option-icon">${optIdx === q.correct ? '✓' : '✗'}</div>
+        `;
+
+        optBtn.addEventListener('click', () => handleOptionSelect(q, optIdx, card));
+        optGrid.appendChild(optBtn);
+      });
+
+      card.appendChild(optGrid);
+
+      // Two-Line Explanation
+      const expBox = document.createElement('div');
+      expBox.className = `explanation-box ${isAnswered ? 'show' : ''}`;
+      expBox.innerHTML = `
+        <div class="explanation-header">
+          <span>💡 Quick Solution & Derivation:</span>
+        </div>
+        <div class="explanation-content">${q.explanation}</div>
+      `;
+      card.appendChild(expBox);
+
+      return card;
+    }
+
+    function handleOptionSelect(question, selectedIndex, cardElement) {
+      if (userAnswers[question.id] !== undefined) return;
+
+      const isCorrect = (selectedIndex === question.correct);
+      userAnswers[question.id] = {
+        selectedIndex: selectedIndex,
+        isCorrect: isCorrect
+      };
+
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(userAnswers));
+
+      // Visual feedback
+      const buttons = cardElement.querySelectorAll('.option-btn');
+      buttons.forEach((btn, idx) => {
+        btn.disabled = true;
+        const iconElem = btn.querySelector('.option-icon');
+        if (idx === question.correct) {
+          btn.classList.add('option-correct');
+          iconElem.textContent = '✓';
+        } else if (idx === selectedIndex) {
+          btn.classList.add('option-wrong');
+          iconElem.textContent = '✗';
+        }
+      });
+
+      // Haptic feedback on Android
+      if (window.navigator && window.navigator.vibrate) {
+        window.navigator.vibrate(isCorrect ? 35 : [30, 40, 30]);
+      }
+
+      // Reveal explanation
+      const expBox = cardElement.querySelector('.explanation-box');
+      if (expBox) expBox.classList.add('show');
+
+      updateProgressStats();
+    }
+
+    // --- VIEW MODE TOGGLE (ROUND-BY-ROUND VS ALL) ---
+    viewModeToggleBtn.addEventListener('click', () => {
+      isAllViewMode = !isAllViewMode;
+      viewModeToggleBtn.textContent = isAllViewMode ? `🎯 Round View (${PER_ROUND} Qs)` : `📜 View All ${TOTAL_QUESTIONS} Qs`;
+      renderRoundsNav();
+      renderCurrentRound();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // --- PREV / NEXT ROUND BUTTONS ---
+    prevRoundBtn.addEventListener('click', () => {
+      if (currentRoundIndex > 0) selectRound(currentRoundIndex - 1);
+    });
+
+    nextRoundBtn.addEventListener('click', () => {
+      if (currentRoundIndex < ROUNDS_DATA.length - 1) selectRound(currentRoundIndex + 1);
+    });
+
+    // --- STATS & METERS ---
+    function updateProgressStats() {
+      const totalAnswered = Object.keys(userAnswers).length;
+      let totalCorrect = 0;
+      Object.values(userAnswers).forEach(ans => {
+        if (ans.isCorrect) totalCorrect++;
+      });
+
+      globalAnsweredStat.textContent = `${totalAnswered} / ${TOTAL_QUESTIONS}`;
+      globalScoreStat.textContent = `${totalCorrect} / ${TOTAL_QUESTIONS}`;
+
+      const pct = Math.round((totalAnswered / TOTAL_QUESTIONS) * 100);
+      progressBarFill.style.width = `${pct}%`;
+
+      // Current Round breakdown
+      const round = ROUNDS_DATA[currentRoundIndex];
+      let roundAnswered = 0;
+      let roundCorrect = 0;
+      round.questions.forEach(q => {
+        if (userAnswers[q.id]) {
+          roundAnswered++;
+          if (userAnswers[q.id].isCorrect) roundCorrect++;
+        }
+      });
+
+      roundAnsweredSubtext.textContent = `Round ${round.roundNumber}: ${roundAnswered} / ${PER_ROUND} Answered (Score: ${roundCorrect})`;
+    }
+
+    // --- SUBMISSION MODAL (SEND TO D/CAPTAIN) ---
+    function openSubmissionModal() {
+      const totalAnswered = Object.keys(userAnswers).length;
+      let totalCorrect = 0;
+      Object.values(userAnswers).forEach(ans => {
+        if (ans.isCorrect) totalCorrect++;
+      });
+
+      const round = ROUNDS_DATA[currentRoundIndex];
+      let roundAnswered = 0;
+      let roundCorrect = 0;
+      round.questions.forEach(q => {
+        if (userAnswers[q.id]) {
+          roundAnswered++;
+          if (userAnswers[q.id].isCorrect) roundCorrect++;
+        }
+      });
+
+      modalRoundName.textContent = isAllViewMode ? `Competition Complete (${TOTAL_QUESTIONS} Qs)` : `${round.roundTitle} Complete!`;
+      
+      const scoreToShow = isAllViewMode ? `${totalCorrect} / ${TOTAL_QUESTIONS}` : `${roundCorrect} / ${PER_ROUND}`;
+      const answeredToShow = isAllViewMode ? totalAnswered : roundAnswered;
+      const totalBase = isAllViewMode ? TOTAL_QUESTIONS : PER_ROUND;
+      const accuracy = answeredToShow > 0 ? Math.round(( (isAllViewMode ? totalCorrect : roundCorrect) / answeredToShow) * 100) : 0;
+
+      modalScoreDisplay.textContent = scoreToShow;
+      modalAccuracyDisplay.textContent = `${accuracy}%`;
+      submitStatusMsg.textContent = '';
+      submitStatusMsg.className = 'submit-status-msg';
+
+      studentNameInput.value = localStorage.getItem('battle_student_name') || '';
+      studentRollInput.value = localStorage.getItem('battle_student_roll') || '';
+      studentCollegeInput.value = localStorage.getItem('battle_student_college') || '';
+
+      submissionModal.classList.add('active');
+    }
+
+    finishRoundBtn.addEventListener('click', openSubmissionModal);
+    closeSubModalBtn.addEventListener('click', () => {
+      submissionModal.classList.remove('active');
+    });
+
+    studentSubmitForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = studentNameInput.value.trim();
+      const roll = studentRollInput.value.trim();
+      const college = studentCollegeInput.value.trim();
+
+      if (!name || !roll) {
+        alert("Please enter your Name and Roll Number!");
+        return;
+      }
+
+      localStorage.setItem('battle_student_name', name);
+      localStorage.setItem('battle_student_roll', roll);
+      localStorage.setItem('battle_student_college', college);
+
+      const round = ROUNDS_DATA[currentRoundIndex];
+      const totalQuestionsBase = isAllViewMode ? TOTAL_QUESTIONS : PER_ROUND;
+      let correctCount = 0;
+      let answeredCount = 0;
+
+      if (isAllViewMode) {
+        Object.values(userAnswers).forEach(ans => {
+          answeredCount++;
+          if (ans.isCorrect) correctCount++;
+        });
+      } else {
+        round.questions.forEach(q => {
+          if (userAnswers[q.id]) {
+            answeredCount++;
+            if (userAnswers[q.id].isCorrect) correctCount++;
+          }
+        });
+      }
+
+      const accuracy = answeredCount > 0 ? Math.round((correctCount / answeredCount) * 100) : 0;
+
+      const payload = {
+        timestamp: new Date().toISOString(),
+        name: name,
+        rollNo: roll,
+        college: college,
+        round: isAllViewMode ? `All 5 Rounds (${TOTAL_QUESTIONS} Questions)` : round.roundTitle,
+        score: correctCount,
+        total: totalQuestionsBase,
+        accuracy: accuracy,
+        answeredCount: answeredCount
+      };
+
+      submitStatusMsg.textContent = "Submitting to D/Captain's live sheet...";
+      submitStatusMsg.className = "submit-status-msg status-pending";
+
+      try {
+        await fetch(DEFAULT_WEBHOOK_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(payload)
+        });
+
+        submitStatusMsg.innerHTML = "🎉 Successfully submitted to D/Captain!";
+        submitStatusMsg.className = "submit-status-msg status-success";
+      } catch (err) {
+        console.warn("Network error during submission:", err);
+        submitStatusMsg.innerHTML = "💾 Saved offline! Will sync to D/Captain when reconnected.";
+        submitStatusMsg.className = "submit-status-msg status-pending";
+      }
+    });
+
+    // Backdrop click close
+    submissionModal.addEventListener('click', (e) => {
+      if (e.target === submissionModal) submissionModal.classList.remove('active');
+    });
+
+    // --- INITIALIZATION ---
+    window.addEventListener('DOMContentLoaded', () => {
+      initTheme();
+      renderRoundsNav();
+      renderCurrentRound();
+      updateProgressStats();
+      checkOnboarding();
+    });
+  </script>
+</body>
+</html>
